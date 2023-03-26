@@ -2,7 +2,15 @@
 <br />
 Q-easy – <p></p>
 
-A Q-easy egy böngészős alkalmazás, mely tanároknak segít feladatválasztós quizeket létrehozni, valamint ezen kvízekhez tanulóit invitálni. Nyomon követheti, hogy mely tanulója milyen sikerekkel képes elvégezni az elkészített kérdéssorokat. Külsős személyek ne tudjanak regisztrálni a rendszerbe. Legyen egy olyan szerepkör, aki tud rögzíteni felhasználókat és tudja kezelni őket, valamint be is tudja állítani, hogy az illető személy Tanár vagy Diák.
+A Q-easy egy böngészős alkalmazás, mely tanároknak segít feladatválasztós quizeket létrehozni, valamint ezen kvízekhez tanulóit invitálni. Nyomon követheti, hogy mely tanulója milyen sikerekkel képes elvégezni az elkészített kérdéssorokat. 
+Külsős személyek ne tudjanak regisztrálni a rendszerbe.
+A Q-easy lehetőséget nyújt arra, hogy a tanulók megtekinthessék eredményeiket.
+Legyen egy olyan szerepkör, aki tud rögzíteni felhasználókat és tudja kezelni őket, valamint be is tudja állítani, hogy az illető személy Tanár vagy Diák.
+Egy felhasználó rendelkezhessen több szerepkörrel is.
+Ezen adatokat az alkalmazás adatbázisban kell, hogy tárolja.
+Az adatok visszaállítására legyen lehetőség.
+
+
 <hr />
 <h3><b>Funkcionális követelmények:</b></h3>
 Roles:<br />
@@ -10,7 +18,8 @@ Roles:<br />
 * Adminisztrátor: <p>
 Az adminisztrátor felvehet új felhasználókat a rendszerbe. <br />
 Az adminisztrátor módosíthatja a felhasználók szerepkörét. <br />
-Az adminisztrátor törölhet Quizeket.
+Az adminisztrátor törölhet Quizeket. <br/>
+Az adminisztrátor állíthat vissza jelszót.
 * Tanár: <p>
 A tanár létrehozhat igaz/hamis kérdéseket a kvízhez. <br />
 A tanár meghívhat felhasználókat az általa létrehozott kvízekhez.
@@ -19,7 +28,7 @@ A felhasználó ki tudja tölteni a kvízeket.
 
 Kvíz: <br />
  * A kvíz kérdéseket tartalmaz. <br />
-A tanár és az adminisztrátor szerkesztheti a kvízeket. <p>
+ * A tanár és az adminisztrátor szerkesztheti a kvízeket. <p>
 
 Kérdés:<br />
  * A kérdés igaz/hamis állításokra épül. <p>
@@ -31,3 +40,9 @@ Kérdés:<br />
 * A weboldal felhasználóbarát, könnyen használható és átlátható legyen.
 * A webalkalmazás gyorsan és megbízhatóan működjön.
 * Az alkalmazás megfelelően működjön különböző böngészőkben és különböző eszközökön.
+* Az elkészített szoftver legyen hibatűrő
+* A rendszer legyen versenyképes a ma ismert hasonló szoftverekkel szemben.
+
+<h3><b>Az alkalmazás használi eset diagrammja:</b></h3>
+
+![Használati eset diagramm](./Diagramms/hasznalati_eset_diagramm.png)
