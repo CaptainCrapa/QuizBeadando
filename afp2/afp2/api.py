@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from ninja import NinjaAPI, Form
 from django.shortcuts import render
 
-from afp2.schemas import RegisterUserIn
+from afp2.schemas import RegisterUserIn, LoginUser
 from afp2.models import RegisterUser
 
 api = NinjaAPI()
@@ -29,3 +29,11 @@ def registerUser(request,data: RegisterUserIn):
             return HttpResponse(status=400,content="Ilyen felhasználónévvel vagy e-mail címmel már történt regisztráció!")
         except:
             return HttpResponse(status=500,content="Adatbáziskapcsolati hiba történt!")
+
+@api.post("/login")
+def loginUser(request,data: LoginUser):
+    registerUser = RegisterUser.objects.filter(username=data.username, password=data.password.encode()).values()
+    if not registerUser:
+        return HttpResponse(status=404,content="Nem található ilyen felhasználónév és jelszó párosítás!")
+    else:
+        return HttpResponse(status=200,content="Sikeres bejelentkezés!")
