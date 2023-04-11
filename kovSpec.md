@@ -1,5 +1,6 @@
 <b>Követelményspecifikáció</b>
 <br />
+<h3>Áttekintés</h3>
 Q-easy – <p></p>
 
 A Q-easy egy böngészős alkalmazás, mely tanároknak segít feladatválasztós quizeket létrehozni, valamint ezen kvízekhez tanulóit invitálni. Nyomon követheti, hogy mely tanulója milyen sikerekkel képes elvégezni az elkészített kérdéssorokat. 
@@ -10,7 +11,20 @@ Egy felhasználó rendelkezhessen több szerepkörrel is.
 Ezen adatokat az alkalmazás adatbázisban kell, hogy tárolja.
 Az adatok visszaállítására legyen lehetőség.
 
+<h3>Jelenlegi helyzet</h3>
 
+Jelen álláspont szerint a diákok legtöbbször papír alapon tudnak kvízeket kitölteni,
+és azt nem kell részletezni, hogy ez milyen többletmunkát, nyomtatási papírmennyiséget
+és időt emészt fel. A diákok általában 1-1 kvízt tudnak kitölteni és ezáltal gyakorolni egy
+esetleges vizsgára. A Q-easy rendszer segítségével a nyomtatott papírok mennyisége csökken,
+a tanárok pedig néhány kattintás segítségével tudják kvízeiket összeállítani. Ez megkönnyíti a
+tanárok munkáját és segíti a diákokat, hogy egy esetleges dolgozatra hatékonyabban legyenek képesek
+felkészülni a tanár által biztosított gyakorló kvízek segítségével. A papír alakú kvízekkel
+továbbá probléma, hogy a tanár csak kijavítja, bejelöli, hogy az adott kérdésre a válasza helytelen,
+de nem jelzi, hogy mi lett volna a helyes, valamint a diákok nem tudnak annyit tanulni, amennyit esetlegesen
+kellene nekik, avagy szeretnének. A Q-easy szoftverben összeállított kérdéssorok alapján a diák akár egy témakörben
+több kérdésből összeállított random kérdéseken keresztül effektívebben tud tanulni, és akkor és annyiszor veszi
+elő a szoftvert és tanul, ahányszor csak szeretne.
 <hr />
 <h3><b>Funkcionális követelmények:</b></h3>
 Roles:<br />
