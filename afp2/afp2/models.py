@@ -1,7 +1,20 @@
 from django.db import models
 
 
+class Roles(models.Model):
+    id = models.AutoField(
+        primary_key=True
+    )
+    name = models.CharField(
+        max_length=255
+    )
 
+class k_UserInRoles(models.Model):
+    id = models.AutoField(
+        primary_key=True
+    )
+    User_Id = models.ForeignKey('RegisterUser', on_delete=models.CASCADE, default=1)
+    Roles_Id = models.ForeignKey('Roles', on_delete=models.CASCADE, default=1)
 class RegisterUser(models.Model):
     id = models.AutoField(
         primary_key=True
