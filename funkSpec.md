@@ -6,6 +6,7 @@ Jelen funkcionális specifikáció azon követelményeket tartalmazza, amelyekre
 a szoftvernek reagálnia szükséges és definiálja azt is, hogy ez milyen
 módon történjen meg.
 
+<h2>Követelménylista</h2>
 <h3><b>Regisztráció:</b></h3>
 Az alkalmazás használata kizárólag a regisztrációt követően válik elérhetővé.
 Ehhez szükséges egy regisztrációs űrlap kitöltése. A regisztrációt űrlap
@@ -58,6 +59,16 @@ nem megfelelően lett begépelve.
 jelentkeztessük be a felhasználót és töltődjön be számára az alkalmazás főoldala.
 * A diákok, tanárok és adminisztrátorok bejelentkezése ugyan azon a bejelentkezési
 fülön kell, hogy megtörténjen.
+
+<h2>Jelenlegi üzleti folyamatok modellje</h2>
+
+A mai modern korban az oktatás és a tanulást segíti, egyszerűsítő technológiák használata
+még nem ment keresztül elég széleskörű térhódításan a közoktatásban. A diákok sokszor keresik
+a tanulást segíti és interaktív megoldásokat céljaik elérésében. A legtöbb tanár papír alapon
+ad "tesztdolgozatokat" avagy rövid kvízeket, hogy a diákok tudását felmérje, és, hogy a diákok
+gyakorolni tudjanak. Az ebből származó kinyomtatott formájú papírok, pedig elég magas nyomdai
+költséget jelentenek, valamint a tanárnak egyesével kell a dolgozatokat javítania, amely ismételten
+időt és pénzt emészt fel. A XXI. században pedig ezen költségek jelentősen csökkenthetőek lennének.
 
 
 <h3><b>A készülendő szoftver navigációs vázlata:</b></h3>
