@@ -63,6 +63,7 @@ class UserQuiz(models.Model):
 
 class Quiz(models.Model):
     id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=255)
     active = models.BooleanField(default=True)
     Created_By = models.ForeignKey('RegisterUser', related_name='created_quizzes', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -72,7 +73,7 @@ class Quiz(models.Model):
 
 class k_QuestionInQuiz(models.Model):
     id = models.AutoField(primary_key=True)
-    quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
+    Quiz_Id = models.ForeignKey('Quiz', on_delete=models.CASCADE)
     Question_Id = models.ForeignKey('Question', on_delete=models.CASCADE)
 
 class Question(models.Model):
