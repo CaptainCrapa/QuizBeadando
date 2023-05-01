@@ -1,0 +1,51 @@
+RegisterUser
+
+Roles
+	Id (int)
+	name (string)
+	
+
+k_UserInRoles
+	Id (int)
+	User_Id (int)
+	Role_Id (int)
+
+UsersLastPass
+	Id (int)
+	UserId (int)
+	Pass (string)
+	Modified_At (datetime2)
+
+UserQuiz
+	Id (int)
+	User_Id (int)
+	Quiz_Id (int)
+	mikor (datetime2)
+	eredmeny (int)
+
+Quiz
+	ID (int)
+	Active (bool)
+	Created_by (int)(UserId)
+	Created_at (datetime2)
+	Updated_by (int)(UserId)
+	Updated_at (datetime2)
+	Deleted (bool)
+
+k_QuestionInQuiz
+	Id (int)
+	Quiz_Id (int)
+	Question_Id (int)
+
+Question
+	ID (int)
+	Question (string)
+	Answer (bool)
+	Active (bool)
+
+InvitedUser
+	Id (int)
+	Inviter_User_Id (int)
+	Invited_User_Id (int)
+	Invited_At (datetime2)
+	Quiz_Id (int)
