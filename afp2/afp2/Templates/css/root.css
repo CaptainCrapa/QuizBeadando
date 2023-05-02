@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'DiplomataSC-Regular';
+    src: url('../font/DiplomataSC-Regular.ttf');
+}
+@font-face {
+    font-family: 'PatrickHand-Regular';
+    src: url('../font/PatrickHand-Regular.ttf');
+}
+@font-face {
+    font-family: 'Marmelad-Regular';
+    src: url('../font/Marmelad-Regular.ttf');
+}
+
+:root {
+    --body-font-family: Georgia, 'Times New Roman', Times, serif;
+    --header-h1-sahdow-color: black;
+    --main-h2-sahdow-color: black;
+    --header-bg-color: rgb(24, 24, 24);
+    --nav-default-color: hsl(0, 0%, 65%);
+    --nav-selected-bg-color: hsl(0, 0%, 30%);
+    --nav-selected-text-color: white;
+    --hr-color: hsl(0, 0%, 70%);
+    --main-bg-color: hsla(0, 0%, 16%, 0.8);
+    --main-text-color: hsl(0, 0%, 85%);
+    --footer-bg-color: rgb(24, 24, 24);
+    --footer-text-color: hsl(0, 0%, 65%);
+}
