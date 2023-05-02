@@ -11,6 +11,15 @@ class RegisterUserIn(Schema):
 class LoginUser(Schema):
     username: str
     password: str
+class RegisterUserByAdmin(Schema):
+    requester: str
+    fullname: str
+    username: str
+    password: str
+    email: str
+    dateOfBirth: date
+    role: int
+
 class Message(Schema):
     Message: str
 

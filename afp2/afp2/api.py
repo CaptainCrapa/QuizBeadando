@@ -43,6 +43,32 @@ def loginUser(request,data: LoginUser):
         return HttpResponse(status=404,content="Nem található ilyen felhasználónév és jelszó párosítás!")
     else:
         return HttpResponse(status=200,content="Sikeres bejelentkezés!")
+@api.post("/createUser")
+def createUserByAdmin(request,data: RegisterUserByAdmin):
+    try:
+        admin = RegisterUser.objects.get(username=data.requester)
+        role = k_UserInRoles.objects.get(User_id=admin)
+        if role.Roles.id == 3:
+            try:
+                registerUser = RegisterUser()
+                registerUser.username = data.username
+                registerUser.email = data.email
+                registerUser.password = data.password.encode()
+                registerUser.fullname = data.fullname
+                registerUser.dateOfBirth = data.dateOfBirth
+                registerUser.save()
+                roles = k_UserInRoles()
+                roles.User = registerUser
+                roleToSet = Roles.objects.get(id=data.role)
+                roles.Roles = roleToSet
+                roles.save()
+                return HttpResponse(status=201, content="Sikeres regisztráció!")
+            except IntegrityError:
+                return HttpResponse(status=400,content="Ilyen felhasználónévvel vagy e-mail címmel már történt regisztráció!")
+        else:
+            return HttpResponse(status=403,content="Nincs admin jogosultságod ehhez a művelethez!")
+    except:
+        return HttpResponse(status=500,content="Szerver oldali hiba!")
 
 @api.post("/create_quiz")
 def create_quiz(request, data: CreateQuizIn):
