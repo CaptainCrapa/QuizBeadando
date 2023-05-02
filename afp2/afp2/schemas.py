@@ -11,8 +11,6 @@ class RegisterUserIn(Schema):
 class LoginUser(Schema):
     username: str
     password: str
-
-
 class Message(Schema):
     Message: str
 

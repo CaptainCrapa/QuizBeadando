@@ -3,7 +3,8 @@ from django.http import HttpResponse
 from ninja import NinjaAPI, Form
 from django.shortcuts import render
 
-from afp2.schemas import RegisterUserIn, LoginUser, CreateQuizIn, CreateQuestionIn, AddQuestionToQuizIn, AddUserToQuizIn, ConnectUserRoleIn
+from afp2.schemas import RegisterUserIn, LoginUser, CreateQuizIn, CreateQuestionIn, AddQuestionToQuizIn, \
+    AddUserToQuizIn, ConnectUserRoleIn, RegisterUserByAdmin
 from afp2.models import RegisterUser, k_UserInRoles, Roles
 
 api = NinjaAPI()
@@ -24,9 +25,11 @@ def registerUser(request,data: RegisterUserIn):
         registerUser.dateOfBirth = data.dateOfBirth
         try:
             registerUser.save()
-            roles = k_UserInRoles()
-            roles.User_Id = registerUser
-            roles.save()
+            roleToSet = Roles.objects.get(id=1)
+            role = k_UserInRoles()
+            role.User = registerUser
+            role.Roles = roleToSet
+            role.save()
             return HttpResponse(status=201, content="Sikeres regisztráció!")
         except IntegrityError:
             return HttpResponse(status=400, content="Ilyen felhasználónévvel vagy e-mail címmel már történt regisztráció!")
