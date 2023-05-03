@@ -47,7 +47,7 @@ def loginUser(request,data: LoginUser):
 def createUserByAdmin(request,data: RegisterUserByAdmin):
     try:
         admin = RegisterUser.objects.get(username=data.requester)
-        role = k_UserInRoles.objects.get(User_id=admin)
+        role = k_UserInRoles.objects.get(User=admin)
         if role.Roles.id == 3:
             try:
                 registerUser = RegisterUser()
