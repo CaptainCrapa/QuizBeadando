@@ -19,6 +19,10 @@ class RegisterUserByAdmin(Schema):
     email: str
     dateOfBirth: date
     role: int
+class UserPasswordModification(Schema):
+    requester: str
+    username: str
+    newPassword: str
 
 class Message(Schema):
     Message: str

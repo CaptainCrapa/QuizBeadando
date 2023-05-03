@@ -4,7 +4,7 @@ from ninja import NinjaAPI, Form
 from django.shortcuts import render
 
 from afp2.schemas import RegisterUserIn, LoginUser, CreateQuizIn, CreateQuestionIn, AddQuestionToQuizIn, \
-    AddUserToQuizIn, ConnectUserRoleIn, RegisterUserByAdmin
+    AddUserToQuizIn, ConnectUserRoleIn, RegisterUserByAdmin, UserPasswordModification
 from afp2.models import RegisterUser, k_UserInRoles, Roles
 
 api = NinjaAPI()
@@ -70,6 +70,24 @@ def createUserByAdmin(request,data: RegisterUserByAdmin):
     except:
         return HttpResponse(status=500,content="Szerver oldali hiba!")
 
+@api.post("/modification_pw")
+def modifyUserPassword(request, data: UserPasswordModification):
+    try:
+        admin = RegisterUser.objects.get(username=data.requester)
+        role = k_UserInRoles.objects.get(User=admin)
+        if role.Roles.id == 3:
+            user = RegisterUser.objects.filter(username=data.username).values()
+            if user:
+                userForReset = RegisterUser.objects.get(username=data.username)
+                userForReset.password=data.newPassword
+                userForReset.save()
+                return HttpResponse(status=200,content="Sikeres jelszómódosítás!")
+            else:
+                return HttpResponse(status=404, content="Nincs ilyen felhasználónévvel regisztrált ember!")
+        else:
+            return HttpResponse(status=403, content="Nincs admin jogosultságod ehhez a művelethez!")
+    except:
+        return HttpResponse(status=500,content="Szerver oldali hiba!")
 @api.post("/create_quiz")
 def create_quiz(request, data: CreateQuizIn):
     new_quiz = Quiz()
