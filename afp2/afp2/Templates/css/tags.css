@@ -16,7 +16,7 @@ header {
     padding: 4rem 0 0.55rem 0;
     text-align: center;
     /*background-color: var(--header-bg-color);*/
-    background: linear-gradient(180deg, black, var(--footer-bg-color), var(--footer-bg-color));
+    background: linear-gradient(180deg, black, var(--header-bg-color), var(--header-bg-color));
 }
 h1 { 
     font-family: 'DiplomataSC-Regular', Georgia, 'Times New Roman', Times, serif;
@@ -48,13 +48,6 @@ nav {
     /*padding: 1.5rem 0 0 0;*/
     background-color: var(--bg-nav);
 }
-nav p {
-    margin: 0;
-    padding: 0.65rem 8vw 0.65rem 3vw;
-    font-size: 2rem;
-    font-weight: 600;
-    display: inline;
-}
 main {
     margin: 0 auto;
     padding: 1.1rem;
@@ -64,6 +57,21 @@ main {
     box-shadow: 0 0 10px var(--main-bg-color);
     color: var(--main-text-color);
     background-color: var(--main-bg-color);
+}
+input[type=text], input[type=password] {
+    font-size: 1rem;
+    width: 100%;
+    transition-duration: 0.6s;
+}
+input[type=text]:focus, input[type=password]:focus {
+    background-color: var(--form-field-focused);
+}
+input[type=submit] {
+    display: block;
+    font-size: 1rem;
+    margin: 0 auto;
+    height: 1.8rem;
+    border-radius: 0.3rem;
 }
 footer {
     color: var(--footer-text-color);

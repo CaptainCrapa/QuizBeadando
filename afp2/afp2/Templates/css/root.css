@@ -22,6 +22,7 @@
     --hr-color: hsl(0, 0%, 70%);
     --main-bg-color: hsla(0, 0%, 16%, 0.8);
     --main-text-color: hsl(0, 0%, 85%);
+    --form-field-focused: rgb(251, 255, 183);
     --footer-bg-color: rgb(24, 24, 24);
     --footer-text-color: hsl(0, 0%, 65%);
 }
