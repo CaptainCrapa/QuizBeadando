@@ -23,10 +23,35 @@
         <a class="menu" href="/afp2/afp2/Templates/profile.html">Profil</a>
         <a class= "menu-selected" id="users">Felhasználók</a>
         <a class="menu" href="/afp2/afp2/Templates/index.html">Kijelentkezés</a>
+        <script type="text/javascript" src="/afp2/afp2/Templates/js/urole.js" charset="utf-8" defer ></script>
     </nav>
     </header>
     <main>
-        <h2>Szerepkör módosítás</h2>
+        <div class="form-container">
+            <form action="/afp2/afp2/api.py/connect_user_role" onsubmit="return rolesetValidation()" method="post" autocomplete="off">
+                <div class="flex-form-container">
+                    <div class="flex-form-item">
+                        <label for="username">Felhasználói név:</label>
+                    </div>
+                    <div class="flex-form-item">
+                        <input type="text" id="username" name="username" tabindex="1">
+                        <p class="form-error-message" id="username_error"></p>
+                    </div>
+                    <div class="flex-form-item">
+                        <label for="fullname">Jogosultság:</label>
+                    </div>
+                    <div class="flex-form-item">
+                        <select id="role" name="role" tabindex="2">
+                            <option value="diak">Diák</option>
+                            <option value="tanar">Tanár</option>
+                            <option value="adminisztrator">Adminisztrátor</option>
+                    </div>
+                    <div class="flex-form-item">
+                        <input type="submit" name="register-submit" value="Felhasználó felvétele" tabindex="3">
+                    </div>
+                </div>
+            </form>
+        </div>   
     </main>
     <footer>
         <p><a href="#top">Lap tetejére <img src="/afp2/afp2/Templates/img/icon_arrowup.png" alt="fel"></a></p>
