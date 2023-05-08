@@ -1,4 +1,4 @@
-var role = "diak";
+var role = "tanar";
 var usersLink = document.getElementById("users");
 
 if (role == 'tanar' || role == 'adminisztrator')
