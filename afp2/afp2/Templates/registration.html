@@ -23,29 +23,55 @@
     </header>
     <main>
         <div class="form-container">
-            <div class="flex-form-container">
-                <div class="flex-form-item">
-                    <label for="fullname">Teljes név:</label>
+            <form action="???" onsubmit="return registrationValidation()" method="post" autocomplete="off">
+                <div class="flex-form-container">
+                    <div class="flex-form-item">
+                        <label for="fullname">Teljes név:</label>
+                    </div>
+                    <div class="flex-form-item">
+                        <input type="text" id="fullname" name="fullname" tabindex="1">
+                        <p class="form-error-message" id="fullname_error"></p>
+                    </div>
+                    <div class="flex-form-item">
+                        <label for="username">Felhasználói név:</label>
+                    </div>
+                    <div class="flex-form-item">
+                        <input type="text" id="username" name="username" tabindex="2">
+                        <p class="form-error-message" id="username_error"></p>
+                    </div>
+                    <div class="flex-form-item">
+                        <label for="email">E-mail cím:</label>
+                    </div>
+                    <div class="flex-form-item">
+                        <input type="email" id="email" name="email" tabindex="3">
+                        <p class="form-error-message" id="email_error"></p>
+                    </div>
+                    <div class="flex-form-item">
+                        <label for="password">Jelszó:</label>
+                    </div>
+                    <div class="flex-form-item">
+                        <input type="password" id="password" name="password" tabindex="4">
+                        <p class="form-error-message" id="password_error"></p>
+                    </div>
+                    <div class="flex-form-item">
+                        <label for="password">Jelszó ismétlés:</label>
+                    </div>
+                    <div class="flex-form-item">
+                        <input type="password" id="confirm-password" name="confirm-password" tabindex="5">
+                        <p class="form-error-message" id="confirm-password_error"></p>
+                    </div>
+                    <div class="flex-form-item">
+                        <label for="dateOfBirth">Születési dátum:</label>
+                    </div>
+                    <div class="flex-form-item">
+                        <input type="date" id="dateOfBirth" name="dateOfBirth" tabindex="6">
+                        <p class="form-error-message" id="dateOfBirth_error"></p>
+                    </div>
+                    <div class="flex-form-item">
+                        <input type="submit" name="register-submit" value="Regisztráció" tabindex="7">
+                    </div>
                 </div>
-                <div class="flex-form-item">
-                    <label for="username">Felhasználói név:</label>
-                </div>
-                <div class="flex-form-item">
-                    <label for="email">E-mail cím:</label>
-                </div>
-                <div class="flex-form-item">
-                    <label for="password">Jelszó:</label>
-                </div>
-                <div class="flex-form-item">
-                    <label for="password">Jelszó ismétlés:</label>
-                </div>
-                <div class="flex-form-item">
-                    <label for="dateOfBirth">Születési dátum:</label>
-                </div>
-                <div class="flex-form-item">
-                    <input type="submit" name="register-submit" value="Regisztráció" tabindex="7">
-                </div>
-            </div>
+            </form>
         </div>   
     </main>
     <footer>
