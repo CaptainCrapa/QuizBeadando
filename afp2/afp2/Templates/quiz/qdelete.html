@@ -18,7 +18,7 @@
         <h1>Tudástár Quiz</h1>
     <nav>
         <p class="menu-title">Menü</p>
-        <a class="menu" href="/afp2/afp2/Templates/menu.html">Főoldal</a>
+        <a class="menu" href="/afp2/afp2/api.py/delete_quiz">Főoldal</a>
         <a class="menu-selected">Kvízek</a>
         <a class="menu" href="/afp2/afp2/Templates/profile.html">Profil</a>
         <a class= "menu" href="/afp2/afp2/Templates/users.html">Felhasználók</a>
@@ -26,7 +26,21 @@
     </nav>
     </header>
     <main>
-        <h2>Kvíz törlés</h2>
+        <div class="form-container">
+            <form action={% delete_quiz %} method="post" autocomplete="off">
+                <div class="flex-form-container">
+                    {% for quizname in quiz_list %}
+                    <li>
+                        <input type="checkbox" name="quizid" value="quizid">
+                        {% quizname %}
+                    </li>
+                    {% endfor %}
+                    <div class="flex-form-item">
+                        <input type="submit" name="register-submit" value="Kvíz(ek) törlése" tabindex="7">
+                    </div>
+                </div>
+            </form>
+        </div>
     </main>
     <footer>
         <p><a href="#top">Lap tetejére <img src="/afp2/afp2/Templates/img/icon_arrowup.png" alt="fel"></a></p>
