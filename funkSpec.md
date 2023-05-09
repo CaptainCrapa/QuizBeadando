@@ -59,6 +59,14 @@ nem megfelelően lett begépelve.
 jelentkeztessük be a felhasználót és töltődjön be számára az alkalmazás főoldala.
 * A diákok, tanárok és adminisztrátorok bejelentkezése ugyan azon a bejelentkezési
 fülön kell, hogy megtörténjen.
+<h2>Felhasználói kézikönyv</h2>
+
+<h3><b>GYIK</b></h3>
+<h3><b>Bemutatás</b></h3>
+<h3><b>Verzió</b></h3>
+<h3><b>Kompatibilitás</b></h3>
+<h3><b>Hibák, Hibaüzenetek</b></h3>
+<h3><b>Támogatás</b></h3>
 
 <h2>Jelenlegi üzleti folyamatok modellje</h2>
 
