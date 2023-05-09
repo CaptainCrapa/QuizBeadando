@@ -89,11 +89,15 @@ Az alkalmazásban jelenleg számos státusz-/hibakódba lehet ütközni. Ezeket 
 Ezen felül több helyen is találkozhatunk hibaüzenetekkel, amik nincsenek külön státuszkóddal ellátva. Például a regisztrációnál ha esetleg egy adatot kihagyunk akkor azonnali visszajelzést kapunk arról, hogy azt nem lehet üresen hagyni. Ilyen üzenetek az applikáció minden részén megtalálhatóak.
 <h3><b>Támogatás</b></h3>
 Ha a felhasználónak segítségre van szüksége az oldal használatával vagy bármilyen kérdés merül fel, akkor a következő módon tudják felvenni a kapcsolatot: <br>
-<b>E-mail:</b> A felhasználó e-mailben felvehetik a kapcsolatot az oldal adminisztrátorával az alábbi e-mail címen: quiz@uni-eszterhazy.hu.<br>
+<b>E-mail:</b> A felhasználó e-mailben felveheti a kapcsolatot az oldal adminisztrátorával az alábbi címen: quiz@uni-eszterhazy.hu.<br>
 <b>Telefon:</b> Az kvízoldalon telefonos segítségnyújtás elérhető a következő telefonszámon: [+36 12 345 678].<br>
 <b>Személyes találkozó:</b> A felhasználó előzetes időpont egyeztetése után személyesen is felkereshetik az EKKE jászberényi helyszínét, hogy segítséget kérjenek/kapjanak az oldal használatával kapcsolatban.<br>
 <br>
+Amennyiben a hibát vagy technikai problémát tapasztalnak az oldalon, fontos, hogy jelezzék azt. A hibajelentés segít az adminisztrátornak azonosítani és kijavítani a problémát. A hibajelentéshez a következő lehetőségek állnak rendelkezésre:<br>
+<b>E-mail:</b> A felhasználók elküldhetik a hibajelentést e-mailben az adminisztrátor részére az alábbi címen: quiz.report@uni-eszterhazy.hu.<br>
+<b>Személyes találkozó:</b> Amennyiben a felhasználók személyesen szeretnék jelezni a hibát, előzetes időpont egyeztetése után felkereshetik az EKKE jászberényi helyszínét.
 
+Az oldal fenntartója készséggel fogadja a felhasználók kérdéseit, segítségkéréseit és hibajelentéseit és mindent megtesz annak érdekében, hogy a felhasználói élmény a lehető legjobb és legkényelmesebb legyen.
 
 <h2>Jelenlegi üzleti folyamatok modellje</h2>
 
