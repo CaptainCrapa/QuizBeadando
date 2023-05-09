@@ -13,8 +13,8 @@ class k_UserInRoles(models.Model):
     id = models.AutoField(
         primary_key=True
     )
-    User_Id = models.ForeignKey('RegisterUser', on_delete=models.CASCADE)
-    Roles_Id = models.ForeignKey('Roles', on_delete=models.CASCADE)
+    User = models.ForeignKey('RegisterUser', on_delete=models.CASCADE)
+    Roles = models.ForeignKey('Roles', on_delete=models.CASCADE)
 class RegisterUser(models.Model):
     id = models.AutoField(
         primary_key=True
