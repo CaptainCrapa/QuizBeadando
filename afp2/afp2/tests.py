@@ -1,5 +1,8 @@
+from django.http import HttpResponse
 from django.test import TestCase
 from afp2.models import  RegisterUser
+from afp2.api import loginUser
+from afp2.schemas import LoginUser
 
 
 class RegisterUserTestCase(TestCase):
@@ -11,4 +14,10 @@ class RegisterUserTestCase(TestCase):
         test11 = RegisterUser.objects.get(username="test11")
         test13 = RegisterUser.objects.get(username="test13")
         self.assertEqual(test11.fullname, 'testUser11')
-        self.assertFalse(test13.fullname, 'testUser12')
+        self.assertTrue(test13.fullname, 'testUser12')
+
+class LoginUserTestCase(TestCase):
+    def testLoginForUsers(self):
+        user = LoginUser(username="wrongUsername",password="wrongPassword")
+        response = loginUser("test",user)
+        self.assertEqual(response,HttpResponse(status=404,content="Nem található ilyen felhasználónév és jelszó párosítás!"))
