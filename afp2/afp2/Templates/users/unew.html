@@ -73,7 +73,16 @@
                         <p class="form-error-message" id="dateOfBirth_error"></p>
                     </div>
                     <div class="flex-form-item">
-                        <input type="submit" name="register-submit" value="Felhasználó felvétele" tabindex="7">
+                        <label for="role">Jogosultság:</label>
+                    </div>
+                    <div class="flex-form-item">
+                        <select id="role" name="role" tabindex="7">
+                            <option value="diak">Diák</option>
+                            <option value="tanar">Tanár</option>
+                            <option value="adminisztrator">Adminisztrátor</option>
+                    </div>
+                    <div class="flex-form-item">
+                        <input type="submit" name="register-submit" value="Felhasználó felvétele" tabindex="8">
                     </div>
                 </div>
             </form>
