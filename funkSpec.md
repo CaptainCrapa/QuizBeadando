@@ -62,10 +62,25 @@ fülön kell, hogy megtörténjen.
 <h2>Felhasználói kézikönyv</h2>
 
 <h3><b>GYIK</b></h3>
+
 <h3><b>Bemutatás</b></h3>
+
 <h3><b>Verzió</b></h3>
+
 <h3><b>Kompatibilitás</b></h3>
+Az program különböző operációs rendszereken is használható és széles körű kompatibilitást kínál a felhasználók számára.<br>
+<b>Windows:</b> Az alkalmazás működik Windows operációs rendszeren, ideértve a legújabb verziókat is, mint például a Windows 11.<br>
+<b>macOS:</b> Az kvízoldal támogatja a macOS-t, így futtatható az Apple gépeken is, például MACBookokon vagy iMAC-eken.<br>
+<b>Linux:</b> Az alkalmazás kompatibilis a különböző Linux disztribúciókkal, például Ubuntu, Fedora. A legelterjedtebb Linux változatokon futtatható.<br>
+
+<b>Webböngészők:</b> Az applikáció megfelelően működik a legtöbb webböngészőben, mint például a Google Chrome, Mozilla Firefox, Edge, Safari vagy Opera.<br>
+<b>Python:</b> A Django backend Python programozási nyelven íródott, ezért Python 3+ verzió szükséges a backend futtatásához.<br>
+<b>Django:</b> Az alkalmazás Django keretrendszerre épül, tehát a Django telepítése és konfigurálása szükséges a backend működéséhez.
+
+Összességében, az alkalmazás különböző operációs rendszerekkel és széles körű segédprogram-támogatással rendelkezik, így lehetővé teszi a felhasználók számára, hogy a saját preferenciáik szerint használják és élvezzék az alkalmazás által nyújtott előnyöket és funkciókat.
+
 <h3><b>Hibák, Hibaüzenetek</b></h3>
+
 <h3><b>Támogatás</b></h3>
 
 <h2>Jelenlegi üzleti folyamatok modellje</h2>
