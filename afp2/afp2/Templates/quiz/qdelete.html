@@ -26,7 +26,21 @@
     </nav>
     </header>
     <main>
-        <h2>Kvíz törlés</h2>
+        <div class="form-container">
+            <form action={% delete_quiz %} method="post" autocomplete="off">
+                <div class="flex-form-container">
+                    {% for quizname in quiz_list %}
+                    <li>
+                        <input type="checkbox" name="quizid" value="quizid">
+                        {% quizname %}
+                    </li>
+                    {% endfor %}
+                    <div class="flex-form-item">
+                        <input type="submit" name="register-submit" value="Kvíz(ek) törlése" tabindex="7">
+                    </div>
+                </div>
+            </form>
+        </div>
     </main>
     <footer>
         <p><a href="#top">Lap tetejére <img src="/afp2/afp2/Templates/img/icon_arrowup.png" alt="fel"></a></p>
