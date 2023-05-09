@@ -80,6 +80,13 @@ Az program különböző operációs rendszereken is használható és széles k
 Összességében, az alkalmazás különböző operációs rendszerekkel és széles körű segédprogram-támogatással rendelkezik, így lehetővé teszi a felhasználók számára, hogy a saját preferenciáik szerint használják és élvezzék az alkalmazás által nyújtott előnyöket és funkciókat.
 
 <h3><b>Hibák, Hibaüzenetek</b></h3>
+Az alkalmazásban jelenleg számos státusz-/hibakódba lehet ütközni. Ezeket fogja összegezni ez a bekezdés.<br>
+<b>(status=200)</b> Sikeres bejelentkezés! A 200-as üzenet jelzi, hogy a felhasználó sikeresen bejelentkezett a webalkalmazásba. Ebben az esetben nincs hiba, és a bejelentkezés folyamata sikeresen lezajlott.<br>
+<b>(status=201)</b> Sikeres regisztráció! Ez az üzenet jelzi, hogy a felhasználó sikeresen regisztrált a webalkalmazásban. Ebben az esetben nincs hiba, és a regisztráció folyamata sikeresen lezajlott.<br>
+<b>(status=400)</b> Ilyen felhasználónévvel vagy e-mail címmel már történt regisztráció! Ez azt jelzi, hogy a felhasználó már regisztrált a megadott felhasználónévvel vagy e-mail címmel. Ebben az esetben a regisztráció nem sikerült, mert a megadott adatok már foglaltak.<br>
+<b>(status=404)</b> Nem található ilyen felhasználónév és jelszó párosítás! Ebben az esetben a megadott felhasználónév és jelszó párosítás nem található a rendszerben. Javasolt ellenőrizni a felhasználónév és jelszó helyes bevitelét, hiszen a leggyakoribb esetben az adatok elgépelésekor jelenik meg ez a hiba.<br>
+<b>(status=500)</b> Adatbáziskapcsolati hiba történt! Ez a hibaüzenet azt jelzi, hogy valamilyen adatbáziskapcsolati probléma merült fel. Ez lehet például az adatbázis nem elérhetősége vagy az adatbázis leállása. Ebben az esetben az javasolt újra próbálkozni vagy ellenőrizni a kapcsolatot az adatbázissal.<br>
+Ezen felül több helyen is találkozhatunk hibaüzenetekkel, amik nincsenek külön státuszkóddal ellátva. Például a regisztrációnál ha esetleg egy adatot kihagyunk akkor azonnali visszajelzést kapunk arról, hogy azt nem lehet üresen hagyni. Ilyen üzenetek az applikáció minden részén megtalálhatóak.
 
 <h3><b>Támogatás</b></h3>
 
