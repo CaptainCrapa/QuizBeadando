@@ -39,7 +39,7 @@
     flex-flow: row wrap;
 }
 .flex-form-item {
-    flex: 1 1 11.4rem;
+    flex: 2 1 11.4rem;
 }
 .form-error-message {
     font-size: 0.75rem;
