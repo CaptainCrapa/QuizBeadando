@@ -51,6 +51,9 @@
 .form-error-field {
     border: 0.1rem solid red;
 }
+.profile-label {
+    font-weight: bold;
+}
 
 
 /*************************************
@@ -73,11 +76,20 @@
     .menu-title {
         display: none;
     }
-    nav a, .menu-selected {
+    nav a, .menu-selected, .menu {
         display: block;
     }
     .middle-container {
         padding: 0.75rem;
         width: 100%;
+    }
+    .flex-form-container {
+        flex-flow: column wrap;
+    }
+    .flex-form-item {
+        flex: 0 0 1rem;
+    }
+    .profile-span {
+        margin-left: 1rem;
     }
 }
