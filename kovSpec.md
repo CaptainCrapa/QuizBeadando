@@ -60,3 +60,28 @@ Kérdés:<br />
 <h3><b>Az alkalmazás használi eset diagrammja:</b></h3>
 
 ![Használati eset diagramm](./Diagramms/hasznalati_eset_diagramm.png)
+
+<h3>Megbízhatóság</h3>
+
+Az web szolgáltatás hozzáférhetőségét és megfelelő működését a szolgáltató folyamatosan biztosítja. 
+Ezalól kivételt képez az időközönkénti karbantartás miatti vagy rendkívüli helyzet miatti leállások. 
+A karbantartási leállási idő havonta körülbelül 1-2 óra a nem frekventált időtájban történik meg 
+(esi órákban). A rendkívüle helyzet jelentése olyan események, amelyekkel a szolgáltató előre nem tud 
+számolni, a bekövetkezés ideje és a leállás időtartama előre nem megbecsülhető. Ezek közés sorolható 
+többek között kibertámadás a rendszer vagy a szolgáltató ellen, természeti katasztrófák, illetve 
+huzamosabb ideig tartó elektromos ellátás hiánya. A fentieken túl, soron kívüli karbantartási elállás 
+történhet abban az esetben, ha a szolgáltató súlyos biztonsági hibát észlel az ellenőrzések során.
+Ebben az esetben a hiba azonnali javítása érdekében a rendszer szintén nem frekventált időben, soron kívül 
+javítási célre 1-2 órára leáll. Errőr a felhasználók igény esetén értesítést kaphatnak.
+
+<h3>Támogatottság</h3>
+
+A szolgáltató folyamatos támogatást biztosít a rendszernek. Havonta kötelező leállásokkal hibakeresés 
+(scanning), illetve szükség esetén frissítések telepítése történik meg. A frissítés hibák javítása, új 
+funkcionalitás beépítése vagy biztonsági megerősítéseket tartalmazhatnak. A szolgáltató folyamatosan nyomon 
+követi a rendszer ellenállóságát az esetleges kibertámadásokkal szemben, rendszeresen teszteni a biztonsági 
+funkciókat és észlelt hiba esetén, annak súlyosságától függően soron kívül, vagy a következő karbantartási 
+leállással javítja a hibát és a rendszert frissíti. A szolgáltató továbbá igény esetén tájékoztatja a felhasználókat 
+a tervezett rendszerleállításokról, illetve a rendszert érintő rendkívüli eseményekről és az esetleges szükséges 
+teendőkről. Ezen kívül a felhasználók a különböző észlelt hibákkal kapcsolatban e-mailen felvehetik a szolgáltatóval 
+a kapcsolatot, hogy a hiba egy későbbi frissítéssel kijavításra kerüljön.
