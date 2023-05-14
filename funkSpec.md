@@ -75,3 +75,19 @@ időt és pénzt emészt fel. A XXI. században pedig ezen költségek jelentős
 
 
 ![Navigációs vázlat](./Diagramms/navigacios_vazlat.png)
+
+<h3>Frontend tervek</h3>
+
+* Alapszínek: az alapszíneket alapvetően a sötét háttérszínek és a világos szövegszínek dominálják. 
+fontos, hogy a szövek minden oldalon, jól látható és olvasható legyen, simonjon bele a sötétebb 
+háttérbe. A weboldal háttere egy sötét témájú, könyveket és könyvespolcokat megjelenítő, fixált kép legyen.
+* Fejléc és navigáció: a teljes fejléc horizontálisan kitölti a teljes képernyőt, háttere sötétszürke színű, 
+amely fentről lefelé egy színátmenetet képezzen a fekete és a sötétszürke között. A fejléc tartalmazza a weboldal címét (h1) nagy méretű karakterekkel (3rem) amely kitölti a fejléc kétharmadát. A h1-es főcím színe világos szürke 
+és a többitől eltérő 'DiplomataSC' betütípussal rendelkezzen. A további egyharmad részt a navigáció és az ahhoz tartozó menüpontok töltsék ki. A menüpontok mérete legyen 50%-al nagyobb, színe szürke, illetve betűtípusa 'PatrickHand'. A menüpontok nagyobb kijelzőméret esetén horizontálisan, egymás mellett helyezkednek el, kis kijelző esetén vertikálisan, egymás alatt.
+* Oldalak (main): az oldal tartalmi része 1200px széles, margóval középre igazított. A main háttere szürke színű és
+áttersző, a háttérkép mögötte kissé homályosan, elmosódva látszik. Kis kijelző esetén, az említett háttérszín kitölti a kijelzőt. A szöveg színe világosszürke színű, a sormagasság 1.6 rem, a betűtípus 'Georgia'. Az alcímek (h2) színe megegyezik, méretük az alapméret, a betűtípus pedig 'Marmelad'. A alcímek továbbá kapnak egy lefelé irányuló 
+szövegárnyékolást, amely kissé kiemeli őket a térből. A téma részek egy néhány középre igazított, nagyobb méretű pontból álló, áttetsző vanallal (hr) lesz elszeparálva.
+* Lábléc: háttere megegyezik a fejlécével, azzal a különbséggel, hogy a színátmenet fordított irányú, tehát fentről 
+lefelé sötétedik. A szöveg színe itt a navigációhoz hasonlóan szürke színű, középre igazított. A lábléc tartalmaz egy lap 
+tetejére szöveget egy hozzá tartozó, felfelé mutató nyilat ábrázloló, kis méretű képpel. Ez minden oldalon a lap tetejére, 
+a navigációs részhez viszi a kijelzőt.
