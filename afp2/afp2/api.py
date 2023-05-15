@@ -154,15 +154,16 @@ def OpenPage(request):
 @api.get("/users")
 def OpenPage(request):
     return render(request, 'users.html')
-
-    @api.get("/quiz")
-    def OpenPage(request):
+@api.get("/quiz")
+def OpenPage(request):
         return render(request, 'quiz.html')
+@api.get("/profile")
+def OpenPage(request):
+            return render(request, 'profile.html')
 
 
 
-        <a class="menu" href="/api/menu">Főoldal</a>
-        <a class="menu" href="/api/quiz">Kvízek</a>
+
         <a class="menu" href="/api/profile">Profil</a>
         <a class= "menu-selected" id="users">Felhasználók</a>
         <a class="menu" href="/api/index">Kijelentkezés</a>
