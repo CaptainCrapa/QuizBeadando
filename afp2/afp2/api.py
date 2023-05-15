@@ -144,3 +144,46 @@ def connect_user_role(request, data: ConnectUserRoleIn):
         return HttpResponse(status=201, content="Sikeresen összekapcsoltad a felhasználót és a szerepkört!")
     except:
         return HttpResponse(status=500, content="Adatbáziskapcsolati hiba történt!")
+
+@api.get("/registration")
+def OpenPage(request):
+    return render(request, 'registration.html')
+@api.get("/log")
+def OpenPage(request):
+    return render(request, 'login.html')
+@api.get("/users")
+def OpenPage(request):
+    return render(request, 'users.html')
+@api.get("/menu")
+def OpenPage(request):
+    return render(request, 'menu.html')
+@api.get("/quiz")
+def OpenPage(request):
+        return render(request, 'quiz.html')
+@api.get("/profile")
+def OpenPage(request):
+            return render(request, 'profile.html')
+@api.get("/index")
+def OpenPage(request):
+            return render(request, 'index.html')
+@api.get("/uinvite")
+def OpenPage(request):
+            return render(request, 'uinvite.html')
+@api.get("/unew")
+def OpenPage(request):
+            return render(request, 'unew.html')
+@api.get("/urole")
+def OpenPage(request):
+            return render(request, 'urole.html')
+@api.get("/upassword")
+def OpenPage(request):
+            return render(request, 'upassword.html')
+@api.get("/qdelete")
+def OpenPage(request):
+            return render(request, 'qdelete.html')
+@api.get("/qgenerate")
+def OpenPage(request):
+            return render(request, 'qgenerate.html')
+@api.get("/qpick")
+def OpenPage(request):
+            return render(request, 'qpick.html')
