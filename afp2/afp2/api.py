@@ -178,3 +178,12 @@ def OpenPage(request):
 @api.get("/upassword")
 def OpenPage(request):
             return render(request, 'upassword.html')
+@api.get("/qdelete")
+def OpenPage(request):
+            return render(request, 'qdelete.html')
+@api.get("/qgenerate")
+def OpenPage(request):
+            return render(request, 'qgenerate.html')
+@api.get("/qpick")
+def OpenPage(request):
+            return render(request, 'qpick.html')
