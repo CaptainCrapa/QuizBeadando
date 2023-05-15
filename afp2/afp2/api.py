@@ -166,7 +166,9 @@ def OpenPage(request):
 @api.get("/uinvite")
 def OpenPage(request):
             return render(request, 'uinvite.html')
-
+@api.get("/unew")
+def OpenPage(request):
+            return render(request, 'unew.html')
 
 
 
