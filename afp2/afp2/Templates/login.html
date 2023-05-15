@@ -7,11 +7,12 @@
     <meta name="keywords" content="learning">
     <meta name="author" content="Team PTI Jászberény">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/root.css">
-    <link rel="stylesheet" href="../static/css/tags.css">
-    <link rel="stylesheet" href="../static/css/classes.css">
-    <script type="text/javascript" src="../static/js/login.js" charset="utf-8" defer ></script>
-    <link rel="icon" href="../static/img/icon.jpg">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/classes.css' %}">
+    <link rel="stylesheet" href="{% static 'css/root.css' %}">
+    <link rel="stylesheet" href="{% static 'css/tags.css' %}">
+    <link rel="icon" href="{% static 'img/icon.jpg' %}">
+    <script type="text/javascript" src="{% static 'js/login.js' %}" charset="utf-8" defer ></script>
 </head>
 <body>
 <!--HEADER-->
@@ -20,13 +21,13 @@
     <nav>
         <p class="menu-title">Menü</p>
         <p class="menu-selected">Bejelentkezés</p>
-        <a class="menu" href="registration.html">Regisztráció</a>
+        <a class="menu" href="/api/registration">Regisztráció</a>
     </nav>
     </header>
 <!--MAIN-->
     <main>
         <div class="form-container">
-            <form action="???" onsubmit="return loginValidation()" method="post" autocomplete="off">
+            <form action="/api/login" onsubmit="return loginValidation()" method="post" autocomplete="off">
                 <div class="flex-form-container">
                     <div class="flex-form-item">
                         <label for="username">Felhasználói név:</label>
@@ -51,7 +52,7 @@
     </main>
 <!--FOOTER-->
     <footer>
-        <p><a href="#top">Lap tetejére <img src="../static/img/icon_arrowup.png" alt="fel"></a></p>
+        <p><a href="#top">Lap tetejére <img src="{% static 'img/icon_arrowup.png' %}" alt="fel"></a></p>
         <p>Eszterházy Károly Katolikus Egyetem<br></p>
         <p>PTI Jászberény Team 2023</p>
     </footer>

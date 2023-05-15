@@ -148,6 +148,9 @@ def connect_user_role(request, data: ConnectUserRoleIn):
 @api.get("/registration")
 def OpenPage(request):
     return render(request, 'registration.html')
+@api.get("/log")
+def OpenPage(request):
+    return render(request, 'login.html')
 @api.get("/users")
 def OpenPage(request):
     return render(request, 'users.html')
