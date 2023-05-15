@@ -151,25 +151,25 @@ def OpenPage(request):
 @api.get("/users")
 def OpenPage(request):
     return render(request, 'users.html')
-@api.get("/users")
+@api.get("/menu")
 def OpenPage(request):
-    return render(request, 'users.html')
+    return render(request, 'menu.html')
 @api.get("/quiz")
 def OpenPage(request):
         return render(request, 'quiz.html')
 @api.get("/profile")
 def OpenPage(request):
             return render(request, 'profile.html')
+@api.get("/index")
+def OpenPage(request):
+            return render(request, 'index.html')
+@api.get("/uinvite")
+def OpenPage(request):
+            return render(request, 'uinvite.html')
 
 
 
 
-        <a class="menu" href="/api/profile">Profil</a>
-        <a class= "menu-selected" id="users">Felhasználók</a>
-        <a class="menu" href="/api/index">Kijelentkezés</a>
-    </nav>
-    <nav>
-        <a class="menu" id="uinvite" href="/api/uinvite">Kvíz meghívó</a>
         <a class="menu" id="unew" href="/api/unew">Új felhasználó</a>
         <a class= "menu" id="urole" href="/api/urole">Szerepkör módosítás</a>
         <a class= "menu" id="upassword" href="/api/upassword">Jelszó helyreállítás</a>
