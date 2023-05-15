@@ -144,3 +144,13 @@ def connect_user_role(request, data: ConnectUserRoleIn):
         return HttpResponse(status=201, content="Sikeresen összekapcsoltad a felhasználót és a szerepkört!")
     except:
         return HttpResponse(status=500, content="Adatbáziskapcsolati hiba történt!")
+
+@api.get("/registration")
+def OpenPage(request):
+    return render(request, 'registration.html')
+@api.get("/users")
+def OpenPage(request):
+    return render(request, 'users.html')
+@api.get("/users")
+def OpenPage(request):
+    return render(request, 'users.html')
