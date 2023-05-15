@@ -7,28 +7,29 @@
     <meta name="keywords" content="learning">
     <meta name="author" content="Team PTI Jászberény">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/root.css">
-    <link rel="stylesheet" href="../static/css/tags.css">
-    <link rel="stylesheet" href="../static/css/classes.css">
-    <link rel="icon" href="../static/img/icon.jpg">
-    <script type="text/javascript" src="../static/js/quiz.js" charset="utf-8" defer ></script>
-    <script type="text/javascript" src="../static/js/menu.js" charset="utf-8" defer ></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/classes.css' %}">
+    <link rel="stylesheet" href="{% static 'css/root.css' %}">
+    <link rel="stylesheet" href="{% static 'css/tags.css' %}">
+    <link rel="icon" href="{% static 'img/icon.jpg' %}">
+    <script type="text/javascript" src="{% static 'js/quiz.js' %}" charset="utf-8" defer ></script>
+    <script type="text/javascript" src="{% static 'js/menu.js' %}" charset="utf-8" defer ></script>
 </head>
 <body>
     <header>
         <h1>Tudástár Quiz</h1>
     <nav>
         <p class="menu-title">Menü</p>
-        <a class="menu" href="menu.html">Főoldal</a>
+        <a class="menu" href="/api/menu">Főoldal</a>
         <a class="menu-selected">Kvízek</a>
-        <a class="menu" href="profile.html">Profil</a>
-        <a class= "menu" id="users" href="users.html">Felhasználók</a>
-        <a class="menu" href="index.html">Kijelentkezés</a>
+        <a class="menu" href="/api/profile">Profil</a>
+        <a class= "menu" href="/api/users">Felhasználók</a>
+        <a class="menu" href="/api/index">Kijelentkezés</a>
     </nav>
     <nav>
-        <a class="menu" href="/Templates/qpick.html">Kvíz kiválasztás</a>
-        <a class="menu" id="qgenerate" href="/Templates/qgenerate.html">Kvíz létrehozás</a>
-        <a class= "menu" id="qdelete" href="/Templates/qdelete.html">Kvíz törlés</a>
+        <a class="menu" href="/api/qpick">Kvíz kiválasztás</a>
+        <a class="menu" id="qgenerate" href="/api/qgenerate">Kvíz létrehozás</a>
+        <a class= "menu" id="qdelete" href="/api/qdelete">Kvíz törlés</a>
     </nav>
     </header>
     <main>
@@ -36,7 +37,7 @@
         <p>Ebben a szekcióban az oldal fő feladatait tudja igénybe venni a felhasználó, azaz a kvízek kezelésére szolgál(nak) a fent kiválasztható menü pont(ok).</p>
     </main>
     <footer>
-        <p><a href="#top">Lap tetejére <img src="/img/icon_arrowup.png" alt="fel"></a></p>
+        <p><a href="#top">Lap tetejére <img src="{% static 'img/icon_arrowup.png' %}" alt="fel"></a></p>
         <p>Eszterházy Károly Katolikus Egyetem<br></p>
         <p>PTI Jászberény Team 2023</p>
     </footer>
