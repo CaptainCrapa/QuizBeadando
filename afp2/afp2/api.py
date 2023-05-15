@@ -172,8 +172,6 @@ def OpenPage(request):
 @api.get("/urole")
 def OpenPage(request):
             return render(request, 'urole.html')
-
-
-
-
-        <a class= "menu" id="upassword" href="/api/upassword">Jelszó helyreállítás</a>
+@api.get("/upassword")
+def OpenPage(request):
+            return render(request, 'upassword.html')
