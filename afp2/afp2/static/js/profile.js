@@ -1,15 +1,15 @@
-var role = 'diak';
+var role = 3;
 var roleLink = document.getElementById("role");
 
-if (role == 'diak')
+if (role == 1)
 {
   roleLink.textContent = "Diák"
 }
-else if (role == 'adminisztrator')
+else if (role == 3)
 {
   roleLink.textContent = "Adminisztátor"
 }
-else if (role == 'tanar')
+else if (role == 2)
 {
   roleLink.textContent = "Tanár";
 }
