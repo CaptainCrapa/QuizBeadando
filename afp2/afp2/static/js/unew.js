@@ -114,4 +114,4 @@ function CreateUserValidation(event) {
 }
 
 const registrationForm = document.querySelector('#createUser-form');
-registrationForm.addEventListener('submit', CreateUserValidation);
+registrationForm.addEventListener('new-submit', CreateUserValidation);

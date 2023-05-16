@@ -91,4 +91,4 @@ function registrationValidation(event) {
 }
 
 const registrationForm = document.querySelector('#registration-form');
-registrationForm.addEventListener('submit', registrationValidation);
+registrationForm.addEventListener('register-submit', registrationValidation);
