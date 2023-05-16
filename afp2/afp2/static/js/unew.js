@@ -62,6 +62,7 @@ function CreateUserValidation(event) {
     document.querySelector("#password_error").textContent = "";
   }
 
+  /*
   // password confirmation check
   if (confirmPassword != password) {
     areFieldsValid = false;
@@ -71,6 +72,7 @@ function CreateUserValidation(event) {
     document.querySelector("#confirm-password").classList.remove("form-error-field");
     document.querySelector("#confirm-password_error").textContent = "";
   }
+   */
 
   // date of birth validation
   if (!dateOfBirth) {
@@ -98,7 +100,7 @@ function CreateUserValidation(event) {
       username: username,
       email: email,
       password: password,
-      confirm_password: confirmPassword,
+      //confirm_password: confirmPassword,
       date_of_birth: dateOfBirth,
       role: role
     };
