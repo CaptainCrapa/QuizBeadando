@@ -19,8 +19,6 @@ Felhasználónév*
 
 Jelszó*
 
-Jelszó újra*
-
 Email*
 
 Születési dátum
@@ -73,8 +71,6 @@ Név*
 Felhasználónév*
 
 Jelszó*
-
-Jelszó újra*
 
 Email*
 

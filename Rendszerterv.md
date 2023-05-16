@@ -18,6 +18,35 @@ működésébe és képes elhárítani az esetleges hibákat, valamint egyfajta 
 az elkészült termékeket, vagy más néven kvízeket. Az adminisztrátor szerepkör képes lesz jelszavakat visszaállítani,
 kvízeket módosítani, kvízeket törölni, vagy új felhasználókat felvenni, esetleg egy meglévő felhasználó szerepkörét módosítani.
 
+<h2>A frontend működése:</h2>
+
+Az oldal dinamikusan jeleníti meg a tartalmát a felhasználó jogosultságai alapján. A következő jogosultságok különböztethetők meg: adminisztrátor, tanár és diák.
+
+<h3>Diák jogosultság:</h3>
+
+<b>Főoldal:</b> A kezdőoldal, ahol általános információk, hírek jelennek meg.<br>
+<b>Kvízek:</b> Ezen a lapon találhatóak a rendelkezésre álló kvízek listája. A diák kiválaszthatja a kvízt, amelyhez részt szeretne venni.<br>
+<b>Profil:</b> A felhasználó adatainak megtekintése lehetséges ezen az oldalon.<br>
+<b>Kijelentkezés:</b> A felhasználó kijelentkezik az oldalról.<br>
+
+<h3>Tanár jogosultság:</h3>
+
+<b>Főoldal:</b> Ugyanazok az információk és hírek, mint a diákok számára.<br>
+<b>Kvízek:</b> A tanár hozzáfér a kvízekhez, amelyeket létrehozott vagy amelyekhez hozzáférést kapott. Itt megjelenik a "Kvíz létrehozás" lehetőség, amellyel új kvízt hozhat létre.<br>
+<b>Profil:</b> A felhasználó adatainak megtekintése lehetséges ezen az oldalon.<br>
+<b>Felhasználók:</b> Amennyiben tanári jogosultságokkal rendelkezik a felhasználó abban az estben jelenik meg ez az opció a felső listában. Itt felhazsnálókat tud meghívni kvízekre. <br>
+<b>Kijelentkezés:</b> A felhasználó kijelentkezik az oldalról.<br>
+
+<h3>Adminisztrátor jogosultság:</h3>
+
+<b>Főoldal:</b> Ugyanazok az információk és hírek, mint a diákok számára.<br>
+<b>Kvízek:</b> Az adminisztrátor hozzáfér a kvízekhez, amelyekhez hozzáférést kapott. Itt megjelenik a "Kvíz törlése" lehetőség, amellyel a kvíz törölhető.<br>
+<b>Profil:</b> A felhasználó adatainak megtekintése lehetséges ezen az oldalon.<br>
+<b>Felhasználók:</b> Az adminisztrátor a felhasználók kezelésével kapcsolatos funkciókhoz fér hozzá. Ide tartozik az "Új felhasználó", "Szerepkör módosítása" és a "Jelszó helyreállítás" funkciók.<br>
+<b>Kijelentkezés:</b> A felhasználó kijelentkezik az oldalról.<br>
+
+Fontos megjegyezni, hogy a tanárnak és az adminisztrátornak minden olyan jogosultsága van, ami a diákoknak is megvan.
+
 <h2>Projektterv</h2>
 
 <h3>Projektszerepkörök, felelősségek</h3>
