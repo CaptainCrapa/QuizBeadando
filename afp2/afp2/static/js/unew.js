@@ -1,13 +1,25 @@
-function registrationValidation(event) {
+function CreateUserValidation(event) {
   event.preventDefault();
 
+  let requester = document.querySelector("#requester").value;
   let fullname = document.querySelector("#fullname").value;
   let username = document.querySelector("#username").value;
   let email = document.querySelector("#email").value;
   let password = document.querySelector("#password").value;
   let confirmPassword = document.querySelector("#confirm-password").value;
   let dateOfBirth = document.querySelector("#dateOfBirth").value;
+  let role = document.querySelector("#role").value;
   let areFieldsValid = true;
+
+// requester length check
+  if (requester.length <= 0) {
+    areFieldsValid = false;
+    document.querySelector("#requester_error").textContent = "*töltse ki!";
+    document.querySelector("#requester").classList.add("form-error-field");
+  } else {
+    document.querySelector("#requester").classList.remove("form-error-field");
+    document.querySelector("#requester_error").textContent = "";
+  }
 
 // fullname length check
   if (fullname.length <= 0) {
@@ -70,17 +82,28 @@ function registrationValidation(event) {
     document.querySelector("#dateOfBirth_error").textContent = "";
   }
 
+  if (role > 3 || role < 1) {
+    areFieldsValid = false;
+    document.querySelector("#role_error").textContent = "*hibás adat!";
+    document.querySelector("#role").classList.add("form-error-field");
+  } else {
+    document.querySelector("#role").classList.remove("form-error-field");
+    document.querySelector("#role_error").textContent = "";
+  }
+
   if (areFieldsValid) {
     const data = {
+      requester: requester,
       fullname: fullname,
       username: username,
       email: email,
       password: password,
       confirm_password: confirmPassword,
-      date_of_birth: dateOfBirth
+      date_of_birth: dateOfBirth,
+      role: role
     };
 
-    axios.post('/api/register', data)
+    axios.post('/api/createUser', data)
         .then(response => {
           console.log(response.data);
         })
@@ -90,5 +113,5 @@ function registrationValidation(event) {
   }
 }
 
-const registrationForm = document.querySelector('#registration-form');
-registrationForm.addEventListener('submit', registrationValidation);
+const registrationForm = document.querySelector('#createUser-form');
+registrationForm.addEventListener('submit', CreateUserValidation);
