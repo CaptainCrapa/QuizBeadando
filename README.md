@@ -24,9 +24,12 @@ use the back-end application for the first time:
 Use these steps before start the back-end application for test:
 
     Make the afp2 folder as Source Root for Pycharm
+    run testSchema.sql for database creation
     python manage.py makemigrations
     python manage.py migrate
+    run insertRoles.sql for set up userRoles to database
     python manage.py runserver HOST:PORT
+    
 
 ## Swagger API Documentation
 
