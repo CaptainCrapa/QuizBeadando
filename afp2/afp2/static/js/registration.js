@@ -66,7 +66,7 @@ function registrationValidation(event) {
       username: username,
       email: email,
       password: password,
-      date_of_birth: dateOfBirth
+      dateOfBirth: dateOfBirth
     };
 
     axios.post('/api/register', data)
@@ -74,7 +74,7 @@ function registrationValidation(event) {
           console.log(response.data);
         })
         .catch(error => {
-          console.error(error);
+          console.log(error);
     });
   }
 }
