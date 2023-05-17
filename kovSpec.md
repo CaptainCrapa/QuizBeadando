@@ -85,3 +85,13 @@ leállással javítja a hibát és a rendszert frissíti. A szolgáltató továb
 a tervezett rendszerleállításokról, illetve a rendszert érintő rendkívüli eseményekről és az esetleges szükséges 
 teendőkről. Ezen kívül a felhasználók a különböző észlelt hibákkal kapcsolatban e-mailen felvehetik a szolgáltatóval 
 a kapcsolatot, hogy a hiba egy későbbi frissítéssel kijavításra kerüljön.
+
+<h3>Tervezési korlátozás</h3>
+
+A webszolgáltatás eredeti célja egy olyan online quiz és vizsga rendzser létrehozása, ahol könnyen létrehozhatóak 
+tesztek, vizsgág, illetve quizek a tanárok által és aztán ezeket a hozzárendelt diákok kitölthetik. A rendszer ezt 
+követően értékeli a tesztet és visszajelzést küld a diákoknak. A rendszer jelenleg nem vezet pontos statisztikákat 
+arról, hogy a hány teszt, milyen arányú helyes és helytelen válasszal lett elvégezve. A jövőben a program bővíthető 
+lenne ebben az irányba. A statisztikai adatok részletesen lekérdezhetőek lehetnének a tanárok és diákok által, továbbá 
+a rendszer akár grafikusan is megjeleníthatné ezt a felhasználóknak. Ezen túl a bővíthetőség iránya több teszt vagy 
+kérdéstípus hozzáadása a szolgáltatáshoz. Az igaz-hamis és a kiválasztós feladatokon túl, sorba rendezős, összekötős illetve algoritmikailag a leginehezebben kiértékelhető: a rövid szöveges válaszadási feladat típusok integrálása.
