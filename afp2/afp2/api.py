@@ -59,7 +59,7 @@ def createUserByAdmin(request,data: RegisterUserByAdmin):
                 registerUser.save()
                 roles = k_UserInRoles()
                 roles.User = registerUser
-                roleToSet = Roles.objects.get(id=data.role)
+                roleToSet = Roles.objects.get(name=data.role)
                 roles.Roles = roleToSet
                 roles.save()
                 return HttpResponse(status=201, content="Sikeres regisztráció!")
