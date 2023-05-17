@@ -101,5 +101,5 @@ function CreateUserValidation(event) {
   }
 }
 
-const registrationForm = document.querySelector('#createUser-form');
-registrationForm.addEventListener('submit', CreateUserValidation);
+const unewForm = document.querySelector('#createUser-form');
+unewForm.addEventListener('submit', CreateUserValidation);

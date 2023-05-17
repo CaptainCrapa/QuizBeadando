@@ -5,7 +5,6 @@ function registrationValidation(event) {
   let username = document.querySelector("#username").value;
   let email = document.querySelector("#email").value;
   let password = document.querySelector("#password").value;
-
   let dateOfBirth = document.querySelector("#dateOfBirth").value;
   let areFieldsValid = true;
 

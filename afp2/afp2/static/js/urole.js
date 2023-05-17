@@ -1,5 +1,8 @@
-function rolesetValidation() {
+function connect_user_roleValidation(event) {
+  event.preventDefault();
+
     let username = document.querySelector("#username").value;
+    let role = document.querySelector("#role").value;
     let areFieldsValid = true;
   
 
@@ -16,7 +19,21 @@ function rolesetValidation() {
     document.querySelector("#username_error").textContent = "";
   }
 
-  if (areFieldsValid == false) return false;
+    if (areFieldsValid) {
+    const data = {
+      user_id: username,
+      role_id: role
+    };
 
-  return true;
+    axios.post('/api/connect_user_role', data)
+        .then(response => {
+          console.log(response.data);
+        })
+        .catch(error => {
+          console.log(error);
+    });
+  }
 }
+
+const uroleForm = document.querySelector('#connect_user_role-form');
+uroleForm.addEventListener('submit', connect_user_roleValidation);
