@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 from afp2.schemas import RegisterUserIn, LoginUser, CreateQuizIn, CreateQuestionIn, AddQuestionToQuizIn, \
     AddUserToQuizIn, ConnectUserRoleIn, RegisterUserByAdmin, UserPasswordModification
-from afp2.models import RegisterUser, k_UserInRoles, Roles
+from afp2.models import RegisterUser, k_UserInRoles, Roles, Quiz, Question, k_QuestionInQuiz, InvitedUser
 
 import base64
 
@@ -95,7 +95,7 @@ def create_quiz(request, data: CreateQuizIn):
     new_quiz = Quiz()
     new_quiz.name = data.name
     new_quiz.active = data.active
-    new_quiz.Created_By = RegisterUser.objects.get(id=data.created_by)
+    new_quiz.Created_By = RegisterUser.objects.get(username=data.created_by)
     try:
         new_quiz.save()
         return HttpResponse(status=201, content="Sikeresen létrehoztál egy új Quiz-t!")
