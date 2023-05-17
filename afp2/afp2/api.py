@@ -59,7 +59,7 @@ def createUserByAdmin(request,data: RegisterUserByAdmin):
                 registerUser.save()
                 roles = k_UserInRoles()
                 roles.User = registerUser
-                roleToSet = Roles.objects.get(id=data.role)
+                roleToSet = Roles.objects.get(name=data.role)
                 roles.Roles = roleToSet
                 roles.save()
                 return HttpResponse(status=201, content="Sikeres regisztráció!")
@@ -138,9 +138,52 @@ def add_user_to_quiz(request, data: AddUserToQuizIn):
 def connect_user_role(request, data: ConnectUserRoleIn):
     user = RegisterUser.objects.get(id=data.user_id)
     role = Roles.objects.get(id=data.role_id)
-    user_in_role = k_UserInRoles(User_Id=user, Roles_Id=role)
+    user_in_role = k_UserInRoles(User_id=user, Roles_id=role)
     try:
         user_in_role.save()
         return HttpResponse(status=201, content="Sikeresen összekapcsoltad a felhasználót és a szerepkört!")
     except:
         return HttpResponse(status=500, content="Adatbáziskapcsolati hiba történt!")
+
+@api.get("/registration")
+def OpenPageReg(request):
+    return render(request, 'registration.html')
+@api.get("/log")
+def OpenPageLog(request):
+    return render(request, 'login.html')
+@api.get("/users")
+def OpenPageUser(request):
+    return render(request, 'users.html')
+@api.get("/menu")
+def OpenPageMenu(request):
+    return render(request, 'menu.html')
+@api.get("/quiz")
+def OpenPageQuiz(request):
+        return render(request, 'quiz.html')
+@api.get("/profile")
+def OpenPageProf(request):
+            return render(request, 'profile.html')
+@api.get("/index")
+def OpenPageIndex(request):
+            return render(request, 'index.html')
+@api.get("/uinvite")
+def OpenPageInvite(request):
+            return render(request, 'uinvite.html')
+@api.get("/unew")
+def OpenPageNew(request):
+            return render(request, 'unew.html')
+@api.get("/urole")
+def OpenPageRole(request):
+            return render(request, 'urole.html')
+@api.get("/upassword")
+def OpenPagePass(request):
+            return render(request, 'upassword.html')
+@api.get("/qdelete")
+def OpenPageDel(request):
+            return render(request, 'qdelete.html')
+@api.get("/qgenerate")
+def OpenPageGen(request):
+            return render(request, 'qgenerate.html')
+@api.get("/qpick")
+def OpenPagePick(request):
+            return render(request, 'qpick.html')

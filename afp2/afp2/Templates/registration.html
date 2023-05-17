@@ -7,24 +7,26 @@
     <meta name="keywords" content="learning">
     <meta name="author" content="Team PTI Jászberény">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/root.css">
-    <link rel="stylesheet" href="css/tags.css">
-    <link rel="stylesheet" href="css/classes.css"> 
-    <link rel="icon" href="img/icon.jpg">
-    <script type="text/javascript" src="js/registration.js" charset="utf-8" defer ></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/classes.css' %}">
+    <link rel="stylesheet" href="{% static 'css/root.css' %}">
+    <link rel="stylesheet" href="{% static 'css/tags.css' %}">
+    <link rel="icon" href="{% static 'img/icon.jpg' %}">
+    <script type="text/javascript" src="{% static 'js/registration.js' %}" charset="utf-8" defer ></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <header>
         <h1>Tudástár Quiz</h1>
     <nav>
         <p class="menu-title">Menü</p>
-        <a class="menu" href="login.html">Bejelentkezés</a>
+        <a class="menu" href="/api/log">Bejelentkezés</a>
         <p class="menu-selected">Regisztráció</p>
     </nav>
     </header>
     <main>
         <div class="form-container">
-            <form action="/afp2/afp2/api.py/register" onsubmit="return registrationValidation()" method="post" autocomplete="off">
+            <form id="registration-form" autocomplete="off">
                 <div class="flex-form-container">
                     <div class="flex-form-item">
                         <label for="fullname">Teljes név:</label>
@@ -58,7 +60,7 @@
                         <label for="confirm-password">Jelszó ismétlés:</label>
                     </div>
                     <div class="flex-form-item">
-                        <input type="password" id="confirm-password" name="confirm-password" tabindex="5">
+                        <input type="password" id="confirm-password" name="confirm-password" tabindex="4">
                         <p class="form-error-message" id="confirm-password_error"></p>
                     </div>
                     <div class="flex-form-item">
@@ -69,14 +71,14 @@
                         <p class="form-error-message" id="dateOfBirth_error"></p>
                     </div>
                     <div class="flex-form-item">
-                        <input type="submit" name="register-submit" value="Regisztráció" tabindex="7">
+                        <input type="submit" name="submit" value="Regisztráció" tabindex="7">
                     </div>
                 </div>
             </form>
         </div>   
     </main>
     <footer>
-        <p><a href="#top">Lap tetejére <img src="img/icon_arrowup.png" alt="fel"></a></p>
+        <p><a href="#top">Lap tetejére <img src="{% static 'img/icon_arrowup.png' %}" alt="fel"></a></p>
         <p>Eszterházy Károly Katolikus Egyetem<br></p>
         <p>PTI Jászberény Team 2023</p>
     </footer>

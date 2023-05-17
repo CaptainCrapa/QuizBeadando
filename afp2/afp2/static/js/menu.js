@@ -1,7 +1,7 @@
-var role = "tanar";
+var role = "adminisztrator";
 var usersLink = document.getElementById("users");
 
-if (role == 'tanar' || role == 'adminisztrator')
+if (role == "tanar" || role == "adminisztrator")
 {
   usersLink.style.display = "visible";
 }

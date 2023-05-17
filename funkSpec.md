@@ -19,8 +19,6 @@ Felhasználónév*
 
 Jelszó*
 
-Jelszó újra*
-
 Email*
 
 Születési dátum
@@ -46,9 +44,9 @@ A regisztrációt követően a felhasználónak lehetősége nyílik a bejelentk
 egy bejelentkező űrlap, ahol a felhasználónak a regisztrációkor megadott
 felhasználónevét és jelszavát kell használnia. Az űrlap tervezett mezői:
 
-Felhasználónév
+Felhasználónév*
 
-Jelszó
+Jelszó*
 
 * Amikor a felhasználó begépeli a felhasználónevét és jelszavát, a rendszernek
 le kell ellenőriznie, hogy van-e ilyen felhasználónév+jelszó kombinációval
@@ -59,6 +57,46 @@ nem megfelelően lett begépelve.
 jelentkeztessük be a felhasználót és töltődjön be számára az alkalmazás főoldala.
 * A diákok, tanárok és adminisztrátorok bejelentkezése ugyan azon a bejelentkezési
 fülön kell, hogy megtörténjen.
+
+<h3><b>Adminisztrátor általi felhasználó felvétele:</b></h3>
+A felhasználók között lesznek adminisztrátorok, akiknek lehetőségük van felhasználókat regisztrálni. Ehhez szükséges
+a szokásos felhasználó regisztrációs adatokat megadni, valamint egy egyedi (például felhasználónév) megadásával
+hitelesítenie magát a user-nek. Ezt követően még a regisztrálandó user szerepkörét is szükséges megadni.
+Tervezett kötelező mezők (*-al jelölve):
+
+Igénylő*
+
+Név*
+
+Felhasználónév*
+
+Jelszó*
+
+Email*
+
+Szerepkör*
+
+* Amikor az adminisztrátor begépeli a készülendő felhasználó felhasználónevét és jelszavát, a rendszernek
+le kell ellenőriznie, hogy van-e ilyen felhasználónév+jelszó kombinációval
+felhasználó létrehozva.
+* Amennyiben nincs, úgy tájékoztassa az adminisztrátort arról, hogy ha valamilyen adat
+nem megfelelően lett begépelve.
+* Amennyiben az adatok helyesek és a regisztráció sikeresen lezajlott, tájékoztassuk a sikerességről az adminisztrátor.
+* A diákok, tanárok és adminisztrátorok regisztrálása adminisztrátor jogkörű felhasználó által ugyan azon a
+fülön kell, hogy megtörténjen.
+
+<h3><b>Adminisztrátor általi felhasználó jelszavának módosítása:</b></h3>
+
+Igénylő*
+
+Felhasználónév*
+
+Új jelszó*
+
+* A rendszer jelezze, ha valamilyen adatok kötelezőek és kitöltendőek.
+* Amennyiben ilyen felhasználónevű felhasználó nem létezik, tájékoztassa az adminisztrátort üzenettel a rendszer.
+* Ha sikerült a felhasználó jelszavát módosítani, tájékoztassa a rendszer az adminisztrátort.
+* Ha valami végett adatbázis hiba lépne fel, akkor arról is tájékoztasson a rendszer.
 
 <h2>Jelenlegi üzleti folyamatok modellje</h2>
 
