@@ -91,3 +91,8 @@ szövegárnyékolást, amely kissé kiemeli őket a térből. A téma részek eg
 lefelé sötétedik. A szöveg színe itt a navigációhoz hasonlóan szürke színű, középre igazított. A lábléc tartalmaz egy lap 
 tetejére szöveget egy hozzá tartozó, felfelé mutató nyilat ábrázloló, kis méretű képpel. Ez minden oldalon a lap tetejére, 
 a navigációs részhez viszi a kijelzőt.
+* Reszponzitivtás: A webplapok tervezésekor érvényesült a mobile-first megközelítés, miszerint a szolgáltatás elérhető kis 
+kijelzőjű eszközök esetén is. A 750px alatt a html tag-hez tartizó font-size 18px, amivel a rem-ben számolt méretek és a 
+betűnéret is kisebb lesz. Ezen kívül a nagyméretű főcím is kisebb méretet kap, a Menü szó eltűnik a navigációból, valamint 
+a menüpontok vertikálisan rendeződnek egymás alá. A form-okat tartalmazó kontének a teljes kijelző hosszában kiszélesedik 
+és a flexbox-ba helyezett label és input mezők is egymás alá helyeződnek, így csökkentve a szélességet.
