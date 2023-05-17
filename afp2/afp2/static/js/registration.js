@@ -5,7 +5,7 @@ function registrationValidation(event) {
   let username = document.querySelector("#username").value;
   let email = document.querySelector("#email").value;
   let password = document.querySelector("#password").value;
-
+  let confirmPassword = document.querySelector("#confirm-password").value;
   let dateOfBirth = document.querySelector("#dateOfBirth").value;
   let areFieldsValid = true;
 
@@ -48,6 +48,16 @@ function registrationValidation(event) {
   } else {
     document.querySelector("#password").classList.remove("form-error-field");
     document.querySelector("#password_error").textContent = "";
+  }
+
+  // password confirmation check
+  if (confirmPassword != password) {
+    areFieldsValid = false;
+    document.querySelector("#confirm-password_error").textContent = "*a jelszavak nem egyeznek!";
+    document.querySelector("#confirm-password").classList.add("form-error-field");
+  } else {
+    document.querySelector("#confirm-password").classList.remove("form-error-field");
+    document.querySelector("#confirm-password_error").textContent = "";
   }
 
   // date of birth validation

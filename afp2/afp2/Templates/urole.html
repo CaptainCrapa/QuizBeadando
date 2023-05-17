@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{% static 'css/tags.css' %}">
     <link rel="icon" href="{% static 'img/icon.jpg' %}">
     <script type="text/javascript" src="{% static 'js/urole.js' %}" charset="utf-8" defer ></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <header>
@@ -28,7 +29,7 @@
     </header>
     <main>
         <div class="form-container">
-            <form action="/api/connect_user_role" onsubmit="return rolesetValidation()" method="post" autocomplete="off">
+            <form id="connect_user_role-form" autocomplete="off">
                 <div class="flex-form-container">
                     <div class="flex-form-item">
                         <label for="username">Felhasználói név:</label>
@@ -38,16 +39,17 @@
                         <p class="form-error-message" id="username_error"></p>
                     </div>
                     <div class="flex-form-item">
-                        <label for="fullname">Jogosultság:</label>
+                        <label for="role">Jogosultság:</label>
                     </div>
                     <div class="flex-form-item">
                         <select id="role" name="role" tabindex="2">
-                            <option value=1>Diák</option>
-                            <option value=2>Tanár</option>
-                            <option value=3>Adminisztrátor</option>
+                            <option value="diak">Diák</option>
+                            <option value="tanar">Tanár</option>
+                            <option value="adminisztrator">Adminisztrátor</option>
+                        </select>
                     </div>
                     <div class="flex-form-item">
-                        <input type="submit" name="register-submit" value="Felhasználó felvétele" tabindex="3">
+                        <input type="submit" name="submit" value="Jogosultság beállítása" tabindex="3">
                     </div>
                 </div>
             </form>

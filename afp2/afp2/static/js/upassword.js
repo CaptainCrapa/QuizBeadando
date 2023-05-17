@@ -1,4 +1,7 @@
-function passwordresetValidation() {
+function modifyUserPasswordValidation(event) {
+  event.preventDefault();
+
+    let requester = document.querySelector("#requester").value;
     let username = document.querySelector("#username").value;
     let password = document.querySelector("#password").value;
     let confirmPassword = document.querySelector("#confirm-password").value;
@@ -44,7 +47,22 @@ function passwordresetValidation() {
     document.querySelector("#confirm-password_error").textContent = "";
   }
 
-  if (areFieldsValid == false) return false;
+  if (areFieldsValid) {
+    const data = {
+      requester: requester,
+      username: username,
+      newPassword: password,
+    };
 
-  return true;
+    axios.post('/api/modification_pw', data)
+        .then(response => {
+          console.log(response.data);
+        })
+        .catch(error => {
+          console.log(error);
+    });
+  }
 }
+
+const upasswordForm = document.querySelector('#modifyUserPassword-form');
+upasswordForm.addEventListener('submit', modifyUserPasswordValidation);
