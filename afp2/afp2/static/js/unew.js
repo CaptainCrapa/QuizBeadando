@@ -87,7 +87,7 @@ function CreateUserValidation(event) {
       username: username,
       email: email,
       password: password,
-      date_of_birth: dateOfBirth,
+      dateOfBirth: dateOfBirth,
       role: role
     };
 
@@ -96,7 +96,7 @@ function CreateUserValidation(event) {
           console.log(response.data);
         })
         .catch(error => {
-          console.error(error);
+          console.log(error);
     });
   }
 }
