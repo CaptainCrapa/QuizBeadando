@@ -6,7 +6,6 @@ function CreateUserValidation(event) {
   let username = document.querySelector("#username").value;
   let email = document.querySelector("#email").value;
   let password = document.querySelector("#password").value;
-  let confirmPassword = document.querySelector("#confirm-password").value;
   let dateOfBirth = document.querySelector("#dateOfBirth").value;
   let role = document.querySelector("#role").value;
   let areFieldsValid = true;
@@ -62,18 +61,6 @@ function CreateUserValidation(event) {
     document.querySelector("#password_error").textContent = "";
   }
 
-  /*
-  // password confirmation check
-  if (confirmPassword != password) {
-    areFieldsValid = false;
-    document.querySelector("#confirm-password_error").textContent = "*a jelszavak nem egyeznek!";
-    document.querySelector("#confirm-password").classList.add("form-error-field");
-  } else {
-    document.querySelector("#confirm-password").classList.remove("form-error-field");
-    document.querySelector("#confirm-password_error").textContent = "";
-  }
-   */
-
   // date of birth validation
   if (!dateOfBirth) {
     areFieldsValid = false;
@@ -100,7 +87,6 @@ function CreateUserValidation(event) {
       username: username,
       email: email,
       password: password,
-      //confirm_password: confirmPassword,
       date_of_birth: dateOfBirth,
       role: role
     };
@@ -116,4 +102,4 @@ function CreateUserValidation(event) {
 }
 
 const registrationForm = document.querySelector('#createUser-form');
-registrationForm.addEventListener('new-submit', CreateUserValidation);
+registrationForm.addEventListener('submit', CreateUserValidation);
