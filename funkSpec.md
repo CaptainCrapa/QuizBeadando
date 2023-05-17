@@ -96,3 +96,7 @@ kijelzőjű eszközök esetén is. A 750px alatt a html tag-hez tartizó font-si
 betűnéret is kisebb lesz. Ezen kívül a nagyméretű főcím is kisebb méretet kap, a Menü szó eltűnik a navigációból, valamint 
 a menüpontok vertikálisan rendeződnek egymás alá. A form-okat tartalmazó kontének a teljes kijelző hosszában kiszélesedik 
 és a flexbox-ba helyezett label és input mezők is egymás alá helyeződnek, így csökkentve a szélességet.
+
+<h4>Front-end alapdesign</h4>
+
+![Front-end alapdesign](./Diagramms/frontend_alapdesign.png)
