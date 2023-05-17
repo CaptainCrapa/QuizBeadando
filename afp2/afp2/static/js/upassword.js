@@ -47,8 +47,6 @@ function modifyUserPasswordValidation(event) {
     document.querySelector("#confirm-password_error").textContent = "";
   }
 
-  password = "b'" + password + "'"
-
   if (areFieldsValid) {
     const data = {
       requester: requester,
