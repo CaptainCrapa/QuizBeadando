@@ -63,14 +63,11 @@ function CreateUserValidation(event) {
   }
 
   // password confirmation check
-  if (confirmPassword != password)
-  {
+  if (confirmPassword != password) {
     areFieldsValid = false;
     document.querySelector("#confirm-password_error").textContent = "*a jelszavak nem egyeznek!";
     document.querySelector("#confirm-password").classList.add("form-error-field");
-  }
-  else
-  {
+  } else {
     document.querySelector("#confirm-password").classList.remove("form-error-field");
     document.querySelector("#confirm-password_error").textContent = "";
   }
