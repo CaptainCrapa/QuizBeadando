@@ -138,3 +138,11 @@ a menüpontok vertikálisan rendeződnek egymás alá. A form-okat tartalmazó k
 <h4>Front-end alapdesign</h4>
 
 ![Front-end alapdesign](./Diagramms/frontend_alapdesign.png)
+
+<h4>Regisztráció alapdesign</h4>
+
+![Registration alapdesign](./Diagramms/registration.png)
+
+<h4>Bejelentkezés alapdesign</h4>
+
+![Login alapdesign](./Diagramms/login.png)
