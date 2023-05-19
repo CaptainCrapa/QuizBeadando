@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{% static 'css/tags.css' %}">
     <link rel="icon" href="{% static 'img/icon.jpg' %}">
     <script type="text/javascript" src="{% static 'js/login.js' %}" charset="utf-8" defer ></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
 <!--HEADER-->
@@ -27,7 +28,7 @@
 <!--MAIN-->
     <main>
         <div class="form-container">
-            <form action="/api/login" onsubmit="return loginValidation()" method="post" autocomplete="off">
+            <form id="login-form" autocomplete="off">
                 <div class="flex-form-container">
                     <div class="flex-form-item">
                         <label for="username">Felhasználói név:</label>
@@ -44,7 +45,7 @@
                         <p class="form-error-message" id="password_error"></p>
                     </div>
                     <div class="flex-form-item">
-                        <input type="submit" name="login-submit" value="Bejelentkezés" tabindex="3">
+                        <input type="submit" name="submit" value="Bejelentkezés" tabindex="3">
                     </div>
                 </div>    
             </form>
