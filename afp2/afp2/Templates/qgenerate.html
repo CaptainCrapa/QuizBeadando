@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="{% static 'css/root.css' %}">
     <link rel="stylesheet" href="{% static 'css/tags.css' %}">
     <link rel="icon" href="{% static 'img/icon.jpg' %}">
-
+    <script type="text/javascript" src="{% static 'js/qgenerate.js' %}" charset="utf-8" defer ></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <header>
@@ -27,7 +28,38 @@
     </nav>
     </header>
     <main>
-        <h2>Kvíz létrehozás</h2>
+        <div class="form-container">
+            <form id="qgenerate-form" autocomplete="off">
+                <div class="flex-form-container">
+                    <div class="flex-form-item">
+                        <label for="qname">Kvíz neve:</label>
+                    </div>
+                    <div class="flex-form-item">
+                        <input type="text" id="qname" name="qname" tabindex="1">
+                        <p class="form-error-message" id="qname_error"></p>
+                    </div>
+                    <div class="flex-form-item">
+                        <label for="active">Állapot:</label>
+                    </div>
+                    <div class="flex-form-item">
+                        <select id="active" name="active" tabindex="2">
+                            <option value="true">Aktív</option>
+                            <option value="false">Inaktív</option>
+                        </select>
+                    </div>
+                    <div class="flex-form-item">
+                        <label for="creator">Készítő neve:</label>
+                    </div>
+                    <div class="flex-form-item">
+                        <input type="text" id="creator" name="creator" tabindex="3">
+                        <p class="form-error-message" id="createbyid_error"></p>
+                    </div>
+                    <div class="flex-form-item">
+                        <input type="submit" name="submit" value="Kvíz létrehozása" tabindex="4">
+                    </div>
+                </div>
+            </form>
+        </div>
     </main>
     <footer>
         <p><a href="#top">Lap tetejére <img src="{% static 'img/icon_arrowup.png' %}" alt="fel"></a></p>
