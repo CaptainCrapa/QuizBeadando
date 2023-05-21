@@ -44,7 +44,8 @@ def loginUser(request,data: LoginUser):
     if not registerUser:
         return HttpResponse(status=404,content="Nem található ilyen felhasználónév és jelszó párosítás!")
     else:
-        return HttpResponse(status=200,content="Sikeres bejelentkezés!")
+        return HttpResponse(status=200, content="Sikeres bejelentkezés "+data.username+" felhasználóval!")
+
 @api.post("/createUser")
 def createUserByAdmin(request,data: RegisterUserByAdmin):
     try:
