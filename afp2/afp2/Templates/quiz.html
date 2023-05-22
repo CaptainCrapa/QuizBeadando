@@ -22,7 +22,7 @@
         <a class="menu" href="/api/menu">Főoldal</a>
         <a class="menu-selected">Kvízek</a>
         <a class="menu" href="/api/profile">Profil</a>
-        <a class= "menu" href="/api/users">Felhasználók</a>
+        <a class= "menu" id="users" href="/api/users">Felhasználók</a>
         <a class="menu" href="/api/index">Kijelentkezés</a>
     </nav>
     <nav>
@@ -38,22 +38,28 @@
         <script>
             var qgenerateLink = document.getElementById("qgenerate");
             var qdeleteLink = document.getElementById("qdelete");
+            var menuLink = document.getElementById("users");
             qdeleteLink.style.display = "visible";
             qgenerateLink.style.display = "none";
+            menuLink.style.display = "visible";
         </script>
         {% elif roles_id == 2 %}
         <script>
             var qgenerateLink = document.getElementById("qgenerate");
             var qdeleteLink = document.getElementById("qdelete");
+            var menuLink = document.getElementById("users");
             qdeleteLink.style.display = "none";
             qgenerateLink.style.display = "visible";
+            menuLink.style.display = "visible";
         </script>
         {% else %}
         <script>
             var qgenerateLink = document.getElementById("qgenerate");
             var qdeleteLink = document.getElementById("qdelete");
+            var menuLink = document.getElementById("users");
             qdeleteLink.style.display = "none";
             qgenerateLink.style.display = "none";
+            menuLink.style.display = "none";
         </script>
         {% endif %}
     </main>
