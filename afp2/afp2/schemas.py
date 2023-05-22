@@ -49,3 +49,7 @@ class AddUserToQuizIn(Schema):
 class ConnectUserRoleIn(Schema):
     user_id: int
     role_id: int
+
+class DeleteQuiz(Schema):
+    quiz_id: int
+    user_id: int
