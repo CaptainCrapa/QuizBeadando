@@ -1,10 +1,23 @@
 function connect_user_roleValidation(event) {
   event.preventDefault();
 
+    let requester = document.querySelector("#requester").value;
     let username = document.querySelector("#username").value;
     let role = document.querySelector("#role").value;
     let areFieldsValid = true;
   
+  // requester length check
+  if (requester.length <= 0)
+  {
+    areFieldsValid = false;
+    document.querySelector("#requester_error").textContent = "*töltse ki!";
+    document.querySelector("#requester").classList.add("form-error-field");
+  }
+  else
+  {
+    document.querySelector("#requester").classList.remove("form-error-field");
+    document.querySelector("#requester_error").textContent = "";
+  }
 
   // username length check
   if (username.length <= 0)

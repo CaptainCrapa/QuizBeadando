@@ -18,23 +18,22 @@ function qgenerateValidation(event) {
     }
   
     // creator length check
-    if (createbyid.length <= 0) {
+    if (creator.length <= 0) {
       areFieldsValid = false;
       document.querySelector("#creator_error").textContent = "*töltse ki!";
       document.querySelector("#creator").classList.add("form-error-field");
     } else {
       document.querySelector("#creator").classList.remove("form-error-field");
-      document.querySelector("#creator_error").textContent = "";
     }
   
     // active validation
-    if (active != false && active != true) {
+    if (active == "true" || active == "false") {
+      document.querySelector("#active").classList.remove("form-error-field");
+      document.querySelector("#active_error").textContent = "";
+    } else {
       areFieldsValid = false;
       document.querySelector("#active_error").textContent = "*érvénytelen adat!";
       document.querySelector("#active").classList.add("form-error-field");
-    } else {
-      document.querySelector("#active").classList.remove("form-error-field");
-      document.querySelector("#active_error").textContent = "";
     }
   
     if (areFieldsValid) {

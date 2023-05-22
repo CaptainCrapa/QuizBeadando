@@ -7,6 +7,18 @@ function modifyUserPasswordValidation(event) {
     let confirmPassword = document.querySelector("#confirm-password").value;
     let areFieldsValid = true;
   
+  // requester length check
+  if (requester.length <= 0)
+  {
+    areFieldsValid = false;
+    document.querySelector("#requester_error").textContent = "*töltse ki!";
+    document.querySelector("#requester").classList.add("form-error-field");
+  }
+  else
+  {
+    document.querySelector("#requester").classList.remove("form-error-field");
+    document.querySelector("#requester_error").textContent = "";
+  }
 
   // username length check
   if (username.length <= 0)

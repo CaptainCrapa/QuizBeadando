@@ -1,15 +1,10 @@
-var role = "adminisztrator";
-var roleLink = document.getElementById("role");
+function togglePasswordVisibility() {
+  var password = document.getElementById("password");
+  var toggle = document.getElementById("toggle");
 
-if (role == "diak")
-{
-  roleLink.textContent = "Diák"
-}
-else if (role == "adminisztrator")
-{
-  roleLink.textContent = "Adminisztátor"
-}
-else if (role == "tanar")
-{
-  roleLink.textContent = "Tanár";
+  if (toggle.checked) {
+    password.style.display = "inline";
+  } else {
+    password.style.display = "none";
+  }
 }

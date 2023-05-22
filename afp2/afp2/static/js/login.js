@@ -5,6 +5,9 @@ function loginValidation(event) {
   let username = document.querySelector("#username").value;
   let password = document.querySelector("#password").value;
   let areFieldsValid = true;
+  let sentence;
+  let words;
+  let name;
 
   //username length check
   if (username.length <= 0) {
@@ -37,10 +40,24 @@ function loginValidation(event) {
     axios.post('/api/login', data)
         .then(response => {
           console.log(response.data);
+          sentence = response.data;
+          words = sentence.split(" ");
+          name = words[2];
+          window.location.href = '/api/menu';
         })
         .catch(error => {
           console.log(error);
-    });
+        });
+
+    if (name != null){
+          axios.post('/api/glbl', name)
+        .then(response => {
+          console.log(response.data);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
   }
 }
 
