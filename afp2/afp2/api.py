@@ -255,13 +255,27 @@ def OpenPageNew(request):
 @api.get("/urole")
 def OpenPageRole(request):
     global glbl_name
-    usrname = {'usrname': glbl_name}
-    return render(request, 'urole.html', usrname)
+    global glbl_user_id
+    global glbl_roles_id
+
+    context = {
+        'usrname': glbl_name,
+        'user_id': glbl_user_id,
+        'roles_id': glbl_roles_id,
+    }
+    return render(request, 'urole.html', context)
 @api.get("/upassword")
 def OpenPagePass(request):
     global glbl_name
-    usrname = {'usrname': glbl_name}
-    return render(request, 'upassword.html', usrname)
+    global glbl_user_id
+    global glbl_roles_id
+
+    context = {
+        'usrname': glbl_name,
+        'user_id': glbl_user_id,
+        'roles_id': glbl_roles_id,
+    }
+    return render(request, 'upassword.html', context)
 @api.get("/qdelete")
 def OpenPageDel(request):
     global glbl_name
