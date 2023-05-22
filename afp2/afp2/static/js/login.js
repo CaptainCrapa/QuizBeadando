@@ -43,10 +43,22 @@ function loginValidation(event) {
           sentence = response.data;
           words = sentence.split(" ");
           name = words[2];
+          document.querySelector("#success").textContent = response.data + " Át leszel irányítva!";
+          document.querySelector("#error").textContent = "";
+          setTimeout(function() {
           window.location.href = '/api/menu';
+          }, 1500);
         })
         .catch(error => {
-          console.log(error);
+          if (error.response) {
+            var errorMessage = error.response.data;
+            document.querySelector('#error').textContent = errorMessage;
+            document.querySelector("#success").textContent = "";
+          } else {
+            console.log(error);
+            document.querySelector('#error').textContent = "Hiba. További információ a konzolban!";
+            document.querySelector("#success").textContent = "";
+          }
         });
 
     if (name != null){
@@ -56,6 +68,7 @@ function loginValidation(event) {
         })
         .catch(error => {
           console.log(error);
+          document.querySelector('#error').textContent = "Hiba. További információ a konzolban!";
         });
     }
   }

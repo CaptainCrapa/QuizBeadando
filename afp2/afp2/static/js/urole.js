@@ -38,12 +38,21 @@ function connect_user_roleValidation(event) {
       role_id: role
     };
 
-    axios.post('/api/connect_user_role', data)
+    axios.post('/api/connect_user_role', data) // Még backendre vár
         .then(response => {
-          console.log(response.data);
+          document.querySelector("#success").textContent = response.data;
+          document.querySelector("#error").textContent = "";
         })
         .catch(error => {
-          console.log(error);
+          if (error.response) {
+            var errorMessage = error.response.data;
+            document.querySelector('#error').textContent = errorMessage;
+            document.querySelector("#success").textContent = "";
+          } else {
+            console.log(error);
+            document.querySelector('#error').textContent = "Hiba. További információ a konzolban!";
+            document.querySelector("#success").textContent = "";
+          }
     });
   }
 }
