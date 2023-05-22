@@ -386,7 +386,8 @@ def DeleteQuiz(request, data: DeleteQuiz):
             quiz = Quiz.objects.filter(id=data.quiz_id)
         if quiz:
             try:
-                return HttpResponse(status=201, content="Sikeresen törölted a quiz-t")
                 quiz.delete()
+                return HttpResponse(status=201, content="Sikeresen törölted a quiz-t")
+
             except:
                 return HttpResponse(status=500, content="Adatbáziskapcsolati hiba történt!")
