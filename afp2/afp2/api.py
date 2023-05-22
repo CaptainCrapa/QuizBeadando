@@ -40,10 +40,12 @@ def registerUser(request,data: RegisterUserIn):
 
 @api.post("/login")
 def loginUser(request,data: LoginUser):
+    global glbl_name
     registerUser = RegisterUser.objects.filter(username=data.username, password=base64.b64encode(data.password.encode())).values()
     if not registerUser:
         return HttpResponse(status=404,content="Nem található ilyen felhasználónév és jelszó párosítás!")
     else:
+        glbl_name = data.username
         return HttpResponse(status=200, content="Sikeres bejelentkezés "+data.username+" felhasználóval!")
 
 @api.post("/createUser")
@@ -148,45 +150,90 @@ def connect_user_role(request, data: ConnectUserRoleIn):
     except:
         return HttpResponse(status=500, content="Adatbáziskapcsolati hiba történt!")
 
+glbl_name = ""
+glbl_user_id = 0
+glbl_roles_id = 0
+
 @api.get("/registration")
 def OpenPageReg(request):
+    global glbl_name
+    glbl_name = ""
     return render(request, 'registration.html')
 @api.get("/log")
 def OpenPageLog(request):
+    global glbl_name
+    glbl_name = ""
     return render(request, 'login.html')
 @api.get("/users")
 def OpenPageUser(request):
-    return render(request, 'users.html')
+    global glbl_name
+    usrname = {'usrname': glbl_name}
+    return render(request, 'users.html', usrname)
 @api.get("/menu")
 def OpenPageMenu(request):
-    return render(request, 'menu.html')
+    global glbl_name
+    global glbl_user_id
+    global glbl_roles_id
+    user = RegisterUser.objects.get(username=glbl_name)
+    user_in_role = k_UserInRoles.objects.filter(User_id=user.id)
+    roles_id = user_in_role.Roles_id
+
+    glbl_user_id = user.id
+    glbl_roles_id = roles_id
+
+    context = {
+        'usrname': glbl_name,
+        'user_id': glbl_user_id,
+        'roles_id': glbl_roles_id,
+    }
+    return render(request, 'menu.html', context)
 @api.get("/quiz")
 def OpenPageQuiz(request):
-        return render(request, 'quiz.html')
+    global glbl_name
+    usrname = {'usrname': glbl_name}
+    return render(request, 'quiz.html', usrname)
 @api.get("/profile")
 def OpenPageProf(request):
-            return render(request, 'profile.html')
+    global glbl_name
+    usrname = {'usrname': glbl_name}
+    return render(request, 'profile.html', usrname)
 @api.get("/index")
 def OpenPageIndex(request):
-            return render(request, 'index.html')
+    global glbl_name
+    glbl_name = ""
+    return render(request, 'index.html')
 @api.get("/uinvite")
 def OpenPageInvite(request):
-            return render(request, 'uinvite.html')
+    global glbl_name
+    usrname = {'usrname': glbl_name}
+    return render(request, 'uinvite.html',usrname)
 @api.get("/unew")
 def OpenPageNew(request):
-            return render(request, 'unew.html')
+    global glbl_name
+    usrname = {'usrname': glbl_name}
+    return render(request, 'unew.html', usrname)
 @api.get("/urole")
 def OpenPageRole(request):
-            return render(request, 'urole.html')
+    global glbl_name
+    usrname = {'usrname': glbl_name}
+    return render(request, 'urole.html', usrname)
 @api.get("/upassword")
 def OpenPagePass(request):
-            return render(request, 'upassword.html')
+    global glbl_name
+    usrname = {'usrname': glbl_name}
+    return render(request, 'upassword.html', usrname)
 @api.get("/qdelete")
 def OpenPageDel(request):
-            return render(request, 'qdelete.html')
+    global glbl_name
+    usrname = {'usrname': glbl_name}
+    return render(request, 'qdelete.html', usrname)
 @api.get("/qgenerate")
 def OpenPageGen(request):
-            return render(request, 'qgenerate.html')
+    global glbl_name
+    usrname = {'usrname': glbl_name}
+    return render(request, 'qgenerate.html', usrname)
 @api.get("/qpick")
 def OpenPagePick(request):
-            return render(request, 'qpick.html')
+    global glbl_name
+    usrname = {'usrname': glbl_name}
+    return render(request, 'qpick.html', usrname)
