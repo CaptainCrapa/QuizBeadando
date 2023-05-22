@@ -98,7 +98,7 @@ def create_quiz(request, data: CreateQuizIn):
     new_quiz = Quiz()
     new_quiz.name = data.name
     new_quiz.active = data.active
-    new_quiz.Created_By = RegisterUser.objects.get(username=data.created_by)
+    new_quiz.Created_By = RegisterUser.objects.get(id=data.created_by)
     try:
         new_quiz.save()
         return HttpResponse(status=201, content="Sikeresen létrehoztál egy új Quiz-t!")
@@ -157,12 +157,20 @@ glbl_roles_id = 0
 @api.get("/registration")
 def OpenPageReg(request):
     global glbl_name
+    global glbl_user_id
+    global glbl_roles_id
     glbl_name = ""
+    glbl_user_id = 0
+    glbl_roles_id = 0
     return render(request, 'registration.html')
 @api.get("/log")
 def OpenPageLog(request):
     global glbl_name
+    global glbl_user_id
+    global glbl_roles_id
     glbl_name = ""
+    glbl_user_id = 0
+    glbl_roles_id = 0
     return render(request, 'login.html')
 @api.get("/users")
 def OpenPageUser(request):
@@ -175,7 +183,7 @@ def OpenPageMenu(request):
     global glbl_user_id
     global glbl_roles_id
     user = RegisterUser.objects.get(username=glbl_name)
-    user_in_role = k_UserInRoles.objects.filter(User_id=user.id)
+    user_in_role = k_UserInRoles.objects.filter(User_id=user.id).first()
     roles_id = user_in_role.Roles_id
 
     glbl_user_id = user.id
@@ -195,12 +203,23 @@ def OpenPageQuiz(request):
 @api.get("/profile")
 def OpenPageProf(request):
     global glbl_name
-    usrname = {'usrname': glbl_name}
-    return render(request, 'profile.html', usrname)
+    global glbl_user_id
+    global glbl_roles_id
+
+    context = {
+        'usrname': glbl_name,
+        'user_id': glbl_user_id,
+        'roles_id': glbl_roles_id,
+    }
+    return render(request, 'profile.html', context)
 @api.get("/index")
 def OpenPageIndex(request):
     global glbl_name
+    global glbl_user_id
+    global glbl_roles_id
     glbl_name = ""
+    glbl_user_id = 0
+    glbl_roles_id = 0
     return render(request, 'index.html')
 @api.get("/uinvite")
 def OpenPageInvite(request):
@@ -225,15 +244,36 @@ def OpenPagePass(request):
 @api.get("/qdelete")
 def OpenPageDel(request):
     global glbl_name
-    usrname = {'usrname': glbl_name}
-    return render(request, 'qdelete.html', usrname)
+    global glbl_user_id
+    global glbl_roles_id
+
+    context = {
+        'usrname': glbl_name,
+        'user_id': glbl_user_id,
+        'roles_id': glbl_roles_id,
+    }
+    return render(request, 'qdelete.html', context)
 @api.get("/qgenerate")
 def OpenPageGen(request):
     global glbl_name
-    usrname = {'usrname': glbl_name}
-    return render(request, 'qgenerate.html', usrname)
+    global glbl_user_id
+    global glbl_roles_id
+
+    context = {
+        'usrname': glbl_name,
+        'user_id': glbl_user_id,
+        'roles_id': glbl_roles_id,
+    }
+    return render(request, 'qgenerate.html', context)
 @api.get("/qpick")
 def OpenPagePick(request):
     global glbl_name
-    usrname = {'usrname': glbl_name}
-    return render(request, 'qpick.html', usrname)
+    global glbl_user_id
+    global glbl_roles_id
+
+    context = {
+        'usrname': glbl_name,
+        'user_id': glbl_user_id,
+        'roles_id': glbl_roles_id,
+    }
+    return render(request, 'qpick.html', context)
