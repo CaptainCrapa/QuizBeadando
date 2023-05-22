@@ -382,7 +382,7 @@ def OpenPagePick(request):
 def DeleteQuiz(request, data: DeleteQuiz):
     role = k_UserInRoles.objects.get(user_id=data.user_id)
     if role:
-        if role.role_id == 3:
+        if role.Roles_id == 3:
             quiz = Quiz.objects.filter(id=data.quiz_id)
         if quiz:
             try:
