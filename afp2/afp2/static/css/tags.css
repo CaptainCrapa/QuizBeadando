@@ -89,3 +89,34 @@ footer a {
     color: var(--footer-text-color);
     text-decoration: none;
 }
+
+table.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  table-layout: auto;
+}
+
+table.table th,
+table.table td {
+  padding: 1rem;
+  text-align: center;
+}
+
+table.table th {
+  background-color: var(--header-bg-color);
+  color: var(--main-text-color);
+}
+
+table.table td {
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
+}
+
+table.table tbody tr:nth-child(even) {
+  background-color: var(--even-row-color);
+}
+
+table.table tbody tr:hover {
+  background-color: var(--hover-row-color);
+}

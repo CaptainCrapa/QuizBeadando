@@ -25,4 +25,6 @@
     --form-field-focused: rgb(251, 255, 183);
     --footer-bg-color: rgb(24, 24, 24);
     --footer-text-color: hsl(0, 0%, 65%);
+    --hover-row-color: #1e1e1e;
+    --even-row-color: #686868;
 }
