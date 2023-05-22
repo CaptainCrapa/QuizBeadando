@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
     {% if usrname == "" %} <script>window.location.href = '/api/index';</script> {% endif %}
+    {% if roles_id != 3 %} <script>window.location.href = '/api/menu';</script> {% endif %}
     <link rel="stylesheet" href="{% static 'css/classes.css' %}">
     <link rel="stylesheet" href="{% static 'css/root.css' %}">
     <link rel="stylesheet" href="{% static 'css/tags.css' %}">
@@ -33,24 +34,31 @@
             <form id="connect_user_role-form" autocomplete="off">
                 <div class="flex-form-container">
                     <div class="flex-form-item">
+                        <label for="requester">Kérvényező neve:</label>
+                    </div>
+                    <div class="flex-form-item">
+                        <input type="text" id="requester" name="requester" tabindex="1" readonly value= {{ usrname }}>
+                        <p class="form-error-message" id="requester_error"></p>
+                    </div>
+                    <div class="flex-form-item">
                         <label for="username">Felhasználói név:</label>
                     </div>
                     <div class="flex-form-item">
-                        <input type="text" id="username" name="username" tabindex="1">
+                        <input type="text" id="username" name="username" tabindex="2">
                         <p class="form-error-message" id="username_error"></p>
                     </div>
                     <div class="flex-form-item">
                         <label for="role">Jogosultság:</label>
                     </div>
                     <div class="flex-form-item">
-                        <select id="role" name="role" tabindex="2">
+                        <select id="role" name="role" tabindex="3">
                             <option value="diak">Diák</option>
                             <option value="tanar">Tanár</option>
                             <option value="adminisztrator">Adminisztrátor</option>
                         </select>
                     </div>
                     <div class="flex-form-item">
-                        <input type="submit" name="submit" value="Jogosultság beállítása" tabindex="3">
+                        <input type="submit" name="submit" value="Jogosultság beállítása" tabindex="4">
                     </div>
                 </div>
             </form>
