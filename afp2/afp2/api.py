@@ -189,19 +189,22 @@ def OpenPageMenu(request):
     global glbl_name
     global glbl_user_id
     global glbl_roles_id
-    user = RegisterUser.objects.get(username=glbl_name)
-    user_in_role = k_UserInRoles.objects.filter(User_id=user.id).first()
-    roles_id = user_in_role.Roles_id
+    if glbl_name == "":
+        return render(request, 'index.html')
+    else:
+        user = RegisterUser.objects.get(username=glbl_name)
+        user_in_role = k_UserInRoles.objects.filter(User_id=user.id).first()
+        roles_id = user_in_role.Roles_id
 
-    glbl_user_id = user.id
-    glbl_roles_id = roles_id
+        glbl_user_id = user.id
+        glbl_roles_id = roles_id
 
-    context = {
-        'usrname': glbl_name,
-        'user_id': glbl_user_id,
-        'roles_id': glbl_roles_id,
-    }
-    return render(request, 'menu.html', context)
+        context = {
+            'usrname': glbl_name,
+            'user_id': glbl_user_id,
+            'roles_id': glbl_roles_id,
+        }
+        return render(request, 'menu.html', context)
 @api.get("/quiz")
 def OpenPageQuiz(request):
     global glbl_name
@@ -219,24 +222,27 @@ def OpenPageProf(request):
     global glbl_name
     global glbl_user_id
     global glbl_roles_id
-    user = RegisterUser.objects.get(username=glbl_name)
-    fullname = user.fullname
-    # encoded_password = user.password
-    # password = base64.b64decode(encoded_password).decode()
-    password = user.password
-    email = user.email
-    dateOfBirth = user.dateOfBirth
+    if glbl_name == "":
+        return render(request, 'index.html')
+    else:
+        user = RegisterUser.objects.get(username=glbl_name)
+        fullname = user.fullname
+        # encoded_password = user.password
+        # password = base64.b64decode(encoded_password).decode()
+        password = user.password
+        email = user.email
+        dateOfBirth = user.dateOfBirth
 
-    context = {
-        'usrname': glbl_name,
-        'user_id': glbl_user_id,
-        'roles_id': glbl_roles_id,
-        'fullname': fullname,
-        'password': password,
-        'email': email,
-        'dateOfBirth': dateOfBirth
-    }
-    return render(request, 'profile.html', context)
+        context = {
+            'usrname': glbl_name,
+            'user_id': glbl_user_id,
+            'roles_id': glbl_roles_id,
+            'fullname': fullname,
+            'password': password,
+            'email': email,
+            'dateOfBirth': dateOfBirth
+        }
+        return render(request, 'profile.html', context)
 @api.get("/index")
 def OpenPageIndex(request):
     global glbl_name

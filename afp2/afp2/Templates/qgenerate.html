@@ -34,6 +34,13 @@
             <form id="qgenerate-form" autocomplete="off">
                 <div class="flex-form-container">
                     <div class="flex-form-item">
+                        <label for="creator">Készítő azonosítója:</label>
+                    </div>
+                    <div class="flex-form-item">
+                        <input type="text" id="creator" name="creator" tabindex="3" readonly value= {{ user_id }}>
+                        <p class="form-error-message" id="creator_error"></p>
+                    </div>
+                    <div class="flex-form-item">
                         <label for="qname">Kvíz neve:</label>
                     </div>
                     <div class="flex-form-item">
@@ -49,13 +56,6 @@
                             <option value="false">Inaktív</option>
                         </select>
                         <p class="form-error-message" id="active_error"></p>
-                    </div>
-                    <div class="flex-form-item">
-                        <label for="creator">Készítő azonosítója:</label>
-                    </div>
-                    <div class="flex-form-item">
-                        <input type="text" id="creator" name="creator" tabindex="3" readonly value= {{ user_id }}>
-                        <p class="form-error-message" id="creator_error"></p>
                     </div>
                     <div class="flex-form-item">
                         <input type="submit" name="submit" value="Kvíz létrehozása" tabindex="4">
