@@ -18,23 +18,22 @@ function qgenerateValidation(event) {
     }
   
     // creator length check
-    if (createbyid.length <= 0) {
+    if (creator.length <= 0) {
       areFieldsValid = false;
       document.querySelector("#creator_error").textContent = "*töltse ki!";
       document.querySelector("#creator").classList.add("form-error-field");
     } else {
       document.querySelector("#creator").classList.remove("form-error-field");
-      document.querySelector("#creator_error").textContent = "";
     }
   
     // active validation
-    if (active != false && active != true) {
+    if (active == "true" || active == "false") {
+      document.querySelector("#active").classList.remove("form-error-field");
+      document.querySelector("#active_error").textContent = "";
+    } else {
       areFieldsValid = false;
       document.querySelector("#active_error").textContent = "*érvénytelen adat!";
       document.querySelector("#active").classList.add("form-error-field");
-    } else {
-      document.querySelector("#active").classList.remove("form-error-field");
-      document.querySelector("#active_error").textContent = "";
     }
   
     if (areFieldsValid) {
@@ -46,10 +45,19 @@ function qgenerateValidation(event) {
   
       axios.post('/api/create_quiz', data)
           .then(response => {
-            console.log(response.data);
+            document.querySelector("#success").textContent = response.data;
+            document.querySelector("#error").textContent = "";
           })
           .catch(error => {
+          if (error.response) {
+            var errorMessage = error.response.data;
+            document.querySelector('#error').textContent = errorMessage;
+            document.querySelector("#success").textContent = "";
+          } else {
             console.log(error);
+            document.querySelector('#error').textContent = "Hiba. További információ a konzolban!";
+            document.querySelector("#success").textContent = "";
+          }
           });
     }
   }

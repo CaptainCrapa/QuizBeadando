@@ -8,13 +8,12 @@
     <meta name="author" content="Team PTI Jászberény">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
+    {% if usrname == "" %} <script>window.location.href = '/api/index';</script> {% endif %}
     <link rel="stylesheet" href="{% static 'css/classes.css' %}">
     <link rel="stylesheet" href="{% static 'css/root.css' %}">
     <link rel="stylesheet" href="{% static 'css/tags.css' %}">
     <link rel="icon" href="{% static 'img/icon.jpg' %}">
-    <script type="text/javascript" src="{% static 'js/menu.js' %}" charset="utf-8" defer ></script>
-    <script type="text/javascript" src="{% static 'js/profile.js' %}" charset="utf-8" defer ></script>
-
+    <script src="{% static 'js/profile.js' %}"></script>
 </head>
 <body>
     <header>
@@ -35,25 +34,32 @@
                         <label class="profile-label">Teljes név:</label>
                     </div>
                     <div class="flex-form-item">
-                        <span class="profile-span">Test text</span>
+                        <span class="profile-span">{{ fullname }}</span>
                     </div>
                     <div class="flex-form-item">
                         <label class="profile-label">Felhasználói név:</label>
                     </div>
                     <div class="flex-form-item">
-                        <span class="profile-span">Test text</span>
+                        <span class="profile-span">{{ usrname }}</span>
                     </div>
                     <div class="flex-form-item">
                         <label class="profile-label">E-mail cím:</label>
                     </div>
                     <div class="flex-form-item">
-                        <span class="profile-span">Test text</span>
+                        <span class="profile-span">{{ email }}</span>
+                    </div>
+                    <div class="flex-form-item">
+                        <label class="profile-label">Jelszó:</label>
+                        <input type="checkbox" id="toggle" onchange="togglePasswordVisibility()">
+                    </div>
+                    <div class="flex-form-item">
+                        <span class="profile-span" id="password" style="display: none;">{{ password }}</span>
                     </div>
                     <div class="flex-form-item">
                         <label class="profile-label">Születési dátum:</label>
                     </div>
                     <div class="flex-form-item">
-                        <span class="profile-span">Test text</span>
+                        <span class="profile-span">{{ dateOfBirth }}</span>
                     </div>
                     <div class="flex-form-item">
                         <label class="profile-label">Jogosultság:</label>
@@ -63,12 +69,35 @@
                     </div>
                 </div>
             </form>
-        </div>   
+        </div>
+        {% if roles_id == 3 %}
+        <script>
+            var roleLink = document.getElementById("role");
+            var usersLink = document.getElementById("users");
+            usersLink.style.display = "visible";
+            roleLink.textContent = "Adminisztrátor";
+        </script>
+        {% elif roles_id == 2 %}
+        <script>
+            var roleLink = document.getElementById("role");
+            var usersLink = document.getElementById("users");
+            usersLink.style.display = "visible";
+            roleLink.textContent = "Tanár";
+        </script>
+        {% else %}
+        <script>
+            var roleLink = document.getElementById("role");
+            var usersLink = document.getElementById("users");
+            usersLink.style.display = "none";
+            roleLink.textContent = "Diák"
+        </script>
+        {% endif %}
     </main>
     <footer>
         <p><a href="#top">Lap tetejére <img src="{% static 'img/icon_arrowup.png' %}" alt="fel"></a></p>
         <p>Eszterházy Károly Katolikus Egyetem<br></p>
         <p>PTI Jászberény Team 2023</p>
+        <p>Bejelentkezve, mint {{ usrname }}</p>
     </footer>
 </body>
 </html>

@@ -8,6 +8,8 @@
     <meta name="author" content="Team PTI Jászberény">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
+    {% if usrname == "" %} <script>window.location.href = '/api/index';</script> {% endif %}
+    {% if roles_id != 2 %} <script>window.location.href = '/api/menu';</script> {% endif %}
     <link rel="stylesheet" href="{% static 'css/classes.css' %}">
     <link rel="stylesheet" href="{% static 'css/root.css' %}">
     <link rel="stylesheet" href="{% static 'css/tags.css' %}">
@@ -32,6 +34,13 @@
             <form id="qgenerate-form" autocomplete="off">
                 <div class="flex-form-container">
                     <div class="flex-form-item">
+                        <label for="creator">Készítő azonosítója:</label>
+                    </div>
+                    <div class="flex-form-item">
+                        <input type="text" id="creator" name="creator" tabindex="3" readonly value= {{ user_id }}>
+                        <p class="form-error-message" id="creator_error"></p>
+                    </div>
+                    <div class="flex-form-item">
                         <label for="qname">Kvíz neve:</label>
                     </div>
                     <div class="flex-form-item">
@@ -46,16 +55,12 @@
                             <option value="true">Aktív</option>
                             <option value="false">Inaktív</option>
                         </select>
-                    </div>
-                    <div class="flex-form-item">
-                        <label for="creator">Készítő neve:</label>
-                    </div>
-                    <div class="flex-form-item">
-                        <input type="text" id="creator" name="creator" tabindex="3">
-                        <p class="form-error-message" id="createbyid_error"></p>
+                        <p class="form-error-message" id="active_error"></p>
                     </div>
                     <div class="flex-form-item">
                         <input type="submit" name="submit" value="Kvíz létrehozása" tabindex="4">
+                        <p class="form-message" id="success"></p>
+                        <p class="form-error-message" id="error"></p>
                     </div>
                 </div>
             </form>
@@ -65,6 +70,7 @@
         <p><a href="#top">Lap tetejére <img src="{% static 'img/icon_arrowup.png' %}" alt="fel"></a></p>
         <p>Eszterházy Károly Katolikus Egyetem<br></p>
         <p>PTI Jászberény Team 2023</p>
+        <p>Bejelentkezve, mint {{ usrname }}</p>
     </footer>
 </body>
 </html>

@@ -1,10 +1,23 @@
 function connect_user_roleValidation(event) {
   event.preventDefault();
 
+    let requester = document.querySelector("#requester").value;
     let username = document.querySelector("#username").value;
     let role = document.querySelector("#role").value;
     let areFieldsValid = true;
   
+  // requester length check
+  if (requester.length <= 0)
+  {
+    areFieldsValid = false;
+    document.querySelector("#requester_error").textContent = "*töltse ki!";
+    document.querySelector("#requester").classList.add("form-error-field");
+  }
+  else
+  {
+    document.querySelector("#requester").classList.remove("form-error-field");
+    document.querySelector("#requester_error").textContent = "";
+  }
 
   // username length check
   if (username.length <= 0)
@@ -25,12 +38,21 @@ function connect_user_roleValidation(event) {
       role_id: role
     };
 
-    axios.post('/api/connect_user_role', data)
+    axios.post('/api/connect_user_role', data) // Még backendre vár
         .then(response => {
-          console.log(response.data);
+          document.querySelector("#success").textContent = response.data;
+          document.querySelector("#error").textContent = "";
         })
         .catch(error => {
-          console.log(error);
+          if (error.response) {
+            var errorMessage = error.response.data;
+            document.querySelector('#error').textContent = errorMessage;
+            document.querySelector("#success").textContent = "";
+          } else {
+            console.log(error);
+            document.querySelector('#error').textContent = "Hiba. További információ a konzolban!";
+            document.querySelector("#success").textContent = "";
+          }
     });
   }
 }
