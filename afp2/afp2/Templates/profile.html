@@ -13,9 +13,6 @@
     <link rel="stylesheet" href="{% static 'css/root.css' %}">
     <link rel="stylesheet" href="{% static 'css/tags.css' %}">
     <link rel="icon" href="{% static 'img/icon.jpg' %}">
-    <script type="text/javascript" src="{% static 'js/menu.js' %}" charset="utf-8" defer ></script>
-    <script type="text/javascript" src="{% static 'js/profile.js' %}" charset="utf-8" defer ></script>
-
 </head>
 <body>
     <header>
@@ -64,7 +61,29 @@
                     </div>
                 </div>
             </form>
-        </div>   
+        </div>
+        {% if roles_id == 3 %}
+        <script>
+            var roleLink = document.getElementById("role");
+            var usersLink = document.getElementById("users");
+            usersLink.style.display = "visible";
+            roleLink.textContent = "Adminisztrátor";
+        </script>
+        {% elif roles_id == 2 %}
+        <script>
+            var roleLink = document.getElementById("role");
+            var usersLink = document.getElementById("users");
+            usersLink.style.display = "visible";
+            roleLink.textContent = "Tanár";
+        </script>
+        {% else %}
+        <script>
+            var roleLink = document.getElementById("role");
+            var usersLink = document.getElementById("users");
+            usersLink.style.display = "none";
+            roleLink.textContent = "Diák"
+        </script>
+        {% endif %}
     </main>
     <footer>
         <p><a href="#top">Lap tetejére <img src="{% static 'img/icon_arrowup.png' %}" alt="fel"></a></p>

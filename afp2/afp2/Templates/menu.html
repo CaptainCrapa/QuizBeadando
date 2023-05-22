@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="{% static 'css/root.css' %}">
     <link rel="stylesheet" href="{% static 'css/tags.css' %}">
     <link rel="icon" href="{% static 'img/icon.jpg' %}">
-    <script type="text/javascript" src="{% static 'js/menu.js' %}" charset="utf-8" defer ></script>
 
 </head>
 <body>
@@ -26,6 +25,17 @@
         <a class="menu" href="/api/profile">Profil</a>
         <a class= "menu" id="users" href="/api/users">Felhasználók</a>
         <a class="menu" href="/api/index">Kijelentkezés</a>
+        {% if roles_id > 1 %}
+        <script>
+            var usersLink = document.getElementById("users");
+            usersLink.style.display = "visible";
+        </script>
+        {% else %}
+        <script>
+            var usersLink = document.getElementById("users");
+            usersLink.style.display = "none";
+        </script>
+        {% endif %}
     </nav>
     </header>
     <main>
