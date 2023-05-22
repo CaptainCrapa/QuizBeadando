@@ -198,8 +198,15 @@ def OpenPageMenu(request):
 @api.get("/quiz")
 def OpenPageQuiz(request):
     global glbl_name
-    usrname = {'usrname': glbl_name}
-    return render(request, 'quiz.html', usrname)
+    global glbl_user_id
+    global glbl_roles_id
+
+    context = {
+        'usrname': glbl_name,
+        'user_id': glbl_user_id,
+        'roles_id': glbl_roles_id,
+    }
+    return render(request, 'quiz.html', context)
 @api.get("/profile")
 def OpenPageProf(request):
     global glbl_name
