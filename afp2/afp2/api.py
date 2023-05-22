@@ -231,8 +231,15 @@ def OpenPageIndex(request):
 @api.get("/uinvite")
 def OpenPageInvite(request):
     global glbl_name
-    usrname = {'usrname': glbl_name}
-    return render(request, 'uinvite.html',usrname)
+    global glbl_user_id
+    global glbl_roles_id
+
+    context = {
+        'usrname': glbl_name,
+        'user_id': glbl_user_id,
+        'roles_id': glbl_roles_id,
+    }
+    return render(request, 'uinvite.html', context)
 @api.get("/unew")
 def OpenPageNew(request):
     global glbl_name
