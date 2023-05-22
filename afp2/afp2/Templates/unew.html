@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
     {% if usrname == "" %} <script>window.location.href = '/api/index';</script> {% endif %}
+    {% if roles_id != 3 %} <script>window.location.href = '/api/menu';</script> {% endif %}
     <link rel="stylesheet" href="{% static 'css/classes.css' %}">
     <link rel="stylesheet" href="{% static 'css/root.css' %}">
     <link rel="stylesheet" href="{% static 'css/tags.css' %}">
@@ -37,7 +38,7 @@
                         <label for="requester">Kérvényező neve:</label>
                     </div>
                     <div class="flex-form-item">
-                        <input type="text" id="requester" name="fullname" tabindex="1">
+                        <input type="text" id="requester" name="fullname" tabindex="1"readonly value= {{ usrname }}>
                         <p class="form-error-message" id="requester_error"></p>
                     </div>
                     <div class="flex-form-item">
@@ -72,7 +73,7 @@
                         <label for="confirm-password">Jelszó ismétlés:</label>
                     </div>
                     <div class="flex-form-item">
-                        <input type="password" id="confirm-password" name="confirm-password" tabindex="4">
+                        <input type="password" id="confirm-password" name="confirm-password" tabindex="6">
                         <p class="form-error-message" id="confirm-password_error"></p>
                     </div>
                     <div class="flex-form-item">
