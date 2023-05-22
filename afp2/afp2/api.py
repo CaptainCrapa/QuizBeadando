@@ -4,7 +4,7 @@ from ninja import NinjaAPI, Form
 from django.shortcuts import render
 
 from afp2.schemas import RegisterUserIn, LoginUser, CreateQuizIn, CreateQuestionIn, AddQuestionToQuizIn, \
-    AddUserToQuizIn, ConnectUserRoleIn, RegisterUserByAdmin, UserPasswordModification
+    AddUserToQuizIn, ConnectUserRoleIn, RegisterUserByAdmin, UserPasswordModification, DeleteQuiz
 from afp2.models import RegisterUser, k_UserInRoles, Roles, Quiz, Question, k_QuestionInQuiz, InvitedUser
 
 import base64
@@ -18,38 +18,41 @@ def hello(request):
 
 
 @api.post("/register")
-def registerUser(request,data: RegisterUserIn):
-        registerUser = RegisterUser()
-        registerUser.username = data.username
-        registerUser.email = data.email
-        registerUser.password = base64.b64encode(data.password.encode())
-        registerUser.fullname = data.fullname
-        registerUser.dateOfBirth = data.dateOfBirth
-        try:
-            registerUser.save()
-            roleToSet = Roles.objects.get(id=1)
-            role = k_UserInRoles()
-            role.User = registerUser
-            role.Roles = roleToSet
-            role.save()
-            return HttpResponse(status=201, content="Sikeres regisztráció!")
-        except IntegrityError:
-            return HttpResponse(status=400, content="Ilyen felhasználónévvel vagy e-mail címmel már történt regisztráció!")
-        except:
-            return HttpResponse(status=500, content="Adatbáziskapcsolati hiba történt!")
+def registerUser(request, data: RegisterUserIn):
+    registerUser = RegisterUser()
+    registerUser.username = data.username
+    registerUser.email = data.email
+    registerUser.password = base64.b64encode(data.password.encode())
+    registerUser.fullname = data.fullname
+    registerUser.dateOfBirth = data.dateOfBirth
+    try:
+        registerUser.save()
+        roleToSet = Roles.objects.get(id=1)
+        role = k_UserInRoles()
+        role.User = registerUser
+        role.Roles = roleToSet
+        role.save()
+        return HttpResponse(status=201, content="Sikeres regisztráció!")
+    except IntegrityError:
+        return HttpResponse(status=400, content="Ilyen felhasználónévvel vagy e-mail címmel már történt regisztráció!")
+    except:
+        return HttpResponse(status=500, content="Adatbáziskapcsolati hiba történt!")
+
 
 @api.post("/login")
-def loginUser(request,data: LoginUser):
+def loginUser(request, data: LoginUser):
     global glbl_name
-    registerUser = RegisterUser.objects.filter(username=data.username, password=base64.b64encode(data.password.encode())).values()
+    registerUser = RegisterUser.objects.filter(username=data.username,
+                                               password=base64.b64encode(data.password.encode())).values()
     if not registerUser:
-        return HttpResponse(status=404,content="Nem található ilyen felhasználónév és jelszó párosítás!")
+        return HttpResponse(status=404, content="Nem található ilyen felhasználónév és jelszó párosítás!")
     else:
         glbl_name = data.username
-        return HttpResponse(status=200, content="Sikeres bejelentkezés "+data.username+" felhasználóval!")
+        return HttpResponse(status=200, content="Sikeres bejelentkezés " + data.username + " felhasználóval!")
+
 
 @api.post("/createUser")
-def createUserByAdmin(request,data: RegisterUserByAdmin):
+def createUserByAdmin(request, data: RegisterUserByAdmin):
     try:
         admin = RegisterUser.objects.get(username=data.requester)
         role = k_UserInRoles.objects.get(User=admin)
@@ -69,11 +72,13 @@ def createUserByAdmin(request,data: RegisterUserByAdmin):
                 roles.save()
                 return HttpResponse(status=201, content="Sikeres regisztráció!")
             except IntegrityError:
-                return HttpResponse(status=400,content="Ilyen felhasználónévvel vagy e-mail címmel már történt regisztráció!")
+                return HttpResponse(status=400,
+                                    content="Ilyen felhasználónévvel vagy e-mail címmel már történt regisztráció!")
         else:
-            return HttpResponse(status=403,content="Nincs admin jogosultságod ehhez a művelethez!")
+            return HttpResponse(status=403, content="Nincs admin jogosultságod ehhez a művelethez!")
     except:
-        return HttpResponse(status=500,content="Szerver oldali hiba!")
+        return HttpResponse(status=500, content="Szerver oldali hiba!")
+
 
 @api.post("/modification_pw")
 def modifyUserPassword(request, data: UserPasswordModification):
@@ -84,15 +89,17 @@ def modifyUserPassword(request, data: UserPasswordModification):
             user = RegisterUser.objects.filter(username=data.username).values()
             if user:
                 userForReset = RegisterUser.objects.get(username=data.username)
-                userForReset.password=base64.b64encode(data.newPassword.encode())
+                userForReset.password = base64.b64encode(data.newPassword.encode())
                 userForReset.save()
-                return HttpResponse(status=200,content="Sikeres jelszómódosítás!")
+                return HttpResponse(status=200, content="Sikeres jelszómódosítás!")
             else:
                 return HttpResponse(status=404, content="Nincs ilyen felhasználónévvel regisztrált ember!")
         else:
             return HttpResponse(status=403, content="Nincs admin jogosultságod ehhez a művelethez!")
     except:
-        return HttpResponse(status=500,content="Szerver oldali hiba!")
+        return HttpResponse(status=500, content="Szerver oldali hiba!")
+
+
 @api.post("/create_quiz")
 def create_quiz(request, data: CreateQuizIn):
     new_quiz = Quiz()
@@ -105,6 +112,7 @@ def create_quiz(request, data: CreateQuizIn):
     except:
         return HttpResponse(status=500, content="Adatbáziskapcsolati hiba történt!")
 
+
 @api.post("/add_question_to_quiz")
 def add_question_to_quiz(request, data: AddQuestionToQuizIn):
     quiz = Quiz.objects.get(id=data.quiz_id)
@@ -115,6 +123,8 @@ def add_question_to_quiz(request, data: AddQuestionToQuizIn):
         return HttpResponse(status=201, content="Sikeresen hozzáadtál egy kérdést a Quizhez!")
     except:
         return HttpResponse(status=500, content="Adatbáziskapcsolati hiba történt!")
+
+
 @api.post("/create_question")
 def create_question(request, data: CreateQuestionIn):
     new_question = Question()
@@ -126,6 +136,7 @@ def create_question(request, data: CreateQuestionIn):
         return HttpResponse(status=201, content="Sikeresen létrehoztál egy új kérdést!")
     except:
         return HttpResponse(status=500, content="Adatbáziskapcsolati hiba történt!")
+
 
 @api.post("/add_user_to_quiz")
 def add_user_to_quiz(request, data: AddUserToQuizIn):
@@ -139,6 +150,7 @@ def add_user_to_quiz(request, data: AddUserToQuizIn):
     except:
         return HttpResponse(status=500, content="Adatbáziskapcsolati hiba történt!")
 
+
 @api.post("/connect_user_role")
 def connect_user_role(request, data: ConnectUserRoleIn):
     user = RegisterUser.objects.get(id=data.user_id)
@@ -150,9 +162,11 @@ def connect_user_role(request, data: ConnectUserRoleIn):
     except:
         return HttpResponse(status=500, content="Adatbáziskapcsolati hiba történt!")
 
+
 glbl_name = ""
 glbl_user_id = 0
 glbl_roles_id = 0
+
 
 @api.get("/registration")
 def OpenPageReg(request):
@@ -163,6 +177,8 @@ def OpenPageReg(request):
     glbl_user_id = 0
     glbl_roles_id = 0
     return render(request, 'registration.html')
+
+
 @api.get("/log")
 def OpenPageLog(request):
     global glbl_name
@@ -172,6 +188,8 @@ def OpenPageLog(request):
     glbl_user_id = 0
     glbl_roles_id = 0
     return render(request, 'login.html')
+
+
 @api.get("/users")
 def OpenPageUser(request):
     global glbl_name
@@ -184,6 +202,8 @@ def OpenPageUser(request):
         'roles_id': glbl_roles_id,
     }
     return render(request, 'users.html', context)
+
+
 @api.get("/menu")
 def OpenPageMenu(request):
     global glbl_name
@@ -205,6 +225,8 @@ def OpenPageMenu(request):
             'roles_id': glbl_roles_id,
         }
         return render(request, 'menu.html', context)
+
+
 @api.get("/quiz")
 def OpenPageQuiz(request):
     global glbl_name
@@ -217,6 +239,8 @@ def OpenPageQuiz(request):
         'roles_id': glbl_roles_id,
     }
     return render(request, 'quiz.html', context)
+
+
 @api.get("/profile")
 def OpenPageProf(request):
     global glbl_name
@@ -243,6 +267,8 @@ def OpenPageProf(request):
             'dateOfBirth': dateOfBirth
         }
         return render(request, 'profile.html', context)
+
+
 @api.get("/index")
 def OpenPageIndex(request):
     global glbl_name
@@ -252,6 +278,8 @@ def OpenPageIndex(request):
     glbl_user_id = 0
     glbl_roles_id = 0
     return render(request, 'index.html')
+
+
 @api.get("/uinvite")
 def OpenPageInvite(request):
     global glbl_name
@@ -264,6 +292,8 @@ def OpenPageInvite(request):
         'roles_id': glbl_roles_id,
     }
     return render(request, 'uinvite.html', context)
+
+
 @api.get("/unew")
 def OpenPageNew(request):
     global glbl_name
@@ -276,6 +306,8 @@ def OpenPageNew(request):
         'roles_id': glbl_roles_id,
     }
     return render(request, 'unew.html', context)
+
+
 @api.get("/urole")
 def OpenPageRole(request):
     global glbl_name
@@ -288,6 +320,8 @@ def OpenPageRole(request):
         'roles_id': glbl_roles_id,
     }
     return render(request, 'urole.html', context)
+
+
 @api.get("/upassword")
 def OpenPagePass(request):
     global glbl_name
@@ -300,6 +334,8 @@ def OpenPagePass(request):
         'roles_id': glbl_roles_id,
     }
     return render(request, 'upassword.html', context)
+
+
 @api.get("/qdelete")
 def OpenPageDel(request):
     global glbl_name
@@ -312,6 +348,8 @@ def OpenPageDel(request):
         'roles_id': glbl_roles_id,
     }
     return render(request, 'qdelete.html', context)
+
+
 @api.get("/qgenerate")
 def OpenPageGen(request):
     global glbl_name
@@ -324,6 +362,8 @@ def OpenPageGen(request):
         'roles_id': glbl_roles_id,
     }
     return render(request, 'qgenerate.html', context)
+
+
 @api.get("/qpick")
 def OpenPagePick(request):
     global glbl_name
@@ -336,3 +376,18 @@ def OpenPagePick(request):
         'roles_id': glbl_roles_id,
     }
     return render(request, 'qpick.html', context)
+
+
+@api.delete("/delete")
+def DeleteQuiz(request, data: DeleteQuiz):
+    role = k_UserInRoles.objects.get(user_id=data.user_id)
+    if role:
+        if role.Roles_id == 3:
+            quiz = Quiz.objects.filter(id=data.quiz_id)
+        if quiz:
+            try:
+                quiz.delete()
+                return HttpResponse(status=201, content="Sikeresen törölted a quiz-t")
+
+            except:
+                return HttpResponse(status=500, content="Adatbáziskapcsolati hiba történt!")
