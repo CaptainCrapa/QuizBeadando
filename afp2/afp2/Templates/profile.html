@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{% static 'css/root.css' %}">
     <link rel="stylesheet" href="{% static 'css/tags.css' %}">
     <link rel="icon" href="{% static 'img/icon.jpg' %}">
+    <script src="{% static 'js/profile.js' %}"></script>
 </head>
 <body>
     <header>
@@ -33,25 +34,32 @@
                         <label class="profile-label">Teljes név:</label>
                     </div>
                     <div class="flex-form-item">
-                        <span class="profile-span">Test text</span>
+                        <span class="profile-span">{{ fullname }}</span>
                     </div>
                     <div class="flex-form-item">
                         <label class="profile-label">Felhasználói név:</label>
                     </div>
                     <div class="flex-form-item">
-                        <span class="profile-span">Test text</span>
+                        <span class="profile-span">{{ usrname }}</span>
                     </div>
                     <div class="flex-form-item">
                         <label class="profile-label">E-mail cím:</label>
                     </div>
                     <div class="flex-form-item">
-                        <span class="profile-span">Test text</span>
+                        <span class="profile-span">{{ email }}</span>
+                    </div>
+                    <div class="flex-form-item">
+                        <label class="profile-label">Jelszó:</label>
+                        <input type="checkbox" id="toggle" onchange="togglePasswordVisibility()">
+                    </div>
+                    <div class="flex-form-item">
+                        <span class="profile-span" id="password" style="display: none;">{{ password }}</span>
                     </div>
                     <div class="flex-form-item">
                         <label class="profile-label">Születési dátum:</label>
                     </div>
                     <div class="flex-form-item">
-                        <span class="profile-span">Test text</span>
+                        <span class="profile-span">{{ dateOfBirth }}</span>
                     </div>
                     <div class="flex-form-item">
                         <label class="profile-label">Jogosultság:</label>
