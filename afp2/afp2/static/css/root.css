@@ -27,4 +27,5 @@
     --footer-text-color: hsl(0, 0%, 65%);
     --hover-row-color: #1e1e1e;
     --even-row-color: #686868;
+    --selected-row-color: #c08e8e;
 }

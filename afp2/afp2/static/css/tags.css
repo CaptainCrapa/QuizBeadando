@@ -120,3 +120,7 @@ table.table tbody tr:nth-child(even) {
 table.table tbody tr:hover {
   background-color: var(--hover-row-color);
 }
+
+table.table tbody tr.selected {
+  background-color: var(--selected-row-color);
+}
