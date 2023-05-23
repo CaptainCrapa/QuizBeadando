@@ -83,7 +83,7 @@ function qDelete(event) {
     quiz_id: quizId
   };
   console.log(data);
-  axios.delete('/api/delete', { data })
+  axios.post('/api/delete', data)
     .then(response => {
       document.querySelector("#success").textContent = response.data;
       document.querySelector("#error").textContent = "";
@@ -103,8 +103,8 @@ function qDelete(event) {
       }
     });
   } else {
-    document.querySelector('#error').textContent = "Nincs kvíz kijelölve!";
-    document.querySelector("#success").textContent = "";
+      document.querySelector('#error').textContent = "Nincs kvíz kijelölve!";
+      document.querySelector("#success").textContent = "";
   }
 }
 

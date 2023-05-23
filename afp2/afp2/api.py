@@ -380,7 +380,7 @@ def OpenPagePick(request):
     return render(request, 'qpick.html', context)
 
 
-@api.delete("/delete")
+@api.post("/delete")
 def DeleteQuiz(request, data: DeleteQuiz):
     role = k_UserInRoles.objects.get(User_id=data.user_id)
     if role:
@@ -388,7 +388,7 @@ def DeleteQuiz(request, data: DeleteQuiz):
             quiz = Quiz.objects.filter(id=data.quiz_id)
             if quiz.exists():
                 try:
-                    quiz.delete()
+                    quiz.update(deleted=1)
                     return HttpResponse(status=200, content="Sikeresen törölted a quiz-t!")
                 except:
                     return HttpResponse(status=500, content="Adatbáziskapcsolati hiba történt!")
@@ -396,6 +396,25 @@ def DeleteQuiz(request, data: DeleteQuiz):
                 return HttpResponse(status=404, content="A megadott quiz nem található!")
         else:
             return HttpResponse(status=403, content="Nincs megfelelő jogosultságod a törléshez!")
+    else:
+        return HttpResponse(status=404, content="Nem található a felhasználó!")
+
+@api.post("/undelete")
+def UnDeleteQuiz(request, data: DeleteQuiz):
+    role = k_UserInRoles.objects.get(User_id=data.user_id)
+    if role:
+        if role.Roles_id == 3:
+            quiz = Quiz.objects.filter(id=data.quiz_id)
+            if quiz.exists():
+                try:
+                    quiz.update(deleted=1)
+                    return HttpResponse(status=200, content="Sikeresen visszaállítottad a kvízt!")
+                except:
+                    return HttpResponse(status=500, content="Adatbáziskapcsolati hiba történt!")
+            else:
+                return HttpResponse(status=404, content="A megadott quiz nem található!")
+        else:
+            return HttpResponse(status=403, content="Nincs megfelelő jogosultságod a visszaállításhoz!")
     else:
         return HttpResponse(status=404, content="Nem található a felhasználó!")
 
