@@ -1,3 +1,5 @@
+import json
+
 from django.db import IntegrityError
 from django.http import HttpResponse
 from ninja import NinjaAPI, Form
@@ -380,14 +382,37 @@ def OpenPagePick(request):
 
 @api.delete("/delete")
 def DeleteQuiz(request, data: DeleteQuiz):
-    role = k_UserInRoles.objects.get(user_id=data.user_id)
+    role = k_UserInRoles.objects.get(User_id=data.user_id)
     if role:
         if role.Roles_id == 3:
             quiz = Quiz.objects.filter(id=data.quiz_id)
-        if quiz:
-            try:
-                quiz.delete()
-                return HttpResponse(status=201, content="Sikeresen törölted a quiz-t")
+            if quiz.exists():
+                try:
+                    quiz.delete()
+                    return HttpResponse(status=200, content="Sikeresen törölted a quiz-t!")
+                except:
+                    return HttpResponse(status=500, content="Adatbáziskapcsolati hiba történt!")
+            else:
+                return HttpResponse(status=404, content="A megadott quiz nem található!")
+        else:
+            return HttpResponse(status=403, content="Nincs megfelelő jogosultságod a törléshez!")
+    else:
+        return HttpResponse(status=404, content="Nem található a felhasználó!")
 
-            except:
-                return HttpResponse(status=500, content="Adatbáziskapcsolati hiba történt!")
+@api.get("/quizzes")
+def list_quizzes(request):
+    quizzes = Quiz.objects.all()
+    quiz_list = []
+    for quiz in quizzes:
+        quiz_data = {
+            "id": quiz.id,
+            "name": quiz.name,
+            "active": quiz.active,
+            "created_at": quiz.created_at.isoformat(),
+            "updated_at": quiz.updated_at.isoformat(),
+            "deleted": quiz.deleted,
+            "Created_By_id": quiz.Created_By_id,
+            "Updated_By_id": quiz.Updated_By_id,
+        }
+        quiz_list.append(quiz_data)
+    return HttpResponse(json.dumps(quiz_list), content_type="application/json")
