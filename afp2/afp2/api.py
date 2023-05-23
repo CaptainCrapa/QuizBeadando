@@ -1,10 +1,12 @@
+import json
+
 from django.db import IntegrityError
 from django.http import HttpResponse
 from ninja import NinjaAPI, Form
 from django.shortcuts import render
 
 from afp2.schemas import RegisterUserIn, LoginUser, CreateQuizIn, CreateQuestionIn, AddQuestionToQuizIn, \
-    AddUserToQuizIn, ConnectUserRoleIn, RegisterUserByAdmin, UserPasswordModification, DeleteQuiz
+    AddUserToQuizIn, ConnectUserRoleIn, RegisterUserByAdmin, UserPasswordModification, DeleteQuiz, UnDeleteQuiz
 from afp2.models import RegisterUser, k_UserInRoles, Roles, Quiz, Question, k_QuestionInQuiz, InvitedUser
 
 import base64
@@ -350,6 +352,20 @@ def OpenPageDel(request):
     return render(request, 'qdelete.html', context)
 
 
+@api.get("/qundelete")
+def OpenPageDel(request):
+    global glbl_name
+    global glbl_user_id
+    global glbl_roles_id
+
+    context = {
+        'usrname': glbl_name,
+        'user_id': glbl_user_id,
+        'roles_id': glbl_roles_id,
+    }
+    return render(request, 'qundelete.html', context)
+
+
 @api.get("/qgenerate")
 def OpenPageGen(request):
     global glbl_name
@@ -378,16 +394,63 @@ def OpenPagePick(request):
     return render(request, 'qpick.html', context)
 
 
-@api.delete("/delete")
+@api.post("/delete")
 def DeleteQuiz(request, data: DeleteQuiz):
-    role = k_UserInRoles.objects.get(user_id=data.user_id)
+    role = k_UserInRoles.objects.get(User_id=data.user_id)
     if role:
         if role.Roles_id == 3:
             quiz = Quiz.objects.filter(id=data.quiz_id)
-        if quiz:
-            try:
-                quiz.delete()
-                return HttpResponse(status=201, content="Sikeresen törölted a quiz-t")
+            if quiz.exists():
+                try:
+                    quiz.update(deleted=1)
+                    return HttpResponse(status=200, content="Sikeresen törölted a quiz-t!")
+                except:
+                    return HttpResponse(status=500, content="Adatbáziskapcsolati hiba történt!")
+            else:
+                return HttpResponse(status=404, content="A megadott quiz nem található!")
+        else:
+            return HttpResponse(status=403, content="Nincs megfelelő jogosultságod a törléshez!")
+    else:
+        return HttpResponse(status=404, content="Nem található a felhasználó!")
 
-            except:
-                return HttpResponse(status=500, content="Adatbáziskapcsolati hiba történt!")
+@api.post("/undelete")
+def UnDeleteQuiz(request, data: UnDeleteQuiz):
+    role = k_UserInRoles.objects.get(User_id=data.user_id)
+    if role:
+        if role.Roles_id == 3:
+            quiz = Quiz.objects.filter(id=data.quiz_id)
+            if quiz.exists():
+                try:
+                    quiz.update(deleted=0)
+                    return HttpResponse(status=200, content="Sikeresen visszaállítottad a kvízt!")
+                except:
+                    return HttpResponse(status=500, content="Adatbáziskapcsolati hiba történt!")
+            else:
+                return HttpResponse(status=404, content="A megadott quiz nem található!")
+        else:
+            return HttpResponse(status=403, content="Nincs megfelelő jogosultságod a visszaállításhoz!")
+    else:
+        return HttpResponse(status=404, content="Nem található a felhasználó!")
+
+@api.get("/quizzes")
+def list_quizzes(request):
+    quizzes = Quiz.objects.all()
+    quiz_list = []
+    for quiz in quizzes:
+        created_by = RegisterUser.objects.get(id=quiz.Created_By_id)
+        updated_by = RegisterUser.objects.get(id=quiz.Updated_By_id)
+        created_by_username = created_by.username
+        updated_by_username = updated_by.username
+
+        quiz_data = {
+            "id": quiz.id,
+            "name": quiz.name,
+            "active": quiz.active,
+            "created_at": quiz.created_at.isoformat(),
+            "updated_at": quiz.updated_at.isoformat(),
+            "deleted": quiz.deleted,
+            "Created_By_id": created_by_username,
+            "Updated_By_id": updated_by_username,
+        }
+        quiz_list.append(quiz_data)
+    return HttpResponse(json.dumps(quiz_list), content_type="application/json")
