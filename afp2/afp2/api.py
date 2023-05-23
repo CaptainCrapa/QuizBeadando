@@ -437,6 +437,11 @@ def list_quizzes(request):
     quizzes = Quiz.objects.all()
     quiz_list = []
     for quiz in quizzes:
+        created_by = RegisterUser.objects.get(id=quiz.Created_By_id)
+        updated_by = RegisterUser.objects.get(id=quiz.Updated_By_id)
+        created_by_username = created_by.username
+        updated_by_username = updated_by.username
+
         quiz_data = {
             "id": quiz.id,
             "name": quiz.name,
@@ -444,8 +449,8 @@ def list_quizzes(request):
             "created_at": quiz.created_at.isoformat(),
             "updated_at": quiz.updated_at.isoformat(),
             "deleted": quiz.deleted,
-            "Created_By_id": quiz.Created_By_id,
-            "Updated_By_id": quiz.Updated_By_id,
+            "Created_By_id": created_by_username,
+            "Updated_By_id": updated_by_username,
         }
         quiz_list.append(quiz_data)
     return HttpResponse(json.dumps(quiz_list), content_type="application/json")
