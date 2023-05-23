@@ -53,3 +53,7 @@ class ConnectUserRoleIn(Schema):
 class DeleteQuiz(Schema):
     quiz_id: int
     user_id: int
+
+class UnDeleteQuiz(Schema):
+    quiz_id: int
+    user_id: int

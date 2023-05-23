@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{% static 'css/root.css' %}">
     <link rel="stylesheet" href="{% static 'css/tags.css' %}">
     <link rel="icon" href="{% static 'img/icon.jpg' %}">
-    <script type="text/javascript" src="{% static 'js/qdelete.js' %}" charset="utf-8" defer ></script>
+    <script type="text/javascript" src="{% static 'js/qundelete.js' %}" charset="utf-8" defer ></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 </head>
@@ -30,7 +30,7 @@
         <a class="menu" href="/api/index">Kijelentkezés</a>
     </nav>
     <nav>
-        <a class="menu" href="/api/qundelete">Archivált kvízek</a>
+        <a class="menu" href="/api/qdelete">Kvíz törlés</a>
     </nav>
     </header>
     <main>
@@ -51,7 +51,7 @@
                         <tbody id="quiz-list-body"></tbody>
                     </table>
                 <div class="flex-form-item">
-                    <input type="submit" name="submit" value="Kvíz törlése">
+                    <input type="submit" name="submit" value="Kvíz visszaállítása">
                     <p class="form-message" id="success"></p>
                     <p class="form-error-message" id="error"></p>
                 </div>
