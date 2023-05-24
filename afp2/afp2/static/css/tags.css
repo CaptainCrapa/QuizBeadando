@@ -77,6 +77,14 @@ input[type=submit] {
     height: 1.8rem;
     border-radius: 0.3rem;
 }
+input[type=button] {
+    display: block;
+    font-size: 1rem;
+    margin: 1rem auto 0 auto;
+    height: 1.8rem;
+    border-radius: 0.3rem;
+    background-color: #c49f9f;
+}
 footer {
     color: var(--footer-text-color);
     padding: 0.6rem;
