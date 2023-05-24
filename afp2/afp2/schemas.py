@@ -57,3 +57,6 @@ class DeleteQuiz(Schema):
 class UnDeleteQuiz(Schema):
     quiz_id: int
     user_id: int
+
+class startQuiz(Schema):
+    quiz_id: int

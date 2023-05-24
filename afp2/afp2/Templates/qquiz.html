@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<html lang="hu">
+<head>
+    <title>Tudástár Quiz</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Quiz learning page for students.">
+    <meta name="keywords" content="learning">
+    <meta name="author" content="Team PTI Jászberény">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    {% if usrname == "" %} <script>window.location.href = '/api/index';</script> {% endif %}
+    <link rel="stylesheet" href="{% static 'css/classes.css' %}">
+    <link rel="stylesheet" href="{% static 'css/root.css' %}">
+    <link rel="stylesheet" href="{% static 'css/tags.css' %}">
+    <link rel="icon" href="{% static 'img/icon.jpg' %}">
+    <script type="text/javascript" src="{% static 'js/qquiz.js' %}" charset="utf-8" defer ></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</head>
+<body>
+    <header>
+        <h1>Tudástár Quiz</h1>
+    <nav>
+        <p class="menu-title">Menü</p>
+        <a class="menu" href="/api/menu">Főoldal</a>
+        <a class="menu-selected" href="/api/quiz">Kvízek</a>
+        <a class="menu" href="/api/profile">Profil</a>
+        <a class= "menu" id="users" href="/api/users">Felhasználók</a>
+        <a class="menu" href="/api/index">Kijelentkezés</a>
+        {% if roles_id > 1 %}
+        <script>
+            var usersLink = document.getElementById("users");
+            usersLink.style.display = "visible";
+        </script>
+        {% else %}
+        <script>
+            var usersLink = document.getElementById("users");
+            usersLink.style.display = "none";
+        </script>
+        {% endif %}
+    </nav>
+    </header>
+    <main>
+        <form id="qquiz-form" autocomplete="off">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Kérdés</th>
+                        <th>Válasz</th>
+                        <th>✓</th>
+                    </tr>
+                </thead>
+                <tbody id="list-body"></tbody>
+            </table>
+        <script>
+            var quizList = JSON.parse('{{ quiz_list|escapejs }}');
+            var quizListBody = document.getElementById('list-body');
+
+            quizList.forEach(function(item) {
+            if (item.active == true) {
+                    var row = document.createElement('tr');
+                    var questionCell = document.createElement('td');
+                    var answerCell = document.createElement('td');
+                    var trueRadio = document.createElement('input');
+                    var falseRadio = document.createElement('input');
+                    var trueLabel = document.createElement('label');
+                    var falseLabel = document.createElement('label');
+                    var pointCell = document.createElement('td');
+
+                    // igaz gomb
+                    trueRadio.type = 'radio';
+                    trueRadio.name = 'quiz_' + item.id;
+                    trueRadio.value = 'true';
+                    trueLabel.appendChild(trueRadio);
+                    trueLabel.appendChild(document.createTextNode('Igaz'));
+
+                    // hamis gomb
+                    falseRadio.type = 'radio';
+                    falseRadio.name = 'quiz_' + item.id;
+                    falseRadio.value = 'false';
+                    falseLabel.appendChild(falseRadio);
+                    falseLabel.appendChild(document.createTextNode('Hamis'));
+
+                    // kérdés
+                    questionCell.textContent = item.question;
+
+                    // gombok a válaszba
+                    answerCell.appendChild(trueLabel);
+                    answerCell.appendChild(falseLabel);
+
+                    // sorok feltöltése
+                    row.appendChild(questionCell);
+                    row.appendChild(answerCell);
+
+
+                    // pontok hozzáadása
+                    row.innerHTML += '<td class="point-cell"></td>';
+
+                    // table bodyhoz a sor
+                    quizListBody.appendChild(row);
+                }
+            });
+
+            const verifyButtonForm = document.querySelector('#qquiz-form');
+            verifyButtonForm.addEventListener('submit', verifyQuiz);
+            function verifyQuiz(event) {
+                event.preventDefault();
+
+                var rows = document.querySelectorAll('#list-body tr');
+
+                for (var i = 0; i < rows.length; i++) {
+                    var row = rows[i];
+                    var pointCell = row.querySelector('td:last-child');
+                    var radios = row.querySelectorAll('input[type=radio]');
+                    var selectedAnswer = '';
+                    var result = '';
+
+                    for (var j = 0; j < radios.length; j++) {
+                        if (radios[j].checked) {
+                            selectedAnswer = radios[j].value.toLowerCase();
+                            break;
+                        }
+                    }
+                    var originalAnswer = quizList[i].answer;
+
+                    if (selectedAnswer === 'true' && originalAnswer === true) {
+                        pointCell.textContent = "true";
+                        result = '✓';
+                    } else if (selectedAnswer === 'false' && originalAnswer === false) {
+                        pointCell.textContent = "true";
+                        result = '✓';
+                    } else {
+                        pointCell.textContent = "false";
+                        result = 'X';
+                    }
+                    row.querySelector('td:nth-child(3)').textContent = result;
+                }
+            }
+        </script>
+            <div class="flex-form-item">
+                <input type="submit" name="submit" value="Ellenőrzés" tabindex="4">
+            </div>
+        </form>
+    </main>
+    <footer>
+        <p><a href="#top">Lap tetejére <img src="{% static 'img/icon_arrowup.png' %}" alt="fel"></a></p>
+        <p>Eszterházy Károly Katolikus Egyetem<br></p>
+        <p>PTI Jászberény Team 2023</p>
+        <p>Bejelentkezve, mint {{ usrname }}</p>
+    </footer>
+</body>
+</html>

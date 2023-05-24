@@ -1,12 +1,13 @@
 import json
 
 from django.db import IntegrityError
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from ninja import NinjaAPI, Form
 from django.shortcuts import render
 
 from afp2.schemas import RegisterUserIn, LoginUser, CreateQuizIn, CreateQuestionIn, AddQuestionToQuizIn, \
-    AddUserToQuizIn, ConnectUserRoleIn, RegisterUserByAdmin, UserPasswordModification, DeleteQuiz, UnDeleteQuiz
+    AddUserToQuizIn, ConnectUserRoleIn, RegisterUserByAdmin, UserPasswordModification, DeleteQuiz, UnDeleteQuiz, \
+    startQuiz
 from afp2.models import RegisterUser, k_UserInRoles, Roles, Quiz, Question, k_QuestionInQuiz, InvitedUser
 
 import base64
@@ -211,6 +212,7 @@ glbl_name = ""
 glbl_user_id = 0
 glbl_roles_id = 0
 glbl_quiz_id = 0
+glbl_quiz_list = []
 
 
 @api.get("/registration")
@@ -396,7 +398,7 @@ def OpenPageDel(request):
 
 
 @api.get("/qundelete")
-def OpenPageDel(request):
+def OpenPageUnDel(request):
     global glbl_name
     global glbl_user_id
     global glbl_roles_id
@@ -437,7 +439,7 @@ def OpenPagePick(request):
     return render(request, 'qpick.html', context)
 
 @api.get("/qquestion")
-def OpenPageDel(request):
+def OpenPageQuestion(request):
     global glbl_name
     global glbl_user_id
     global glbl_roles_id
@@ -451,18 +453,21 @@ def OpenPageDel(request):
     }
     return render(request, 'qquestion.html', context)
 @api.get("/qquiz")
-def OpenPageDel(request):
+def OpenPageQuiz(request):
     global glbl_name
     global glbl_user_id
     global glbl_roles_id
+    global glbl_quiz_id
+    global glbl_quiz_list
 
     context = {
         'usrname': glbl_name,
         'user_id': glbl_user_id,
         'roles_id': glbl_roles_id,
+        'glbl_quiz_id': glbl_quiz_id,
+        'quiz_list': json.dumps(glbl_quiz_list),
     }
     return render(request, 'qquiz.html', context)
-
 
 @api.get("/quizzes")
 def list_quizzes(request):
@@ -508,6 +513,28 @@ def pick_quiz(request):
         }
         quiz_list.append(quiz_data)
     return HttpResponse(json.dumps(quiz_list), content_type="application/json")
+
+@api.post("/quiz_start")
+def start_quiz(request, data: startQuiz):
+    global glbl_quiz_id
+    global glbl_quiz_list
+    selected_quiz = InvitedUser.objects.get(Quiz_Id=data.quiz_id)
+    question_in_connect = k_QuestionInQuiz.objects.filter(Quiz_Id=selected_quiz.Quiz_Id)
+    questions = Question.objects.filter(id__in=question_in_connect.values('Question_Id'))
+    glbl_quiz_id = data.quiz_id
+
+    quiz_list = []
+    for select in questions:
+        quiz_data = {
+            "id": select.id,
+            "question": select.question,
+            "answer": select.answer,
+            "active": select.active,
+        }
+        quiz_list.append(quiz_data)
+
+    glbl_quiz_list = quiz_list
+    return HttpResponseRedirect('/api/qquiz')
 
 @api.get("/finish_quiz")
 def quiz_finish(request):
