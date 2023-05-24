@@ -50,13 +50,6 @@
                         <span class="profile-span">{{ email }}</span>
                     </div>
                     <div class="flex-form-item">
-                        <label class="profile-label">Jelszó:</label>
-                        <input type="checkbox" id="toggle" onchange="togglePasswordVisibility()">
-                    </div>
-                    <div class="flex-form-item">
-                        <span class="profile-span" id="password" style="display: none;">{{ password }}</span>
-                    </div>
-                    <div class="flex-form-item">
                         <label class="profile-label">Születési dátum:</label>
                     </div>
                     <div class="flex-form-item">
@@ -69,8 +62,54 @@
                         <span class="profile-span" id="role"></span>
                     </div>
                 </div>
-            </form>
         </div>
+        <div class="form-container">
+            <div class="flex-form-container">
+                <div class="flex-form-item">
+                    <span class="profile-label">Kvízeim:</span>
+                    <span id="quizzes"></span>
+                </div>
+            </div>
+        </div>
+    <script>
+        fetch('/api/get_quizzes')
+            .then(response => response.json())
+            .then(data => {
+                var quizzesContainer = document.getElementById('quizzes');
+                for (var i = 0; i < data.length; i++) {
+                    var quiz = data[i];
+
+                    var quizElement = document.createElement('div');
+                    quizElement.className = 'flex-form-item';
+
+                    var quizName = document.createElement('span');
+                    quizName.className = 'profile-span';
+                    quizName.textContent = quiz.quiz_name;
+
+                    var quizDetails = document.createElement('div');
+                    quizDetails.className = 'flex-form-item';
+
+                    var quizDate = document.createElement('span');
+                    quizDate.className = 'profile-span';
+                    quizDate.textContent = quiz.date_completed.split('T')[0];
+
+                    var quizScore = document.createElement('span');
+                    quizScore.className = 'profile-span';
+                    quizScore.textContent = ' || ' + quiz.score + '%';
+
+                    quizDetails.appendChild(quizDate);
+                    quizDetails.appendChild(quizScore);
+
+                    quizElement.appendChild(quizName);
+                    quizElement.appendChild(quizDetails);
+
+                    quizzesContainer.appendChild(quizElement);
+                }
+            })
+            .catch(error => {
+                console.error('Hiba történt:', error);
+            });
+    </script>
         {% if roles_id == 3 %}
         <script>
             var roleLink = document.getElementById("role");
