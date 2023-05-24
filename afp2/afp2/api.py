@@ -1,7 +1,7 @@
 import json
 
 from django.db import IntegrityError
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from ninja import NinjaAPI, Form
 from django.shortcuts import render
 
@@ -327,8 +327,6 @@ def OpenPageProf(request):
     else:
         user = RegisterUser.objects.get(username=glbl_name)
         fullname = user.fullname
-        # encoded_password = user.password
-        # password = base64.b64decode(encoded_password).decode()
         password = user.password
         email = user.email
         dateOfBirth = user.dateOfBirth
@@ -604,3 +602,20 @@ def quiz_finish(request):
     glbl_quiz_id = 0
     glbl_quiz_list = []
     return render(request, 'quiz.html', context)
+
+@api.get("/get_quizzes")
+def get_quizzes(request):
+    global glbl_user_id
+
+    quizzes = UserQuiz.objects.filter(User_Id=glbl_user_id).select_related('Quiz_Id')
+
+    quiz_list = []
+    for quiz in quizzes:
+        quiz_data = {
+            "quiz_name": quiz.Quiz_Id.name,
+            "date_completed": quiz.mikor,
+            "score": quiz.eredmeny,
+        }
+        quiz_list.append(quiz_data)
+
+    return JsonResponse(quiz_list, safe=False)
