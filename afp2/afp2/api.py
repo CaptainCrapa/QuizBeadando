@@ -168,6 +168,45 @@ def connect_user_role(request, data: ConnectUserRoleIn):
         return HttpResponse(status=500, content="Adatbáziskapcsolati hiba történt!")
 
 
+@api.post("/delete")
+def DeleteQuiz(request, data: DeleteQuiz):
+    role = k_UserInRoles.objects.get(User_id=data.user_id)
+    if role:
+        if role.Roles_id == 3:
+            quiz = Quiz.objects.filter(id=data.quiz_id)
+            if quiz.exists():
+                try:
+                    quiz.update(deleted=1)
+                    return HttpResponse(status=200, content="Sikeresen törölted a quiz-t!")
+                except:
+                    return HttpResponse(status=500, content="Adatbáziskapcsolati hiba történt!")
+            else:
+                return HttpResponse(status=404, content="A megadott quiz nem található!")
+        else:
+            return HttpResponse(status=403, content="Nincs megfelelő jogosultságod a törléshez!")
+    else:
+        return HttpResponse(status=404, content="Nem található a felhasználó!")
+
+@api.post("/undelete")
+def UnDeleteQuiz(request, data: UnDeleteQuiz):
+    role = k_UserInRoles.objects.get(User_id=data.user_id)
+    if role:
+        if role.Roles_id == 3:
+            quiz = Quiz.objects.filter(id=data.quiz_id)
+            if quiz.exists():
+                try:
+                    quiz.update(deleted=0)
+                    return HttpResponse(status=200, content="Sikeresen visszaállítottad a kvízt!")
+                except:
+                    return HttpResponse(status=500, content="Adatbáziskapcsolati hiba történt!")
+            else:
+                return HttpResponse(status=404, content="A megadott quiz nem található!")
+        else:
+            return HttpResponse(status=403, content="Nincs megfelelő jogosultságod a visszaállításhoz!")
+    else:
+        return HttpResponse(status=404, content="Nem található a felhasználó!")
+
+
 glbl_name = ""
 glbl_user_id = 0
 glbl_roles_id = 0
@@ -425,44 +464,6 @@ def OpenPageDel(request):
     return render(request, 'qquiz.html', context)
 
 
-@api.post("/delete")
-def DeleteQuiz(request, data: DeleteQuiz):
-    role = k_UserInRoles.objects.get(User_id=data.user_id)
-    if role:
-        if role.Roles_id == 3:
-            quiz = Quiz.objects.filter(id=data.quiz_id)
-            if quiz.exists():
-                try:
-                    quiz.update(deleted=1)
-                    return HttpResponse(status=200, content="Sikeresen törölted a quiz-t!")
-                except:
-                    return HttpResponse(status=500, content="Adatbáziskapcsolati hiba történt!")
-            else:
-                return HttpResponse(status=404, content="A megadott quiz nem található!")
-        else:
-            return HttpResponse(status=403, content="Nincs megfelelő jogosultságod a törléshez!")
-    else:
-        return HttpResponse(status=404, content="Nem található a felhasználó!")
-
-@api.post("/undelete")
-def UnDeleteQuiz(request, data: UnDeleteQuiz):
-    role = k_UserInRoles.objects.get(User_id=data.user_id)
-    if role:
-        if role.Roles_id == 3:
-            quiz = Quiz.objects.filter(id=data.quiz_id)
-            if quiz.exists():
-                try:
-                    quiz.update(deleted=0)
-                    return HttpResponse(status=200, content="Sikeresen visszaállítottad a kvízt!")
-                except:
-                    return HttpResponse(status=500, content="Adatbáziskapcsolati hiba történt!")
-            else:
-                return HttpResponse(status=404, content="A megadott quiz nem található!")
-        else:
-            return HttpResponse(status=403, content="Nincs megfelelő jogosultságod a visszaállításhoz!")
-    else:
-        return HttpResponse(status=404, content="Nem található a felhasználó!")
-
 @api.get("/quizzes")
 def list_quizzes(request):
     quizzes = Quiz.objects.all()
@@ -504,3 +505,18 @@ def pick_quiz(request):
         }
         quiz_list.append(quiz_data)
     return HttpResponse(json.dumps(quiz_list), content_type="application/json")
+
+@api.get("/finish_quiz")
+def quiz_finish(request):
+    global glbl_name
+    global glbl_user_id
+    global glbl_roles_id
+    global glbl_quiz_id
+
+    context = {
+        'usrname': glbl_name,
+        'user_id': glbl_user_id,
+        'roles_id': glbl_roles_id,
+    }
+    glbl_quiz_id = 0
+    return render(request, 'quiz.html', context)
