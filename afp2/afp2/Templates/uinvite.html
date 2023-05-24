@@ -10,6 +10,7 @@
     {% load static %}
     {% if usrname == "" %} <script>window.location.href = '/api/index';</script> {% endif %}
     {% if roles_id != 2 %} <script>window.location.href = '/api/menu';</script> {% endif %}
+    {% if quiz_id != 0 %} <script>window.location.href = '/api/qquiz';</script> {% endif %}
     <link rel="stylesheet" href="{% static 'css/classes.css' %}">
     <link rel="stylesheet" href="{% static 'css/root.css' %}">
     <link rel="stylesheet" href="{% static 'css/tags.css' %}">

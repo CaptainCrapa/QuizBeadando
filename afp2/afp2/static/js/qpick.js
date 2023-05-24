@@ -47,14 +47,31 @@ function selectRow(row) {
 }
 
 function qPick(event) {
-  event.preventDefault();
+    event.preventDefault();
 
-  if (selectedRow) {
-          window.location.href = '/api/qquiz';
-  } else {
+    if (selectedRow) {
+      const quizId = selectedRow.querySelector('td:first-child').textContent;
+      const data = {
+        quiz_id: quizId
+      };
+      axios.post('/api/quiz_start', data)
+        .then(response => {
+          document.querySelector("#error").textContent = "";
+          window.location.href = "/api/qquiz"
+        })
+        .catch(error => {
+          if (error.response) {
+            var errorMessage = error.response.data;
+            document.querySelector('#error').textContent = errorMessage;
+          } else {
+            console.log(error);
+            document.querySelector('#error').textContent = "Hiba. További információ a konzolban!";
+          }
+        });
+    } else {
       document.querySelector('#error').textContent = "Nincs kvíz kijelölve!";
       document.querySelector("#success").textContent = "";
-  }
+    }
 }
 
 

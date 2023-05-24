@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
     {% if usrname == "" %} <script>window.location.href = '/api/index';</script> {% endif %}
+    {% if quiz_id != 0 %} <script>window.location.href = '/api/qquiz';</script> {% endif %}
     <link rel="stylesheet" href="{% static 'css/classes.css' %}">
     <link rel="stylesheet" href="{% static 'css/root.css' %}">
     <link rel="stylesheet" href="{% static 'css/tags.css' %}">
@@ -54,7 +55,6 @@
                     </table>
                 <div class="flex-form-item">
                     <input type="submit" name="submit" value="Kvíz kitöltése">
-                    <p class="form-message" id="success"></p>
                     <p class="form-error-message" id="error"></p>
                 </div>
         </form>

@@ -1,13 +1,14 @@
 import json
 
 from django.db import IntegrityError
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from ninja import NinjaAPI, Form
 from django.shortcuts import render
 
 from afp2.schemas import RegisterUserIn, LoginUser, CreateQuizIn, CreateQuestionIn, AddQuestionToQuizIn, \
-    AddUserToQuizIn, ConnectUserRoleIn, RegisterUserByAdmin, UserPasswordModification, DeleteQuiz, UnDeleteQuiz
-from afp2.models import RegisterUser, k_UserInRoles, Roles, Quiz, Question, k_QuestionInQuiz, InvitedUser
+    AddUserToQuizIn, ConnectUserRoleIn, RegisterUserByAdmin, UserPasswordModification, DeleteQuiz, UnDeleteQuiz, \
+    UserQuizSch, startQuiz
+from afp2.models import RegisterUser, k_UserInRoles, Roles, Quiz, Question, k_QuestionInQuiz, InvitedUser, UserQuiz
 
 import base64
 
@@ -206,11 +207,26 @@ def UnDeleteQuiz(request, data: UnDeleteQuiz):
     else:
         return HttpResponse(status=404, content="Nem található a felhasználó!")
 
+@api.post("/user_quiz")
+def finish_quiz(request, data: UserQuizSch):
+    global glbl_quiz_id
+    global glbl_user_id
+    try:
+        quiz_save = UserQuiz()
+        quiz_save.eredmeny = data.result
+        quiz_save.Quiz_Id = Quiz.objects.get(id=glbl_quiz_id)
+        quiz_save.User_Id = RegisterUser.objects.get(id=glbl_user_id)
+        quiz_save.save()
+        return HttpResponse(status=201, content="Sikeresen lementetted a kvízt!")
+    except:
+        return HttpResponse(status=500, content="Adatbáziskapcsolati hiba történt!")
+
 
 glbl_name = ""
 glbl_user_id = 0
 glbl_roles_id = 0
 glbl_quiz_id = 0
+glbl_quiz_list = []
 
 
 @api.get("/registration")
@@ -218,6 +234,10 @@ def OpenPageReg(request):
     global glbl_name
     global glbl_user_id
     global glbl_roles_id
+    global glbl_quiz_id
+    global glbl_quiz_list
+    glbl_quiz_id = 0
+    glbl_quiz_list = 0
     glbl_name = ""
     glbl_user_id = 0
     glbl_roles_id = 0
@@ -229,6 +249,10 @@ def OpenPageLog(request):
     global glbl_name
     global glbl_user_id
     global glbl_roles_id
+    global glbl_quiz_id
+    global glbl_quiz_list
+    glbl_quiz_id = 0
+    glbl_quiz_list = 0
     glbl_name = ""
     glbl_user_id = 0
     glbl_roles_id = 0
@@ -240,11 +264,13 @@ def OpenPageUser(request):
     global glbl_name
     global glbl_user_id
     global glbl_roles_id
+    global glbl_quiz_id
 
     context = {
         'usrname': glbl_name,
         'user_id': glbl_user_id,
         'roles_id': glbl_roles_id,
+        'quiz_id': glbl_quiz_id,
     }
     return render(request, 'users.html', context)
 
@@ -254,6 +280,7 @@ def OpenPageMenu(request):
     global glbl_name
     global glbl_user_id
     global glbl_roles_id
+    global glbl_quiz_id
     if glbl_name == "":
         return render(request, 'index.html')
     else:
@@ -268,6 +295,7 @@ def OpenPageMenu(request):
             'usrname': glbl_name,
             'user_id': glbl_user_id,
             'roles_id': glbl_roles_id,
+            'quiz_id': glbl_quiz_id,
         }
         return render(request, 'menu.html', context)
 
@@ -277,11 +305,13 @@ def OpenPageQuiz(request):
     global glbl_name
     global glbl_user_id
     global glbl_roles_id
+    global glbl_quiz_id
 
     context = {
         'usrname': glbl_name,
         'user_id': glbl_user_id,
         'roles_id': glbl_roles_id,
+        'quiz_id': glbl_quiz_id,
     }
     return render(request, 'quiz.html', context)
 
@@ -291,6 +321,7 @@ def OpenPageProf(request):
     global glbl_name
     global glbl_user_id
     global glbl_roles_id
+    global glbl_quiz_id
     if glbl_name == "":
         return render(request, 'index.html')
     else:
@@ -309,7 +340,8 @@ def OpenPageProf(request):
             'fullname': fullname,
             'password': password,
             'email': email,
-            'dateOfBirth': dateOfBirth
+            'dateOfBirth': dateOfBirth,
+            'quiz_id': glbl_quiz_id,
         }
         return render(request, 'profile.html', context)
 
@@ -319,6 +351,10 @@ def OpenPageIndex(request):
     global glbl_name
     global glbl_user_id
     global glbl_roles_id
+    global glbl_quiz_id
+    global glbl_quiz_list
+    glbl_quiz_id = 0
+    glbl_quiz_list = 0
     glbl_name = ""
     glbl_user_id = 0
     glbl_roles_id = 0
@@ -330,11 +366,13 @@ def OpenPageInvite(request):
     global glbl_name
     global glbl_user_id
     global glbl_roles_id
+    global glbl_quiz_id
 
     context = {
         'usrname': glbl_name,
         'user_id': glbl_user_id,
         'roles_id': glbl_roles_id,
+        'quiz_id': glbl_quiz_id,
     }
     return render(request, 'uinvite.html', context)
 
@@ -344,11 +382,13 @@ def OpenPageNew(request):
     global glbl_name
     global glbl_user_id
     global glbl_roles_id
+    global glbl_quiz_id
 
     context = {
         'usrname': glbl_name,
         'user_id': glbl_user_id,
         'roles_id': glbl_roles_id,
+        'quiz_id': glbl_quiz_id,
     }
     return render(request, 'unew.html', context)
 
@@ -358,11 +398,13 @@ def OpenPageRole(request):
     global glbl_name
     global glbl_user_id
     global glbl_roles_id
+    global glbl_quiz_id
 
     context = {
         'usrname': glbl_name,
         'user_id': glbl_user_id,
         'roles_id': glbl_roles_id,
+        'quiz_id': glbl_quiz_id,
     }
     return render(request, 'urole.html', context)
 
@@ -372,11 +414,13 @@ def OpenPagePass(request):
     global glbl_name
     global glbl_user_id
     global glbl_roles_id
+    global glbl_quiz_id
 
     context = {
         'usrname': glbl_name,
         'user_id': glbl_user_id,
         'roles_id': glbl_roles_id,
+        'quiz_id': glbl_quiz_id,
     }
     return render(request, 'upassword.html', context)
 
@@ -386,25 +430,29 @@ def OpenPageDel(request):
     global glbl_name
     global glbl_user_id
     global glbl_roles_id
+    global glbl_quiz_id
 
     context = {
         'usrname': glbl_name,
         'user_id': glbl_user_id,
         'roles_id': glbl_roles_id,
+        'quiz_id': glbl_quiz_id,
     }
     return render(request, 'qdelete.html', context)
 
 
 @api.get("/qundelete")
-def OpenPageDel(request):
+def OpenPageUnDel(request):
     global glbl_name
     global glbl_user_id
     global glbl_roles_id
+    global glbl_quiz_id
 
     context = {
         'usrname': glbl_name,
         'user_id': glbl_user_id,
         'roles_id': glbl_roles_id,
+        'quiz_id': glbl_quiz_id,
     }
     return render(request, 'qundelete.html', context)
 
@@ -414,11 +462,13 @@ def OpenPageGen(request):
     global glbl_name
     global glbl_user_id
     global glbl_roles_id
+    global glbl_quiz_id
 
     context = {
         'usrname': glbl_name,
         'user_id': glbl_user_id,
         'roles_id': glbl_roles_id,
+        'quiz_id': glbl_quiz_id,
     }
     return render(request, 'qgenerate.html', context)
 
@@ -428,16 +478,18 @@ def OpenPagePick(request):
     global glbl_name
     global glbl_user_id
     global glbl_roles_id
+    global glbl_quiz_id
 
     context = {
         'usrname': glbl_name,
         'user_id': glbl_user_id,
         'roles_id': glbl_roles_id,
+        'quiz_id': glbl_quiz_id,
     }
     return render(request, 'qpick.html', context)
 
 @api.get("/qquestion")
-def OpenPageDel(request):
+def OpenPageQuestion(request):
     global glbl_name
     global glbl_user_id
     global glbl_roles_id
@@ -451,18 +503,21 @@ def OpenPageDel(request):
     }
     return render(request, 'qquestion.html', context)
 @api.get("/qquiz")
-def OpenPageDel(request):
+def OpenPageQuiz(request):
     global glbl_name
     global glbl_user_id
     global glbl_roles_id
+    global glbl_quiz_id
+    global glbl_quiz_list
 
     context = {
         'usrname': glbl_name,
         'user_id': glbl_user_id,
         'roles_id': glbl_roles_id,
+        'glbl_quiz_id': glbl_quiz_id,
+        'quiz_list': json.dumps(glbl_quiz_list),
     }
     return render(request, 'qquiz.html', context)
-
 
 @api.get("/quizzes")
 def list_quizzes(request):
@@ -483,6 +538,7 @@ def list_quizzes(request):
             "deleted": quiz.deleted,
             "Created_By_id": created_by_username,
             "Updated_By_id": updated_by_username,
+            'quiz_id': glbl_quiz_id,
         }
         quiz_list.append(quiz_data)
     return HttpResponse(json.dumps(quiz_list), content_type="application/json")
@@ -496,15 +552,40 @@ def pick_quiz(request):
 
     quiz_list = []
     for pick in quizzes:
+        created_by = RegisterUser.objects.get(id=pick.Created_By_id)
+        created_by_username = created_by.username
+
         quiz_data = {
             "id": pick.id,
             "name": pick.name,
             "active": pick.active,
             "deleted": pick.deleted,
-            "Created_By_id": pick.Created_By_id,
+            "Created_By_id": created_by_username,
         }
         quiz_list.append(quiz_data)
     return HttpResponse(json.dumps(quiz_list), content_type="application/json")
+
+@api.post("/quiz_start")
+def start_quiz(request, data: startQuiz):
+    global glbl_quiz_id
+    global glbl_quiz_list
+    selected_quiz = InvitedUser.objects.get(Quiz_Id=data.quiz_id)
+    question_in_connect = k_QuestionInQuiz.objects.filter(Quiz_Id=selected_quiz.Quiz_Id)
+    questions = Question.objects.filter(id__in=question_in_connect.values('Question_Id'))
+    glbl_quiz_id = data.quiz_id
+
+    quiz_list = []
+    for select in questions:
+        quiz_data = {
+            "id": select.id,
+            "question": select.question,
+            "answer": select.answer,
+            "active": select.active,
+        }
+        quiz_list.append(quiz_data)
+
+    glbl_quiz_list = quiz_list
+    return HttpResponseRedirect('/api/qquiz')
 
 @api.get("/finish_quiz")
 def quiz_finish(request):
@@ -512,11 +593,14 @@ def quiz_finish(request):
     global glbl_user_id
     global glbl_roles_id
     global glbl_quiz_id
+    global glbl_quiz_list
 
     context = {
         'usrname': glbl_name,
         'user_id': glbl_user_id,
         'roles_id': glbl_roles_id,
+        'quiz_id': glbl_quiz_id,
     }
     glbl_quiz_id = 0
+    glbl_quiz_list = []
     return render(request, 'quiz.html', context)
