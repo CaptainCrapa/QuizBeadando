@@ -146,3 +146,35 @@ a menüpontok vertikálisan rendeződnek egymás alá. A form-okat tartalmazó k
 <h4>Bejelentkezés alapdesign</h4>
 
 ![Login alapdesign](./Diagramms/login.png)
+
+
+<h3><b>Kvíz létrehozása:</b></h3>
+A tanárok lehetőséget kapnak kvízek létrehozására az alkalmazásban. A kvíz létrehozása során a következő lépések történnek:
+
+    A tanár választja ki a kvíz témáját vagy címét.
+    A tanár hozzáad kérdéseket a kvízhez. A kérdések típusa igaz/hamis állításokra épül.
+    A tanár megadja az igaz/hamis állításokat a kérdésekhez.
+    A tanár elmenti a kvízt a rendszerben.
+
+<h3><b>Kvíz szerkesztése:</b></h3>
+A tanárok lehetőséget kapnak a kvízek szerkesztésére. A szerkesztés során a következő lépések történnek:
+
+    A tanár kiválasztja a szerkeszteni kívánt kvízt.
+    A tanár szerkeszti a kvíz témáját vagy címét.
+    A tanár szerkeszti a kérdéseket és az igaz/hamis állításokat.
+    A tanár elmenti a módosításokat a rendszerben.
+
+<h3><b>Kvíz törlése:</b></h3>
+A tanárok lehetőséget kapnak a kvízek törlésére. A törlés során a következő lépések történnek:
+
+    A tanár kiválasztja a törölni kívánt kvízt.
+    A tanár megerősíti a törlési szándékát.
+    A rendszer törli a kvízt az adatbázisból.
+
+<h3><b>Kvíz kitöltése:</b></h3>
+A diákok lehetőséget kapnak a kvízek kitöltésére. A kitöltés során a következő lépések történnek:
+
+    A diák kiválasztja a kitöltendő kvízt.
+    A diák válaszol az igaz/hamis kérdésekre.
+    A diák elküldi a kitöltött kvízt a rendszerben.
+    A rendszer értékeli a válaszokat és visszajelzést ad a diáknak a teljesítményéről.
