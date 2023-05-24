@@ -1,51 +1,72 @@
-RegisterUser
+Táblák:
 
-Roles
-	Id (int)
-	name (string)
-	
+    Roles
+        id (Primary Key)
+        name
 
-k_UserInRoles
-	Id (int)
-	User_Id (int)
-	Role_Id (int)
+    k_UserInRoles
+        id (Primary Key)
+        User (Foreign Key: RegisterUser)
+        Roles (Foreign Key: Roles)
 
-UsersLastPass
-	Id (int)
-	UserId (int)
-	Pass (string)
-	Modified_At (datetime2)
+    RegisterUser
+        id (Primary Key)
+        fullname
+        username
+        password
+        email
+        dateOfBirth
 
-UserQuiz
-	Id (int)
-	User_Id (int)
-	Quiz_Id (int)
-	mikor (datetime2)
-	eredmeny (int)
+    UsersLastPass
+        id (Primary Key)
+        User_Id (Foreign Key: RegisterUser)
+        pass_field
+        modified_at
 
-Quiz
-	ID (int)
-	Active (bool)
-	Created_by (int)(UserId)
-	Created_at (datetime2)
-	Updated_by (int)(UserId)
-	Updated_at (datetime2)
-	Deleted (bool)
+    UserQuiz
+        id (Primary Key)
+        User_Id (Foreign Key: RegisterUser)
+        Quiz_Id (Foreign Key: Quiz)
+        mikor
+        eredmeny
 
-k_QuestionInQuiz
-	Id (int)
-	Quiz_Id (int)
-	Question_Id (int)
+    Quiz
+        id (Primary Key)
+        name
+        active
+        Created_By (Foreign Key: RegisterUser)
+        created_at
+        Updated_By (Foreign Key: RegisterUser)
+        updated_at
+        deleted
 
-Question
-	ID (int)
-	Question (string)
-	Answer (bool)
-	Active (bool)
+    k_QuestionInQuiz
+        id (Primary Key)
+        Quiz_Id (Foreign Key: Quiz)
+        Question_Id (Foreign Key: Question)
 
-InvitedUser
-	Id (int)
-	Inviter_User_Id (int)
-	Invited_User_Id (int)
-	Invited_At (datetime2)
-	Quiz_Id (int)
+    Question
+        id (Primary Key)
+        question
+        answer
+        active
+
+    InvitedUser
+        id (Primary Key)
+        Inviter_User_Id (Foreign Key: RegisterUser)
+        Invited_User_Id (Foreign Key: RegisterUser)
+        invited_at
+        Quiz_Id (Foreign Key: Quiz)
+
+Kapcsolatok:
+
+    Roles és k_UserInRoles között One-to-Many kapcsolat van a "id" mező alapján.
+    RegisterUser és k_UserInRoles között One-to-Many kapcsolat van a "id" mező alapján.
+    RegisterUser és UsersLastPass között One-to-Many kapcsolat van a "id" mező alapján.
+    RegisterUser és UserQuiz között One-to-Many kapcsolat van a "id" mező alapján.
+    RegisterUser és InvitedUser között One-to-Many kapcsolat van a "id" mező alapján.
+    Quiz és UserQuiz között One-to-Many kapcsolat van a "id" mező alapján.
+    Quiz és k_QuestionInQuiz között One-to-Many kapcsolat van a "id" mező alapján.
+    Quiz és InvitedUser között One-to-Many kapcsolat van a "id" mező alapján.
+    Question és k_QuestionInQuiz között One-to-Many kapcsolat van a "id" mező alapján.
+    RegisterUser és Quiz között Two Many-to-One kapcsolat van a "Created_By" és "Updated_By" mezők alapján.
