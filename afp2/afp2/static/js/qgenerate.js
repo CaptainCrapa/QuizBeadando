@@ -58,6 +58,9 @@ function qgenerateValidation(event) {
           .then(response => {
             document.querySelector("#success").textContent = response.data;
             document.querySelector("#error").textContent = "";
+            setTimeout(function() {
+                window.location.href = '/api/qquestion';
+            }, 1500);
           })
           .catch(error => {
           if (error.response) {

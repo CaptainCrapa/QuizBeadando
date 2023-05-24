@@ -104,6 +104,7 @@ def modifyUserPassword(request, data: UserPasswordModification):
 
 @api.post("/create_quiz")
 def create_quiz(request, data: CreateQuizIn):
+    global glbl_quiz_id
     try:
         new_quiz = Quiz()
         new_quiz.name = data.name
@@ -111,6 +112,7 @@ def create_quiz(request, data: CreateQuizIn):
         new_quiz.Created_By = RegisterUser.objects.get(id=data.created_by)
         new_quiz.Updated_By = RegisterUser.objects.get(id=data.created_by)
         new_quiz.save()
+        glbl_quiz_id = new_quiz.id
         return HttpResponse(status=201, content="Sikeresen létrehoztál egy új kvízt!")
     except:
         return HttpResponse(status=500, content="Adatbáziskapcsolati hiba történt!")
@@ -118,11 +120,11 @@ def create_quiz(request, data: CreateQuizIn):
 
 @api.post("/add_question_to_quiz")
 def add_question_to_quiz(request, data: AddQuestionToQuizIn):
-    quiz = Quiz.objects.get(id=data.quiz_id)
-    question = Question.objects.get(id=data.question_id)
-    question_in_quiz = k_QuestionInQuiz(Quiz_Id=quiz, Question_Id=question)
+    question_add = k_QuestionInQuiz()
+    question_add.Quiz_Id = Quiz.objects.get(id=data.quiz_id)
+    question_add.Question_Id = Question.objects.get(id=data.question_id)
     try:
-        question_in_quiz.save()
+        question_add.save()
         return HttpResponse(status=201, content="Sikeresen hozzáadtál egy kérdést a kvízhez!")
     except:
         return HttpResponse(status=500, content="Adatbáziskapcsolati hiba történt!")
@@ -130,13 +132,13 @@ def add_question_to_quiz(request, data: AddQuestionToQuizIn):
 
 @api.post("/create_question")
 def create_question(request, data: CreateQuestionIn):
-    new_question = Question()
-    new_question.question = data.question
-    new_question.answer = data.answer
-    new_question.active = data.active
     try:
+        new_question = Question()
+        new_question.question = data.question
+        new_question.answer = data.answer
+        new_question.active = data.active
         new_question.save()
-        return HttpResponse(status=201, content="Sikeresen létrehoztál egy új kérdést!")
+        return HttpResponse(status=201, content=new_question.id)
     except:
         return HttpResponse(status=500, content="Adatbáziskapcsolati hiba történt!")
 
@@ -169,6 +171,7 @@ def connect_user_role(request, data: ConnectUserRoleIn):
 glbl_name = ""
 glbl_user_id = 0
 glbl_roles_id = 0
+glbl_quiz_id = 0
 
 
 @api.get("/registration")
@@ -393,6 +396,33 @@ def OpenPagePick(request):
         'roles_id': glbl_roles_id,
     }
     return render(request, 'qpick.html', context)
+
+@api.get("/qquestion")
+def OpenPageDel(request):
+    global glbl_name
+    global glbl_user_id
+    global glbl_roles_id
+    global glbl_quiz_id
+
+    context = {
+        'usrname': glbl_name,
+        'user_id': glbl_user_id,
+        'roles_id': glbl_roles_id,
+        'glbl_quiz_id': glbl_quiz_id,
+    }
+    return render(request, 'qquestion.html', context)
+@api.get("/qquiz")
+def OpenPageDel(request):
+    global glbl_name
+    global glbl_user_id
+    global glbl_roles_id
+
+    context = {
+        'usrname': glbl_name,
+        'user_id': glbl_user_id,
+        'roles_id': glbl_roles_id,
+    }
+    return render(request, 'qquiz.html', context)
 
 
 @api.post("/delete")
