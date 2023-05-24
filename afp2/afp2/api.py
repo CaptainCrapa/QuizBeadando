@@ -496,12 +496,15 @@ def pick_quiz(request):
 
     quiz_list = []
     for pick in quizzes:
+        created_by = RegisterUser.objects.get(id=pick.Created_By_id)
+        created_by_username = created_by.username
+
         quiz_data = {
             "id": pick.id,
             "name": pick.name,
             "active": pick.active,
             "deleted": pick.deleted,
-            "Created_By_id": pick.Created_By_id,
+            "Created_By_id": created_by_username,
         }
         quiz_list.append(quiz_data)
     return HttpResponse(json.dumps(quiz_list), content_type="application/json")
