@@ -30,14 +30,15 @@
     </nav>
     </header>
     <main>
+        <input id="userId" value="{{ user_id }}">
         <div class="form-container">
             <form id="qgenerate-form" autocomplete="off">
                 <div class="flex-form-container">
                     <div class="flex-form-item">
-                        <label for="creator">Készítő azonosítója:</label>
+                        <label for="creator">Készítő neve:</label>
                     </div>
                     <div class="flex-form-item">
-                        <input type="text" id="creator" name="creator" tabindex="3" readonly value= {{ user_id }}>
+                        <input type="text" id="creator" name="creator" tabindex="3" readonly value= {{ usrname }}>
                         <p class="form-error-message" id="creator_error"></p>
                     </div>
                     <div class="flex-form-item">
@@ -52,8 +53,8 @@
                     </div>
                     <div class="flex-form-item">
                         <select id="active" name="active" tabindex="2">
-                            <option value="true">Aktív</option>
-                            <option value="false">Inaktív</option>
+                            <option value="1">Aktív</option>
+                            <option value="0">Inaktív</option>
                         </select>
                         <p class="form-error-message" id="active_error"></p>
                     </div>

@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="{% static 'css/root.css' %}">
     <link rel="stylesheet" href="{% static 'css/tags.css' %}">
     <link rel="icon" href="{% static 'img/icon.jpg' %}">
+    <script type="text/javascript" src="{% static 'js/qpick.js' %}" charset="utf-8" defer ></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 </head>
 <body>
@@ -39,7 +41,23 @@
     </nav>
     </header>
     <main>
-        <h2>Kvíz kiválasztás</h2>
+        <form id="qpick-form" autocomplete="off">
+                    <table id="adatok-table" class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Név</th>
+                                <th>Készítette</th>
+                            </tr>
+                        </thead>
+                        <tbody id="quiz-list-body"></tbody>
+                    </table>
+                <div class="flex-form-item">
+                    <input type="submit" name="submit" value="Kvíz kitöltése">
+                    <p class="form-message" id="success"></p>
+                    <p class="form-error-message" id="error"></p>
+                </div>
+        </form>
     </main>
     <footer>
         <p><a href="#top">Lap tetejére <img src="{% static 'img/icon_arrowup.png' %}" alt="fel"></a></p>

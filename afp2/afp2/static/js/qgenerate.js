@@ -1,11 +1,14 @@
-
+let userIdLink = document.getElementById("userId");
+    userIdLink.style.display = "none";
 function qgenerateValidation(event) {
     event.preventDefault();
   
-    let active = document.querySelector("#active").value;
+    let activeNum = document.querySelector("#active").value;
     let qname = document.querySelector("#qname").value;
     let creator = document.querySelector("#creator").value;
+    let userId = document.querySelector("#userId").value;
     let areFieldsValid = true;
+    let active;
   
   // qname length check
     if (qname.length <= 0) {
@@ -25,9 +28,17 @@ function qgenerateValidation(event) {
     } else {
       document.querySelector("#creator").classList.remove("form-error-field");
     }
-  
+
+    if (activeNum == 0) {
+        active = false;
+    } else if (activeNum == 1) {
+        active = true;
+    } else {
+        areFieldsValid = false;
+    }
+
     // active validation
-    if (active == "true" || active == "false") {
+    if (active == true || active == false) {
       document.querySelector("#active").classList.remove("form-error-field");
       document.querySelector("#active_error").textContent = "";
     } else {
@@ -40,9 +51,9 @@ function qgenerateValidation(event) {
       const data = {
         name: qname,
         active: active,
-        created_by: creator
+        created_by: userId
       };
-  
+
       axios.post('/api/create_quiz', data)
           .then(response => {
             document.querySelector("#success").textContent = response.data;

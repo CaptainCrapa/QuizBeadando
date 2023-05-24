@@ -104,13 +104,14 @@ def modifyUserPassword(request, data: UserPasswordModification):
 
 @api.post("/create_quiz")
 def create_quiz(request, data: CreateQuizIn):
-    new_quiz = Quiz()
-    new_quiz.name = data.name
-    new_quiz.active = data.active
-    new_quiz.Created_By = RegisterUser.objects.get(id=data.created_by)
     try:
+        new_quiz = Quiz()
+        new_quiz.name = data.name
+        new_quiz.active = data.active
+        new_quiz.Created_By = RegisterUser.objects.get(id=data.created_by)
+        new_quiz.Updated_By = RegisterUser.objects.get(id=data.created_by)
         new_quiz.save()
-        return HttpResponse(status=201, content="Sikeresen létrehoztál egy új Quiz-t!")
+        return HttpResponse(status=201, content="Sikeresen létrehoztál egy új kvízt!")
     except:
         return HttpResponse(status=500, content="Adatbáziskapcsolati hiba történt!")
 
@@ -122,7 +123,7 @@ def add_question_to_quiz(request, data: AddQuestionToQuizIn):
     question_in_quiz = k_QuestionInQuiz(Quiz_Id=quiz, Question_Id=question)
     try:
         question_in_quiz.save()
-        return HttpResponse(status=201, content="Sikeresen hozzáadtál egy kérdést a Quizhez!")
+        return HttpResponse(status=201, content="Sikeresen hozzáadtál egy kérdést a kvízhez!")
     except:
         return HttpResponse(status=500, content="Adatbáziskapcsolati hiba történt!")
 
@@ -451,6 +452,25 @@ def list_quizzes(request):
             "deleted": quiz.deleted,
             "Created_By_id": created_by_username,
             "Updated_By_id": updated_by_username,
+        }
+        quiz_list.append(quiz_data)
+    return HttpResponse(json.dumps(quiz_list), content_type="application/json")
+
+@api.get("/quiz_picker")
+def pick_quiz(request):
+    global glbl_user_id
+    invited_quizzes = InvitedUser.objects.filter(Invited_User_Id=glbl_user_id)
+    quiz_ids = invited_quizzes.values_list("Quiz_Id", flat=True)
+    quizzes = Quiz.objects.filter(id__in=quiz_ids)
+
+    quiz_list = []
+    for pick in quizzes:
+        quiz_data = {
+            "id": pick.id,
+            "name": pick.name,
+            "active": pick.active,
+            "deleted": pick.deleted,
+            "Created_By_id": pick.Created_By_id,
         }
         quiz_list.append(quiz_data)
     return HttpResponse(json.dumps(quiz_list), content_type="application/json")
