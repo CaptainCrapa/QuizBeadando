@@ -161,7 +161,8 @@ def add_user_to_quiz(request, data: AddUserToQuizIn):
 def connect_user_role(request, data: ConnectUserRoleIn):
     user = RegisterUser.objects.get(username=data.user_name)
     role = Roles.objects.get(id=data.role_id)
-    user_in_role = k_UserInRoles(User=user, Roles=role)
+    user_in_role = k_UserInRoles.objects.get(User_id=user.id)
+    user_in_role.Roles_id = role.id
     try:
         user_in_role.save()
         return HttpResponse(status=201, content="Sikeresen összekapcsoltad a felhasználót és a szerepkört!")
