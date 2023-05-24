@@ -234,6 +234,10 @@ def OpenPageReg(request):
     global glbl_name
     global glbl_user_id
     global glbl_roles_id
+    global glbl_quiz_id
+    global glbl_quiz_list
+    glbl_quiz_id = 0
+    glbl_quiz_list = 0
     glbl_name = ""
     glbl_user_id = 0
     glbl_roles_id = 0
@@ -245,6 +249,10 @@ def OpenPageLog(request):
     global glbl_name
     global glbl_user_id
     global glbl_roles_id
+    global glbl_quiz_id
+    global glbl_quiz_list
+    glbl_quiz_id = 0
+    glbl_quiz_list = 0
     glbl_name = ""
     glbl_user_id = 0
     glbl_roles_id = 0
@@ -256,11 +264,13 @@ def OpenPageUser(request):
     global glbl_name
     global glbl_user_id
     global glbl_roles_id
+    global glbl_quiz_id
 
     context = {
         'usrname': glbl_name,
         'user_id': glbl_user_id,
         'roles_id': glbl_roles_id,
+        'quiz_id': glbl_quiz_id,
     }
     return render(request, 'users.html', context)
 
@@ -270,6 +280,7 @@ def OpenPageMenu(request):
     global glbl_name
     global glbl_user_id
     global glbl_roles_id
+    global glbl_quiz_id
     if glbl_name == "":
         return render(request, 'index.html')
     else:
@@ -284,6 +295,7 @@ def OpenPageMenu(request):
             'usrname': glbl_name,
             'user_id': glbl_user_id,
             'roles_id': glbl_roles_id,
+            'quiz_id': glbl_quiz_id,
         }
         return render(request, 'menu.html', context)
 
@@ -293,11 +305,13 @@ def OpenPageQuiz(request):
     global glbl_name
     global glbl_user_id
     global glbl_roles_id
+    global glbl_quiz_id
 
     context = {
         'usrname': glbl_name,
         'user_id': glbl_user_id,
         'roles_id': glbl_roles_id,
+        'quiz_id': glbl_quiz_id,
     }
     return render(request, 'quiz.html', context)
 
@@ -307,6 +321,7 @@ def OpenPageProf(request):
     global glbl_name
     global glbl_user_id
     global glbl_roles_id
+    global glbl_quiz_id
     if glbl_name == "":
         return render(request, 'index.html')
     else:
@@ -325,7 +340,8 @@ def OpenPageProf(request):
             'fullname': fullname,
             'password': password,
             'email': email,
-            'dateOfBirth': dateOfBirth
+            'dateOfBirth': dateOfBirth,
+            'quiz_id': glbl_quiz_id,
         }
         return render(request, 'profile.html', context)
 
@@ -335,6 +351,10 @@ def OpenPageIndex(request):
     global glbl_name
     global glbl_user_id
     global glbl_roles_id
+    global glbl_quiz_id
+    global glbl_quiz_list
+    glbl_quiz_id = 0
+    glbl_quiz_list = 0
     glbl_name = ""
     glbl_user_id = 0
     glbl_roles_id = 0
@@ -346,11 +366,13 @@ def OpenPageInvite(request):
     global glbl_name
     global glbl_user_id
     global glbl_roles_id
+    global glbl_quiz_id
 
     context = {
         'usrname': glbl_name,
         'user_id': glbl_user_id,
         'roles_id': glbl_roles_id,
+        'quiz_id': glbl_quiz_id,
     }
     return render(request, 'uinvite.html', context)
 
@@ -360,11 +382,13 @@ def OpenPageNew(request):
     global glbl_name
     global glbl_user_id
     global glbl_roles_id
+    global glbl_quiz_id
 
     context = {
         'usrname': glbl_name,
         'user_id': glbl_user_id,
         'roles_id': glbl_roles_id,
+        'quiz_id': glbl_quiz_id,
     }
     return render(request, 'unew.html', context)
 
@@ -374,11 +398,13 @@ def OpenPageRole(request):
     global glbl_name
     global glbl_user_id
     global glbl_roles_id
+    global glbl_quiz_id
 
     context = {
         'usrname': glbl_name,
         'user_id': glbl_user_id,
         'roles_id': glbl_roles_id,
+        'quiz_id': glbl_quiz_id,
     }
     return render(request, 'urole.html', context)
 
@@ -388,11 +414,13 @@ def OpenPagePass(request):
     global glbl_name
     global glbl_user_id
     global glbl_roles_id
+    global glbl_quiz_id
 
     context = {
         'usrname': glbl_name,
         'user_id': glbl_user_id,
         'roles_id': glbl_roles_id,
+        'quiz_id': glbl_quiz_id,
     }
     return render(request, 'upassword.html', context)
 
@@ -402,11 +430,13 @@ def OpenPageDel(request):
     global glbl_name
     global glbl_user_id
     global glbl_roles_id
+    global glbl_quiz_id
 
     context = {
         'usrname': glbl_name,
         'user_id': glbl_user_id,
         'roles_id': glbl_roles_id,
+        'quiz_id': glbl_quiz_id,
     }
     return render(request, 'qdelete.html', context)
 
@@ -416,11 +446,13 @@ def OpenPageUnDel(request):
     global glbl_name
     global glbl_user_id
     global glbl_roles_id
+    global glbl_quiz_id
 
     context = {
         'usrname': glbl_name,
         'user_id': glbl_user_id,
         'roles_id': glbl_roles_id,
+        'quiz_id': glbl_quiz_id,
     }
     return render(request, 'qundelete.html', context)
 
@@ -430,11 +462,13 @@ def OpenPageGen(request):
     global glbl_name
     global glbl_user_id
     global glbl_roles_id
+    global glbl_quiz_id
 
     context = {
         'usrname': glbl_name,
         'user_id': glbl_user_id,
         'roles_id': glbl_roles_id,
+        'quiz_id': glbl_quiz_id,
     }
     return render(request, 'qgenerate.html', context)
 
@@ -444,11 +478,13 @@ def OpenPagePick(request):
     global glbl_name
     global glbl_user_id
     global glbl_roles_id
+    global glbl_quiz_id
 
     context = {
         'usrname': glbl_name,
         'user_id': glbl_user_id,
         'roles_id': glbl_roles_id,
+        'quiz_id': glbl_quiz_id,
     }
     return render(request, 'qpick.html', context)
 
@@ -502,6 +538,7 @@ def list_quizzes(request):
             "deleted": quiz.deleted,
             "Created_By_id": created_by_username,
             "Updated_By_id": updated_by_username,
+            'quiz_id': glbl_quiz_id,
         }
         quiz_list.append(quiz_data)
     return HttpResponse(json.dumps(quiz_list), content_type="application/json")
@@ -562,6 +599,7 @@ def quiz_finish(request):
         'usrname': glbl_name,
         'user_id': glbl_user_id,
         'roles_id': glbl_roles_id,
+        'quiz_id': glbl_quiz_id,
     }
     glbl_quiz_id = 0
     glbl_quiz_list = []
