@@ -60,3 +60,6 @@ class UnDeleteQuiz(Schema):
 
 class startQuiz(Schema):
     quiz_id: int
+
+class UserQuizSch(Schema):
+    result: int

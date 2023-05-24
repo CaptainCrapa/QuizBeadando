@@ -7,8 +7,8 @@ from django.shortcuts import render
 
 from afp2.schemas import RegisterUserIn, LoginUser, CreateQuizIn, CreateQuestionIn, AddQuestionToQuizIn, \
     AddUserToQuizIn, ConnectUserRoleIn, RegisterUserByAdmin, UserPasswordModification, DeleteQuiz, UnDeleteQuiz, \
-    startQuiz
-from afp2.models import RegisterUser, k_UserInRoles, Roles, Quiz, Question, k_QuestionInQuiz, InvitedUser
+    UserQuizSch, startQuiz
+from afp2.models import RegisterUser, k_UserInRoles, Roles, Quiz, Question, k_QuestionInQuiz, InvitedUser, UserQuiz
 
 import base64
 
@@ -206,6 +206,20 @@ def UnDeleteQuiz(request, data: UnDeleteQuiz):
             return HttpResponse(status=403, content="Nincs megfelelő jogosultságod a visszaállításhoz!")
     else:
         return HttpResponse(status=404, content="Nem található a felhasználó!")
+
+@api.post("/user_quiz")
+def finish_quiz(request, data: UserQuizSch):
+    global glbl_quiz_id
+    global glbl_user_id
+    try:
+        quiz_save = UserQuiz()
+        quiz_save.eredmeny = data.result
+        quiz_save.Quiz_Id = Quiz.objects.get(id=glbl_quiz_id)
+        quiz_save.User_Id = RegisterUser.objects.get(id=glbl_user_id)
+        quiz_save.save()
+        return HttpResponse(status=201, content="Sikeresen lementetted a kvízt!")
+    except:
+        return HttpResponse(status=500, content="Adatbáziskapcsolati hiba történt!")
 
 
 glbl_name = ""
@@ -542,6 +556,7 @@ def quiz_finish(request):
     global glbl_user_id
     global glbl_roles_id
     global glbl_quiz_id
+    global glbl_quiz_list
 
     context = {
         'usrname': glbl_name,
@@ -549,4 +564,5 @@ def quiz_finish(request):
         'roles_id': glbl_roles_id,
     }
     glbl_quiz_id = 0
+    glbl_quiz_list = []
     return render(request, 'quiz.html', context)
