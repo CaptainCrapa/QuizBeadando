@@ -81,13 +81,25 @@ function registrationValidation(event) {
 
     axios.post('/api/register', data)
         .then(response => {
-          console.log(response.data);
+          document.querySelector("#success").textContent = response.data + " Hamarosan át leszel irányítva!";
+          document.querySelector("#error").textContent = "";
+          setTimeout(function() {
+          window.location.href = '/api/log';
+          }, 3000);
         })
         .catch(error => {
-          console.log(error);
-    });
+          if (error.response) {
+            var errorMessage = error.response.data;
+            document.querySelector('#error').textContent = errorMessage;
+            document.querySelector("#success").textContent = "";
+          } else {
+            console.log(error);
+            document.querySelector('#error').textContent = "Hiba. További információ a konzolban!";
+            document.querySelector("#success").textContent = "";
+          }
+        });
+    }
   }
-}
 
 const registrationForm = document.querySelector('#registration-form');
 registrationForm.addEventListener('submit', registrationValidation);

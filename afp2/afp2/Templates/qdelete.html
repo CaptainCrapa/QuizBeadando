@@ -8,10 +8,15 @@
     <meta name="author" content="Team PTI Jászberény">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
+    {% if usrname == "" %} <script>window.location.href = '/api/index';</script> {% endif %}
+    {% if roles_id != 3 %} <script>window.location.href = '/api/menu';</script> {% endif %}
+    {% if quiz_id != 0 %} <script>window.location.href = '/api/qquiz';</script> {% endif %}
     <link rel="stylesheet" href="{% static 'css/classes.css' %}">
     <link rel="stylesheet" href="{% static 'css/root.css' %}">
     <link rel="stylesheet" href="{% static 'css/tags.css' %}">
     <link rel="icon" href="{% static 'img/icon.jpg' %}">
+    <script type="text/javascript" src="{% static 'js/qdelete.js' %}" charset="utf-8" defer ></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 </head>
 <body>
@@ -20,27 +25,44 @@
     <nav>
         <p class="menu-title">Menü</p>
         <a class="menu" href="/api/menu">Főoldal</a>
-        <a class="menu-selected">Kvízek</a>
+        <a class="menu-selected" href="/api/quiz">Kvízek</a>
         <a class="menu" href="/api/profile">Profil</a>
         <a class= "menu" href="/api/users">Felhasználók</a>
         <a class="menu" href="/api/index">Kijelentkezés</a>
     </nav>
+    <nav>
+        <a class="menu" href="/api/qundelete">Archivált kvízek</a>
+    </nav>
     </header>
     <main>
-        <div class="form-container">
-            <form action="api/delete_quiz" method="post" autocomplete="off">
-                <div class="flex-form-container">
-                    <div class="flex-form-item">
-                        <input type="submit" name="register-submit" value="Kvíz(ek) törlése" tabindex="7">
-                    </div>
+        <form id="qdelete-form" autocomplete="off">
+        <input id="userId" value="{{ user_id }}">
+                    <table id="adatok-table" class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Név</th>
+                                <th>Státusz</th>
+                                <th>Készült</th>
+                                <th>Készítette</th>
+                                <th>Módosítva</th>
+                                <th>Módosította</th>
+                            </tr>
+                        </thead>
+                        <tbody id="quiz-list-body"></tbody>
+                    </table>
+                <div class="flex-form-item">
+                    <input type="submit" name="submit" value="Kvíz törlése">
+                    <p class="form-message" id="success"></p>
+                    <p class="form-error-message" id="error"></p>
                 </div>
-            </form>
-        </div>
+        </form>
     </main>
     <footer>
         <p><a href="#top">Lap tetejére <img src="{% static 'img/icon_arrowup.png' %}" alt="fel"></a></p>
         <p>Eszterházy Károly Katolikus Egyetem<br></p>
         <p>PTI Jászberény Team 2023</p>
+        <p>Bejelentkezve, mint {{ usrname }}</p>
     </footer>
 </body>
 </html>

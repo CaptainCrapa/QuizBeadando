@@ -8,13 +8,14 @@
     <meta name="author" content="Team PTI Jászberény">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
+    {% if usrname == "" %} <script>window.location.href = '/api/index';</script> {% endif %}
+    {% if roles_id == 0 %} <script>window.location.href = '/api/index';</script> {% endif %}
+    {% if roles_id == 1 %} <script>window.location.href = '/api/menu';</script> {% endif %}
+    {% if quiz_id != 0 %} <script>window.location.href = '/api/qquiz';</script> {% endif %}
     <link rel="stylesheet" href="{% static 'css/classes.css' %}">
     <link rel="stylesheet" href="{% static 'css/root.css' %}">
     <link rel="stylesheet" href="{% static 'css/tags.css' %}">
     <link rel="icon" href="{% static 'img/icon.jpg' %}">
-    <script type="text/javascript" src="{% static 'js/menu.js' %}" charset="utf-8" defer ></script>
-    <script type="text/javascript" src="{% static 'js/users.js' %}" charset="utf-8" defer ></script>
-
 </head>
 <body>
     <header>
@@ -33,6 +34,29 @@
         <a class= "menu" id="urole" href="/api/urole">Szerepkör módosítás</a>
         <a class= "menu" id="upassword" href="/api/upassword">Jelszó helyreállítás</a>
     </nav>
+    {% if roles_id == 3 %}
+    <script>
+        var uinviteLink = document.getElementById("uinvite");
+        var unewLink = document.getElementById("unew");
+        var uroleLink = document.getElementById("urole");
+        var upasswordLink = document.getElementById("upassword");
+        uinviteLink.style.display = "none";
+        unewLink.style.display = "visible";
+        uroleLink.style.display = "visible";
+        upasswordLink.style.display = "visible";
+    </script>
+    {% else %}
+    <script>
+        var uinviteLink = document.getElementById("uinvite");
+        var unewLink = document.getElementById("unew");
+        var uroleLink = document.getElementById("urole");
+        var upasswordLink = document.getElementById("upassword");
+        uinviteLink.style.display = "visible";
+        unewLink.style.display = "none";
+        uroleLink.style.display = "none";
+        upasswordLink.style.display = "none";
+    </script>
+    {% endif %}
     </header>
     <main>
         <h2>Felhasználók</h2>
@@ -42,6 +66,7 @@
         <p><a href="#top">Lap tetejére <img src="{% static 'img/icon_arrowup.png' %}" alt="fel"></a></p>
         <p>Eszterházy Károly Katolikus Egyetem<br></p>
         <p>PTI Jászberény Team 2023</p>
+        <p>Bejelentkezve, mint {{ usrname }}</p>
     </footer>
 </body>
 </html>

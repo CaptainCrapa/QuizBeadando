@@ -8,11 +8,13 @@
     <meta name="author" content="Team PTI Jászberény">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
+    {% if usrname == "" %} <script>window.location.href = '/api/index';</script> {% endif %}
+    {% if roles_id != 2 %} <script>window.location.href = '/api/menu';</script> {% endif %}
+    {% if quiz_id != 0 %} <script>window.location.href = '/api/qquiz';</script> {% endif %}
     <link rel="stylesheet" href="{% static 'css/classes.css' %}">
     <link rel="stylesheet" href="{% static 'css/root.css' %}">
     <link rel="stylesheet" href="{% static 'css/tags.css' %}">
     <link rel="icon" href="{% static 'img/icon.jpg' %}">
-    
 </head>
 <body>
     <header>
@@ -22,7 +24,7 @@
         <a class="menu" href="/api/menu">Főoldal</a>
         <a class="menu" href="/api/quiz">Kvízek</a>
         <a class="menu" href="/api/profile">Profil</a>
-        <a class= "menu-selected" id="users">Felhasználók</a>
+        <a class= "menu-selected" id="users" href="/api/users">Felhasználók</a>
         <a class="menu" href="/api/index">Kijelentkezés</a>
     </nav>
     </header>
@@ -33,6 +35,7 @@
         <p><a href="#top">Lap tetejére <img src="{% static 'img/icon_arrowup.png' %}" alt="fel"></a></p>
         <p>Eszterházy Károly Katolikus Egyetem<br></p>
         <p>PTI Jászberény Team 2023</p>
+        <p>Bejelentkezve, mint {{ usrname }}</p>
     </footer>
 </body>
 </html>

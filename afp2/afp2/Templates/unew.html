@@ -8,6 +8,9 @@
     <meta name="author" content="Team PTI Jászberény">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
+    {% if usrname == "" %} <script>window.location.href = '/api/index';</script> {% endif %}
+    {% if roles_id != 3 %} <script>window.location.href = '/api/menu';</script> {% endif %}
+    {% if quiz_id != 0 %} <script>window.location.href = '/api/qquiz';</script> {% endif %}
     <link rel="stylesheet" href="{% static 'css/classes.css' %}">
     <link rel="stylesheet" href="{% static 'css/root.css' %}">
     <link rel="stylesheet" href="{% static 'css/tags.css' %}">
@@ -24,7 +27,7 @@
         <a class="menu" href="/api/menu">Főoldal</a>
         <a class="menu" href="/api/quiz">Kvízek</a>
         <a class="menu" href="/api/profile">Profil</a>
-        <a class= "menu-selected" id="users">Felhasználók</a>
+        <a class= "menu-selected" id="users" href="/api/users">Felhasználók</a>
         <a class="menu" href="/api/index">Kijelentkezés</a>
     </nav>
     </header>
@@ -36,7 +39,7 @@
                         <label for="requester">Kérvényező neve:</label>
                     </div>
                     <div class="flex-form-item">
-                        <input type="text" id="requester" name="fullname" tabindex="1">
+                        <input type="text" id="requester" name="fullname" tabindex="1" readonly value= {{ usrname }}>
                         <p class="form-error-message" id="requester_error"></p>
                     </div>
                     <div class="flex-form-item">
@@ -71,7 +74,7 @@
                         <label for="confirm-password">Jelszó ismétlés:</label>
                     </div>
                     <div class="flex-form-item">
-                        <input type="password" id="confirm-password" name="confirm-password" tabindex="4">
+                        <input type="password" id="confirm-password" name="confirm-password" tabindex="6">
                         <p class="form-error-message" id="confirm-password_error"></p>
                     </div>
                     <div class="flex-form-item">
@@ -94,6 +97,8 @@
                     </div>
                     <div class="flex-form-item">
                         <input type="submit" name="submit" value="Felhasználó felvétele" tabindex="9">
+                        <p class="form-message" id="success"></p>
+                        <p class="form-error-message" id="error"></p>
                     </div>
                 </div>
             </form>
@@ -103,6 +108,7 @@
         <p><a href="#top">Lap tetejére <img src="{% static 'img/icon_arrowup.png' %}" alt="fel"></a></p>
         <p>Eszterházy Károly Katolikus Egyetem<br></p>
         <p>PTI Jászberény Team 2023</p>
+        <p>Bejelentkezve, mint {{ usrname }}</p>
     </footer>
 </body>
 </html>

@@ -8,12 +8,11 @@
     <meta name="author" content="Team PTI Jászberény">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
+    {% if usrname == "" %} <script>window.location.href = '/api/index';</script> {% endif %}
     <link rel="stylesheet" href="{% static 'css/classes.css' %}">
     <link rel="stylesheet" href="{% static 'css/root.css' %}">
     <link rel="stylesheet" href="{% static 'css/tags.css' %}">
     <link rel="icon" href="{% static 'img/icon.jpg' %}">
-    <script type="text/javascript" src="{% static 'js/quiz.js' %}" charset="utf-8" defer ></script>
-    <script type="text/javascript" src="{% static 'js/menu.js' %}" charset="utf-8" defer ></script>
 </head>
 <body>
     <header>
@@ -23,7 +22,7 @@
         <a class="menu" href="/api/menu">Főoldal</a>
         <a class="menu-selected">Kvízek</a>
         <a class="menu" href="/api/profile">Profil</a>
-        <a class= "menu" href="/api/users">Felhasználók</a>
+        <a class= "menu" id="users" href="/api/users">Felhasználók</a>
         <a class="menu" href="/api/index">Kijelentkezés</a>
     </nav>
     <nav>
@@ -35,11 +34,40 @@
     <main>
         <h2>Kvízek</h2>
         <p>Ebben a szekcióban az oldal fő feladatait tudja igénybe venni a felhasználó, azaz a kvízek kezelésére szolgál(nak) a fent kiválasztható menü pont(ok).</p>
+        {% if roles_id == 3 %}
+        <script>
+            var qgenerateLink = document.getElementById("qgenerate");
+            var qdeleteLink = document.getElementById("qdelete");
+            var menuLink = document.getElementById("users");
+            qdeleteLink.style.display = "visible";
+            qgenerateLink.style.display = "none";
+            menuLink.style.display = "visible";
+        </script>
+        {% elif roles_id == 2 %}
+        <script>
+            var qgenerateLink = document.getElementById("qgenerate");
+            var qdeleteLink = document.getElementById("qdelete");
+            var menuLink = document.getElementById("users");
+            qdeleteLink.style.display = "none";
+            qgenerateLink.style.display = "visible";
+            menuLink.style.display = "visible";
+        </script>
+        {% else %}
+        <script>
+            var qgenerateLink = document.getElementById("qgenerate");
+            var qdeleteLink = document.getElementById("qdelete");
+            var menuLink = document.getElementById("users");
+            qdeleteLink.style.display = "none";
+            qgenerateLink.style.display = "none";
+            menuLink.style.display = "none";
+        </script>
+        {% endif %}
     </main>
     <footer>
         <p><a href="#top">Lap tetejére <img src="{% static 'img/icon_arrowup.png' %}" alt="fel"></a></p>
         <p>Eszterházy Károly Katolikus Egyetem<br></p>
         <p>PTI Jászberény Team 2023</p>
+        <p>Bejelentkezve, mint {{ usrname }}</p>
     </footer>
 </body>
 </html>

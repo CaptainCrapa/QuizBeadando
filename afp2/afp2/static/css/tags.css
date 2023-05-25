@@ -89,6 +89,14 @@ textarea {
     width: 100%;
     border-radius: 0.3rem;
 }
+input[type=button] {
+    display: block;
+    font-size: 1rem;
+    margin: 1rem auto 0 auto;
+    height: 1.8rem;
+    border-radius: 0.3rem;
+    background-color: #c49f9f;
+}
 footer {
     color: var(--footer-text-color);
     padding: 0.6rem;
@@ -100,4 +108,39 @@ footer p {
 footer a {
     color: var(--footer-text-color);
     text-decoration: none;
+}
+
+table.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  table-layout: auto;
+}
+
+table.table th,
+table.table td {
+  padding: 1rem;
+  text-align: center;
+}
+
+table.table th {
+  background-color: var(--header-bg-color);
+  color: var(--main-text-color);
+}
+
+table.table td {
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
+}
+
+table.table tbody tr:nth-child(even) {
+  background-color: var(--even-row-color);
+}
+
+table.table tbody tr:hover {
+  background-color: var(--hover-row-color);
+}
+
+table.table tbody tr.selected {
+  background-color: var(--selected-row-color);
 }

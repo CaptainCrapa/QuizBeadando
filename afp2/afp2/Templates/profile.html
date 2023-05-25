@@ -8,13 +8,13 @@
     <meta name="author" content="Team PTI Jászberény">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
+    {% if usrname == "" %} <script>window.location.href = '/api/index';</script> {% endif %}
+    {% if quiz_id != 0 %} <script>window.location.href = '/api/qquiz';</script> {% endif %}
     <link rel="stylesheet" href="{% static 'css/classes.css' %}">
     <link rel="stylesheet" href="{% static 'css/root.css' %}">
     <link rel="stylesheet" href="{% static 'css/tags.css' %}">
     <link rel="icon" href="{% static 'img/icon.jpg' %}">
-    <script type="text/javascript" src="{% static 'js/menu.js' %}" charset="utf-8" defer ></script>
-    <script type="text/javascript" src="{% static 'js/profile.js' %}" charset="utf-8" defer ></script>
-
+    <script src="{% static 'js/profile.js' %}"></script>
 </head>
 <body>
     <header>
@@ -35,25 +35,25 @@
                         <label class="profile-label">Teljes név:</label>
                     </div>
                     <div class="flex-form-item">
-                        <span class="profile-span">Test text</span>
+                        <span class="profile-span">{{ fullname }}</span>
                     </div>
                     <div class="flex-form-item">
                         <label class="profile-label">Felhasználói név:</label>
                     </div>
                     <div class="flex-form-item">
-                        <span class="profile-span">Test text</span>
+                        <span class="profile-span">{{ usrname }}</span>
                     </div>
                     <div class="flex-form-item">
                         <label class="profile-label">E-mail cím:</label>
                     </div>
                     <div class="flex-form-item">
-                        <span class="profile-span">Test text</span>
+                        <span class="profile-span">{{ email }}</span>
                     </div>
                     <div class="flex-form-item">
                         <label class="profile-label">Születési dátum:</label>
                     </div>
                     <div class="flex-form-item">
-                        <span class="profile-span">Test text</span>
+                        <span class="profile-span">{{ dateOfBirth }}</span>
                     </div>
                     <div class="flex-form-item">
                         <label class="profile-label">Jogosultság:</label>
@@ -62,13 +62,82 @@
                         <span class="profile-span" id="role"></span>
                     </div>
                 </div>
-            </form>
-        </div>   
+        </div>
+        <div class="form-container">
+            <div class="flex-form-container">
+                <div class="flex-form-item">
+                    <span class="profile-label">Kvízeim:</span>
+                    <span id="quizzes"></span>
+                </div>
+            </div>
+        </div>
+    <script>
+        fetch('/api/get_quizzes')
+            .then(response => response.json())
+            .then(data => {
+                var quizzesContainer = document.getElementById('quizzes');
+                for (var i = 0; i < data.length; i++) {
+                    var quiz = data[i];
+
+                    var quizElement = document.createElement('div');
+                    quizElement.className = 'flex-form-item';
+
+                    var quizName = document.createElement('span');
+                    quizName.className = 'profile-span';
+                    quizName.textContent = quiz.quiz_name;
+
+                    var quizDetails = document.createElement('div');
+                    quizDetails.className = 'flex-form-item';
+
+                    var quizDate = document.createElement('span');
+                    quizDate.className = 'profile-span';
+                    quizDate.textContent = quiz.date_completed.split('T')[0];
+
+                    var quizScore = document.createElement('span');
+                    quizScore.className = 'profile-span';
+                    quizScore.textContent = ' || ' + quiz.score + '%';
+
+                    quizDetails.appendChild(quizDate);
+                    quizDetails.appendChild(quizScore);
+
+                    quizElement.appendChild(quizName);
+                    quizElement.appendChild(quizDetails);
+
+                    quizzesContainer.appendChild(quizElement);
+                }
+            })
+            .catch(error => {
+                console.error('Hiba történt:', error);
+            });
+    </script>
+        {% if roles_id == 3 %}
+        <script>
+            var roleLink = document.getElementById("role");
+            var usersLink = document.getElementById("users");
+            usersLink.style.display = "visible";
+            roleLink.textContent = "Adminisztrátor";
+        </script>
+        {% elif roles_id == 2 %}
+        <script>
+            var roleLink = document.getElementById("role");
+            var usersLink = document.getElementById("users");
+            usersLink.style.display = "visible";
+            roleLink.textContent = "Tanár";
+        </script>
+        {% else %}
+        <script>
+            var roleLink = document.getElementById("role");
+            var usersLink = document.getElementById("users");
+            usersLink.style.display = "none";
+            roleLink.textContent = "Diák"
+        </script>
+        {% endif %}
     </main>
     <footer>
         <p><a href="#top">Lap tetejére <img src="{% static 'img/icon_arrowup.png' %}" alt="fel"></a></p>
         <p>Eszterházy Károly Katolikus Egyetem<br></p>
         <p>PTI Jászberény Team 2023</p>
+        <p>Bejelentkezve, mint {{ usrname }}</p>
     </footer>
 </body>
 </html>

@@ -9,12 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
     {% if usrname == "" %} <script>window.location.href = '/api/index';</script> {% endif %}
+    {% if roles_id != 3 %} <script>window.location.href = '/api/menu';</script> {% endif %}
     {% if quiz_id != 0 %} <script>window.location.href = '/api/qquiz';</script> {% endif %}
     <link rel="stylesheet" href="{% static 'css/classes.css' %}">
     <link rel="stylesheet" href="{% static 'css/root.css' %}">
     <link rel="stylesheet" href="{% static 'css/tags.css' %}">
     <link rel="icon" href="{% static 'img/icon.jpg' %}">
-    <script type="text/javascript" src="{% static 'js/qpick.js' %}" charset="utf-8" defer ></script>
+    <script type="text/javascript" src="{% static 'js/qundelete.js' %}" charset="utf-8" defer ></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 </head>
@@ -26,35 +27,33 @@
         <a class="menu" href="/api/menu">Főoldal</a>
         <a class="menu-selected" href="/api/quiz">Kvízek</a>
         <a class="menu" href="/api/profile">Profil</a>
-        <a class= "menu" id="users" href="/api/users">Felhasználók</a>
+        <a class= "menu" href="/api/users">Felhasználók</a>
         <a class="menu" href="/api/index">Kijelentkezés</a>
-        {% if roles_id > 1 %}
-        <script>
-            var usersLink = document.getElementById("users");
-            usersLink.style.display = "visible";
-        </script>
-        {% else %}
-        <script>
-            var usersLink = document.getElementById("users");
-            usersLink.style.display = "none";
-        </script>
-        {% endif %}
+    </nav>
+    <nav>
+        <a class="menu" href="/api/qdelete">Kvíz törlés</a>
     </nav>
     </header>
     <main>
-        <form id="qpick-form" autocomplete="off">
+        <form id="qdelete-form" autocomplete="off">
+        <input id="userId" value="{{ user_id }}">
                     <table id="adatok-table" class="table">
                         <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>Név</th>
+                                <th>Státusz</th>
+                                <th>Készült</th>
                                 <th>Készítette</th>
+                                <th>Módosítva</th>
+                                <th>Módosította</th>
                             </tr>
                         </thead>
                         <tbody id="quiz-list-body"></tbody>
                     </table>
                 <div class="flex-form-item">
-                    <input type="submit" name="submit" value="Kvíz kitöltése">
+                    <input type="submit" name="submit" value="Kvíz visszaállítása">
+                    <p class="form-message" id="success"></p>
                     <p class="form-error-message" id="error"></p>
                 </div>
         </form>
