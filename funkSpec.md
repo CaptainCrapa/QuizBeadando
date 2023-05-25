@@ -98,6 +98,15 @@ Felhasználónév*
 * Ha sikerült a felhasználó jelszavát módosítani, tájékoztassa a rendszer az adminisztrátort.
 * Ha valami végett adatbázis hiba lépne fel, akkor arról is tájékoztasson a rendszer.
 
+
+<h2>Kvíz törlés</h2>
+
+Csak admin jogosultsággal lehetséges. Amikor az adminisztrátor megadja, hogy melyik kvízt 
+szeretné törölni, két dolgot feltétlen meg kell nézni
+1: Csak adminisztrátor férhet hozzá ehhez a funkcióhoz
+2: Létzeik-e az a kvíz amit törölni szeretne (Ezt id alapján kéri le)
+Amennyiben ez a két feltétel teljesül, a kiválasztott kvíz törlésre kerül-
+
 <h2>Jelenlegi üzleti folyamatok modellje</h2>
 
 A mai modern korban az oktatás és a tanulást segíti, egyszerűsítő technológiák használata
