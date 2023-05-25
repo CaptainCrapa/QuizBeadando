@@ -95,3 +95,15 @@ arról, hogy a hány teszt, milyen arányú helyes és helytelen válasszal lett
 lenne ebben az irányba. A statisztikai adatok részletesen lekérdezhetőek lehetnének a tanárok és diákok által, továbbá 
 a rendszer akár grafikusan is megjeleníthatné ezt a felhasználóknak. Ezen túl a bővíthetőség iránya több teszt vagy 
 kérdéstípus hozzáadása a szolgáltatáshoz. Az igaz-hamis és a kiválasztós feladatokon túl, sorba rendezős, összekötős illetve algoritmikailag a leginehezebben kiértékelhető: a rövid szöveges válaszadási feladat típusok integrálása.
+
+<h3>Vágyálom rendszer</h3>
+<b>
+A szülők is férhessenek hozzá a megírt tesztekhez, dolgozatokhoz. Ezáltal el lehet kerülni az olyan konfliktusokat, mikor
+a szülő bemegy az iskolába, mert szerinte indokolatlanul kapott gyermmeke rossz jegyet. Egyszerűen otthonról bejelentkezik
+és megnézheti mik voltak a kérdések, ezek mennyire passzoltak mondjuk a tankönyvben leírtakhoz és milyen válaszokat addott
+rájuk a csemetéje. Ezzel időt és energiát spórolhatnak mind a szülők mind pedig a tanárok. Nem kell a tanárnak fogadóórára
+kismillió dolgozatot cipelnie és kizárja azt a hibalehetőséget, hogy valamelyik osztályból, az egyik diák dolgozatát mondjuk
+elfelejti vinni, vagy éppen kicsúszik a nagy halom papírból fogadóórára menet. Ezen a szülői felületen a kvízek mellett legyen
+ott az adott tanár elérhetősége (mondjuk e-mail cím). Így ha a szülőnek bármi kérdése van, megintcsak gyorsan, és egyszerűen
+fel tudja venni a kapcsolatot az iskolával, és nem kell ezért külön bemennie az iskolába.
+</b>
