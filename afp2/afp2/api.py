@@ -193,6 +193,7 @@ def DeleteQuiz(request, data: DeleteQuiz):
     else:
         return HttpResponse(status=404, content="Nem található a felhasználó!")
 
+
 @api.post("/undelete")
 def UnDeleteQuiz(request, data: UnDeleteQuiz):
     role = k_UserInRoles.objects.get(User_id=data.user_id)
@@ -211,6 +212,7 @@ def UnDeleteQuiz(request, data: UnDeleteQuiz):
             return HttpResponse(status=403, content="Nincs megfelelő jogosultságod a visszaállításhoz!")
     else:
         return HttpResponse(status=404, content="Nem található a felhasználó!")
+
 
 @api.post("/user_quiz")
 def finish_quiz(request, data: UserQuizSch):
@@ -491,6 +493,7 @@ def OpenPagePick(request):
     }
     return render(request, 'qpick.html', context)
 
+
 @api.get("/qquestion")
 def OpenPageQuestion(request):
     global glbl_name
@@ -505,6 +508,8 @@ def OpenPageQuestion(request):
         'glbl_quiz_id': glbl_quiz_id,
     }
     return render(request, 'qquestion.html', context)
+
+
 @api.get("/qquiz")
 def OpenPageQuiz(request):
     global glbl_name
@@ -521,6 +526,7 @@ def OpenPageQuiz(request):
         'quiz_list': json.dumps(glbl_quiz_list),
     }
     return render(request, 'qquiz.html', context)
+
 
 @api.get("/quizzes")
 def list_quizzes(request):
@@ -546,6 +552,7 @@ def list_quizzes(request):
         quiz_list.append(quiz_data)
     return HttpResponse(json.dumps(quiz_list), content_type="application/json")
 
+
 @api.get("/quiz_picker")
 def pick_quiz(request):
     global glbl_user_id
@@ -567,6 +574,7 @@ def pick_quiz(request):
         }
         quiz_list.append(quiz_data)
     return HttpResponse(json.dumps(quiz_list), content_type="application/json")
+
 
 @api.post("/quiz_start")
 def start_quiz(request, data: startQuiz):
@@ -590,6 +598,7 @@ def start_quiz(request, data: startQuiz):
     glbl_quiz_list = quiz_list
     return HttpResponseRedirect('/api/qquiz')
 
+
 @api.get("/finish_quiz")
 def quiz_finish(request):
     global glbl_name
@@ -608,6 +617,7 @@ def quiz_finish(request):
     glbl_quiz_list = []
     return render(request, 'quiz.html', context)
 
+
 @api.get("/get_quizzes")
 def get_quizzes(request):
     global glbl_user_id
@@ -624,3 +634,18 @@ def get_quizzes(request):
         quiz_list.append(quiz_data)
 
     return JsonResponse(quiz_list, safe=False)
+
+
+@api.get("/users_list")
+def list_users(request):
+    users = RegisterUser.objects.all()
+    user_list = []
+    for user in users:
+        users_data = {
+            "id": user.id,
+            "fullname": user.fullname,
+            "username": user.username,
+            "email": user.email,
+        }
+        user_list.append(users_data)
+    return HttpResponse(json.dumps(user_list), content_type="application/json")
