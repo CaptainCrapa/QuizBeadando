@@ -149,12 +149,16 @@ def add_user_to_quiz(request, data: AddUserToQuizIn):
     inviter_user = RegisterUser.objects.get(id=data.inviter_user_id)
     invited_user = RegisterUser.objects.get(id=data.invited_user_id)
     quiz = Quiz.objects.get(id=data.quiz_id)
-    invited_user_entry = InvitedUser(Inviter_User_Id=inviter_user, Invited_User_Id=invited_user, Quiz_Id=quiz)
-    try:
-        invited_user_entry.save()
-        return HttpResponse(status=201, content="Sikeresen hozzáadtál egy felhasználót a Quizhez!")
-    except:
-        return HttpResponse(status=500, content="Adatbáziskapcsolati hiba történt!")
+    check = InvitedUser.objects.filter(Invited_User_Id=invited_user, Quiz_Id=quiz)
+    if check:
+        return HttpResponse(status=403, content="Már meghívtad a felhasználót a kvízre!")
+    else:
+        invited_user_entry = InvitedUser(Inviter_User_Id=inviter_user, Invited_User_Id=invited_user, Quiz_Id=quiz)
+        try:
+            invited_user_entry.save()
+            return HttpResponse(status=201, content="Sikeresen hozzáadtál egy felhasználót a Quizhez!")
+        except:
+            return HttpResponse(status=500, content="Adatbáziskapcsolati hiba történt!")
 
 
 @api.post("/connect_user_role")
