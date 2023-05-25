@@ -73,7 +73,7 @@
                     trueRadio.name = 'quiz_' + item.id;
                     trueRadio.value = 'true';
                     trueLabel.appendChild(trueRadio);
-                    trueLabel.appendChild(document.createTextNode('Igaz'));
+                    trueLabel.appendChild(document.createTextNode('Igaz '));
 
                     // hamis gomb
                     falseRadio.type = 'radio';
@@ -105,6 +105,8 @@
             function verifyQuiz(event) {
                 event.preventDefault();
 
+                var button = document.getElementById("button");
+                button.style.display = "block";
                 var rows = document.querySelectorAll('#list-body tr');
                 var totalQuestions = rows.length;
                 var correctAnswers = 0;
@@ -181,7 +183,7 @@
         </script>
             <div class="flex-form-item">
                 <input type="submit" name="submit" value="Ellenőrzés">
-                <input type="button" name="button" value="Ellenőrzés befejezése" onclick="finishQuizCheck()">
+                <input type="button" id="button" name="button" value="Ellenőrzés befejezése" onclick="finishQuizCheck()" style="display: none;">
                 <p class="form-message" id="success"></p>
                 <p class="form-error-message" id="error"></p>
             </div>
