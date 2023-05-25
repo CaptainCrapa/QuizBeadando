@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html lang="hu">
+<head>
+    <title>Tudástár Quiz</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Quiz learning page for students.">
+    <meta name="keywords" content="learning">
+    <meta name="author" content="Team PTI Jászberény">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/classes.css' %}">
+    <link rel="stylesheet" href="{% static 'css/root.css' %}">
+    <link rel="stylesheet" href="{% static 'css/tags.css' %}">
+    <link rel="icon" href="{% static 'img/icon.jpg' %}">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/qnewquestion.js' %}" charset="utf-8" defer ></script> 
+</head>
+<body>
+    <header>
+        <h1>Tudástár Quiz</h1>
+    <nav>
+        <p class="menu-title">Menü</p>
+        <a class="menu" href="/api/menu">Főoldal</a>
+        <a class="menu-selected">Kvízek</a>
+        <a class="menu" href="/api/profile">Profil</a>
+        <a class= "menu" href="/api/users">Felhasználók</a>
+        <a class="menu" href="/api/index">Kijelentkezés</a>
+    </nav>
+    </header>
+    <main>
+        <div class="form-container">
+            <form id="qnewquestion-form" autocomplete="off">
+                <div class="flex-form-container">
+                    <div class="flex-form-item">
+                        <label for="qquestion">Kérdés:</label>
+                    </div>
+                    <textarea rows="5" cols="60" id="qquestion" name="qquestion" tabindex="1">
+                    </textarea>
+                    <p class="form-error-message" id="qquestion_error"></p>
+                    <div class="flex-form-item">
+                        <label for="qquestionanswer">Válasz:</label>
+                    </div>
+                    <div class="flex-form-item">
+                        <label for="qquestion_true">Igaz</label>
+                        <input type="radio" id="qquestion_true" name="qquestionanswer" value="true" tabindex="2">
+                        <label for="qquestion_false">Hamis</label>
+                        <input type="radio" id="qquestion_false" name="qquestionanswer" value="false" tabindex="3">
+                        <p class="form-error-message" id="qquestionanswer_error"></p>
+                    </div>
+                    <div class="flex-form-item">
+                        <input type="submit" name="submit" value="Hozzáadás" tabindex="4">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <p><a href="#top">Lap tetejére <img src="{% static 'img/icon_arrowup.png' %}" alt="fel"></a></p>
+        <p>Eszterházy Károly Katolikus Egyetem<br></p>
+        <p>PTI Jászberény Team 2023</p>
+    </footer>
+</body>
+</html>

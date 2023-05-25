@@ -67,6 +67,10 @@ input[type=text], input[type=password], input[type=email], input[type=date], sel
 input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=date]:focus {
     background-color: var(--form-field-focused);
 }
+input[type="radio"] {
+    font-size: 1rem;
+    margin: 0 2rem 0 0.1rem;
+}
 select {
     margin-bottom: 1.8rem;
 }
@@ -75,6 +79,14 @@ input[type=submit] {
     font-size: 1rem;
     margin: 1rem auto 0 auto;
     height: 1.8rem;
+    border-radius: 0.3rem;
+}
+textarea {
+    display: block;
+    font-size: 1rem;
+    margin: 0.2rem auto 1rem auto;
+    height: 5rem;
+    width: 100%;
     border-radius: 0.3rem;
 }
 footer {

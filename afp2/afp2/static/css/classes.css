@@ -41,6 +41,9 @@
 .flex-form-item {
     flex: 2 1 11.4rem;
 }
+.new-question-field {
+    height: 5rem;
+}
 .form-error-message {
     font-size: 0.75rem;
     color: red;
