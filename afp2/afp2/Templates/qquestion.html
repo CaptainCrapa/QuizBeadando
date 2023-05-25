@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html lang="hu">
+<head>
+    <title>Tudástár Quiz</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Quiz learning page for students.">
+    <meta name="keywords" content="learning">
+    <meta name="author" content="Team PTI Jászberény">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    {% if usrname == "" %} <script>window.location.href = '/api/index';</script> {% endif %}
+    {% if roles_id != 2 %} <script>window.location.href = '/api/menu';</script> {% endif %}
+	{% if glbl_quiz_id == 0 %} <script>window.location.href = '/api/menu';</script> {% endif %}
+    <link rel="stylesheet" href="{% static 'css/classes.css' %}">
+    <link rel="stylesheet" href="{% static 'css/root.css' %}">
+    <link rel="stylesheet" href="{% static 'css/tags.css' %}">
+    <link rel="icon" href="{% static 'img/icon.jpg' %}">
+    <script type="text/javascript" src="{% static 'js/qquestion.js' %}" charset="utf-8" defer ></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Tudástár Quiz</h1>
+    <nav>
+        <p class="menu-title">Menü</p>
+        <a class="menu" href="/api/menu">Főoldal</a>
+        <a class="menu-selected" href="/api/quiz">Kvízek</a>
+        <a class="menu" href="/api/profile">Profil</a>
+        <a class= "menu" href="/api/users">Felhasználók</a>
+        <a class="menu" href="/api/index">Kijelentkezés</a>
+    </nav>
+    </header>
+    <main>
+        <input id="quizId" value="{{ glbl_quiz_id }}">
+        <div class="form-container">
+            <form id="qquestion-form" autocomplete="off">
+                <div class="flex-form-container">
+                    <div class="flex-form-item">
+                        <label for="question">Kérdés:</label>
+                    </div>
+                    <div class="flex-form-item">
+                        <input type="text" id="question" name="question" tabindex="1">
+                        <p class="form-error-message" id="qname_error"></p>
+                    </div>
+                    <div class="flex-form-item">
+                        <label for="answer">Válasz:</label>
+                    </div>
+                    <div class="flex-form-item">
+                        <select id="answer" name="answer" tabindex="2">
+                            <option value="1">Igaz</option>
+                            <option value="0">Hamis</option>
+                        </select>
+                        <p class="form-error-message" id="answer_error"></p>
+                    </div>
+                    <div class="flex-form-item">
+                        <label for="active">Állapot:</label>
+                    </div>
+                    <div class="flex-form-item">
+                        <select id="active" name="active" tabindex="3">
+                            <option value="1">Aktív</option>
+                            <option value="0">Inaktív</option>
+                        </select>
+                        <p class="form-error-message" id="active_error"></p>
+                    </div>
+                    <div class="flex-form-item">
+                        <input type="submit" name="submit" value="Kérdés hozzáadása" tabindex="4">
+                        <input type="button" name="button" value="Kvíz befejezése" tabindex="5" onclick="finishQuiz()">
+                        <p class="form-message" id="success"></p>
+                        <p class="form-error-message" id="error"></p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <p><a href="#top">Lap tetejére <img src="{% static 'img/icon_arrowup.png' %}" alt="fel"></a></p>
+        <p>Eszterházy Károly Katolikus Egyetem<br></p>
+        <p>PTI Jászberény Team 2023</p>
+        <p>Bejelentkezve, mint {{ usrname }}</p>
+    </footer>
+</body>
+</html>
