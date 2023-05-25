@@ -10,11 +10,12 @@
     {% load static %}
     {% if usrname == "" %} <script>window.location.href = '/api/index';</script> {% endif %}
     {% if roles_id != 2 %} <script>window.location.href = '/api/menu';</script> {% endif %}
-    {% if quiz_id != 0 %} <script>window.location.href = '/api/qquiz';</script> {% endif %}
     <link rel="stylesheet" href="{% static 'css/classes.css' %}">
     <link rel="stylesheet" href="{% static 'css/root.css' %}">
     <link rel="stylesheet" href="{% static 'css/tags.css' %}">
     <link rel="icon" href="{% static 'img/icon.jpg' %}">
+    <script type="text/javascript" src="{% static 'js/uinvite.js' %}" charset="utf-8" defer ></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <header>
@@ -29,13 +30,42 @@
     </nav>
     </header>
     <main>
-        <h2>Kvíz meghívó</h2>
+        <form id="uinvite-form" autocomplete="off">
+        <input id="userId" value="{{ user_id }}">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Név</th>
+                        <th>Készült</th>
+                        <th>Készítette</th>
+                    </tr>
+                </thead>
+                <tbody id="quiz-list-body"></tbody>
+            </table>
+                   <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Teljes név</th>
+                        <th>Felhasználónév</th>
+                        <th>E-mail</th>
+                    </tr>
+                </thead>
+                <tbody id="user-list-body"></tbody>
+            </table>
+            <div class="flex-form-item">
+                <input type="submit" name="submit" value="Meghívás a kvízre">
+                <p class="form-message" id="success"></p>
+                <p class="form-error-message" id="error"></p>
+            </div>
+        </form>
     </main>
     <footer>
         <p><a href="#top">Lap tetejére <img src="{% static 'img/icon_arrowup.png' %}" alt="fel"></a></p>
         <p>Eszterházy Károly Katolikus Egyetem<br></p>
         <p>PTI Jászberény Team 2023</p>
-        <p>Bejelentkezve, mint {{ usrname }}</p>
+        <p id="username">Bejelentkezve, mint {{ usrname }}</p>
     </footer>
 </body>
 </html>
