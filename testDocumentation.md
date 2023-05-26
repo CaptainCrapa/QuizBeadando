@@ -67,3 +67,16 @@ Q-easy – <p></p>
  | Kimenet:   | A teszt minden inputra jól reagált                                                 |
  | Parancs:           | A localhost:8000/api/docs-on keresztül swagger végpont request és response tesztje |
  | Böngésző: | Google Chrome                                                                      |
+
+
+<h2>Frontend teszt</h2>
+
+|            |                                                                                    |
+|------------|------------------------------------------------------------------------------------|
+| Dátum:     | 2023.05.26. 16:25                                                                  |
+| Indította: | Tóth Norbert                                                                       |
+| Teszt:     | Frontend tesztek futtatás Selenium IDE-ben                                         |
+ | Kimenet:   | A teszt minden inputra jól reagált                                                |
+ | Indítás:   | Selenium IDE-ben a QuizBeadandó.side fájlal való indítás                          |
+ | Böngésző: | Mozilla Firefox                                                                    |
+ | Követelmény: | Adatbázisnak tartalmaznia kell teszt felhasználókat (adminelek, tanarelek, diakelek) jelszóval ellátva(123) |
