@@ -1,0 +1,1635 @@
+{
+  "id": "0309c925-0242-42b2-a77f-e72b10e46c39",
+  "version": "2.0",
+  "name": "QuizBeadandó",
+  "url": "http://127.0.0.1:8080/api/log",
+  "tests": [{
+    "id": "bc5752ad-45af-4a76-a1c4-47ae21d30456",
+    "name": "4. login into student user",
+    "commands": [{
+      "id": "886fd3ee-26f2-488e-af9e-038bca73d153",
+      "comment": "",
+      "command": "open",
+      "target": "http://127.0.0.1:8080/api/index",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "15c8fe7e-dfdd-4ef6-b947-fb3cfa1cfd46",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Bejelentkezés",
+      "targets": [
+        ["linkText=Bejelentkezés", "linkText"],
+        ["css=.menu:nth-child(2)", "css:finder"],
+        ["xpath=//a[contains(text(),'Bejelentkezés')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/api/log')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Bejelentkezés')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1bc608a7-9a77-4a97-b9b8-5fc207f81f89",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "diakelek"
+    }, {
+      "id": "f147a4c6-871c-430a-a969-f3a50781df51",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/div[4]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "e354437a-9936-49a8-9c76-19e3e6d46966",
+      "comment": "",
+      "command": "click",
+      "target": "name=submit",
+      "targets": [
+        ["name=submit", "name"],
+        ["css=.flex-form-item:nth-child(5) > input", "css:finder"],
+        ["xpath=//input[@name='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/div[5]/input", "xpath:idRelative"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "615d8796-a781-4188-bbb0-c0549cfac730",
+    "name": "6. login into student user + logout",
+    "commands": [{
+      "id": "fa640ab8-8864-4519-9ed7-57fdd6e48733",
+      "comment": "",
+      "command": "open",
+      "target": "http://127.0.0.1:8080/api/index",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ddf88ece-02af-4802-8dee-c19754134671",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Bejelentkezés",
+      "targets": [
+        ["linkText=Bejelentkezés", "linkText"],
+        ["css=.menu:nth-child(2)", "css:finder"],
+        ["xpath=//a[contains(text(),'Bejelentkezés')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/api/log')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Bejelentkezés')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "286c55c8-f439-4eb2-adcd-7f9e434d85d5",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "diakelek"
+    }, {
+      "id": "1e518d95-0e51-4c71-9af3-e1ed81139e81",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/div[4]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "2127e91a-9251-40ca-aa23-d39119aa3f7d",
+      "comment": "",
+      "command": "click",
+      "target": "name=submit",
+      "targets": [
+        ["name=submit", "name"],
+        ["css=.flex-form-item:nth-child(5) > input", "css:finder"],
+        ["xpath=//input[@name='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/div[5]/input", "xpath:idRelative"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5abe59c0-ea20-45ee-b20d-2a6bd45602ca",
+      "comment": "",
+      "command": "waitForElementPresent",
+      "target": "xpath=//a[contains(text(),'Kijelentkezés')]",
+      "targets": [
+        ["linkText=Kijelentkezés", "linkText"],
+        ["css=.menu:nth-child(6)", "css:finder"],
+        ["xpath=//a[contains(text(),'Kijelentkezés')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/api/index')]", "xpath:href"],
+        ["xpath=//a[5]", "xpath:position"],
+        ["xpath=//a[contains(.,'Kijelentkezés')]", "xpath:innerText"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "48548af7-6a2b-4937-9286-f20082a29ca3",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//a[contains(text(),'Kijelentkezés')]",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "d4b966a1-d603-408a-9fbe-f55d60cd8d95",
+    "name": "1. Registration",
+    "commands": [{
+      "id": "e764c349-c45a-4a31-af0d-21ed339aed89",
+      "comment": "",
+      "command": "open",
+      "target": "http://127.0.0.1:8080/api/registration",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b5449ae9-1c97-4283-b47a-830c9726bc35",
+      "comment": "",
+      "command": "type",
+      "target": "id=fullname",
+      "targets": [
+        ["id=fullname", "id"],
+        ["name=fullname", "name"],
+        ["css=#fullname", "css:finder"],
+        ["xpath=//input[@id='fullname']", "xpath:attributes"],
+        ["xpath=//form[@id='registration-form']/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Kedvező Áron"
+    }, {
+      "id": "c35d76a6-1ae6-48ed-9452-238ccabc65ad",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//form[@id='registration-form']/div/div[4]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "kedvezoaron"
+    }, {
+      "id": "cc3abd8f-ac48-4dc0-a666-e22f59c93b81",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//form[@id='registration-form']/div/div[6]/input", "xpath:idRelative"],
+        ["xpath=//div[6]/input", "xpath:position"]
+      ],
+      "value": "kedvezo@aron.hu"
+    }, {
+      "id": "251dedca-28b0-4ca0-981c-37aa2691410f",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=confirm-password", "id"],
+        ["name=confirm-password", "name"],
+        ["css=#confirm-password", "css:finder"],
+        ["xpath=//input[@id='confirm-password']", "xpath:attributes"],
+        ["xpath=//form[@id='registration-form']/div/div[10]/input", "xpath:idRelative"],
+        ["xpath=//div[10]/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "85536a61-01c6-4399-8cba-1213b8c1b8f8",
+      "comment": "",
+      "command": "type",
+      "target": "id=confirm-password",
+      "targets": [
+        ["id=confirm-password", "id"],
+        ["name=confirm-password", "name"],
+        ["css=#confirm-password", "css:finder"],
+        ["xpath=//input[@id='confirm-password']", "xpath:attributes"],
+        ["xpath=//form[@id='registration-form']/div/div[10]/input", "xpath:idRelative"],
+        ["xpath=//div[10]/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "cae197e6-c3e5-4d11-b205-c7c9dac8f1c4",
+      "comment": "",
+      "command": "type",
+      "target": "id=dateOfBirth",
+      "targets": [
+        ["id=dateOfBirth", "id"],
+        ["name=dateOfBirth", "name"],
+        ["css=#dateOfBirth", "css:finder"],
+        ["xpath=//input[@id='dateOfBirth']", "xpath:attributes"],
+        ["xpath=//form[@id='registration-form']/div/div[12]/input", "xpath:idRelative"],
+        ["xpath=//div[12]/input", "xpath:position"]
+      ],
+      "value": "1996-01-02"
+    }, {
+      "id": "9221598a-1acd-4e89-963d-33cb81507bd9",
+      "comment": "",
+      "command": "click",
+      "target": "name=submit",
+      "targets": [
+        ["name=submit", "name"],
+        ["css=.flex-form-item:nth-child(13) > input", "css:finder"],
+        ["xpath=//input[@name='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='registration-form']/div/div[13]/input", "xpath:idRelative"],
+        ["xpath=//div[13]/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "0a16e06d-e3d4-45d2-8f64-e491f3fd0fba",
+    "name": "2. Login as teacher user + create quiz",
+    "commands": [{
+      "id": "36912a4b-79a1-48bb-bb66-7b6daab7d891",
+      "comment": "",
+      "command": "open",
+      "target": "http://127.0.0.1:8080/api/log",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "17912ab7-4b1c-464b-af1d-1c4c6ab70ac6",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "tanarelek"
+    }, {
+      "id": "b66cd65e-ae33-4c35-bbd3-06d683e11ddb",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/div[4]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "9ca1a5c1-af5b-46fc-bea6-c6baa5700079",
+      "comment": "",
+      "command": "click",
+      "target": "name=submit",
+      "targets": [
+        ["name=submit", "name"],
+        ["css=.flex-form-item:nth-child(5) > input", "css:finder"],
+        ["xpath=//input[@name='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/div[5]/input", "xpath:idRelative"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "abfedf84-fcb1-47cf-9c4e-36da10cdb322",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Kvízek",
+      "targets": [
+        ["linkText=Kvízek", "linkText"],
+        ["css=.menu:nth-child(3)", "css:finder"],
+        ["xpath=//a[contains(text(),'Kvízek')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/api/quiz')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Kvízek')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a94d43a1-5b38-4a54-b762-72d32ef609f8",
+      "comment": "",
+      "command": "click",
+      "target": "id=qgenerate",
+      "targets": [
+        ["id=qgenerate", "id"],
+        ["linkText=Kvíz létrehozás", "linkText"],
+        ["css=#qgenerate", "css:finder"],
+        ["xpath=//a[contains(text(),'Kvíz létrehozás')]", "xpath:link"],
+        ["xpath=//a[@id='qgenerate']", "xpath:attributes"],
+        ["xpath=//a[contains(@href, '/api/qgenerate')]", "xpath:href"],
+        ["xpath=//nav[2]/a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Kvíz létrehozás')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "eebd97f1-f51a-4cef-9234-1b7404676296",
+      "comment": "",
+      "command": "click",
+      "target": "id=qname",
+      "targets": [
+        ["id=qname", "id"],
+        ["name=qname", "name"],
+        ["css=#qname", "css:finder"],
+        ["xpath=//input[@id='qname']", "xpath:attributes"],
+        ["xpath=//form[@id='qgenerate-form']/div/div[4]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "83ca8e41-1771-47ae-a2ac-feffeefaa9b5",
+      "comment": "",
+      "command": "type",
+      "target": "id=qname",
+      "targets": [
+        ["id=qname", "id"],
+        ["name=qname", "name"],
+        ["css=#qname", "css:finder"],
+        ["xpath=//input[@id='qname']", "xpath:attributes"],
+        ["xpath=//form[@id='qgenerate-form']/div/div[4]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "teszt"
+    }, {
+      "id": "5d35edc8-0a00-4e3c-bd36-790815e2190b",
+      "comment": "",
+      "command": "click",
+      "target": "name=submit",
+      "targets": [
+        ["name=submit", "name"],
+        ["css=.flex-form-item:nth-child(7) > input", "css:finder"],
+        ["xpath=//input[@name='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='qgenerate-form']/div/div[7]/input", "xpath:idRelative"],
+        ["xpath=//div[7]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "fa479a3d-3846-4801-bb38-18faee177595",
+      "comment": "",
+      "command": "click",
+      "target": "id=question",
+      "targets": [
+        ["id=question", "id"],
+        ["name=question", "name"],
+        ["css=#question", "css:finder"],
+        ["xpath=//input[@id='question']", "xpath:attributes"],
+        ["xpath=//form[@id='qquestion-form']/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9db3c934-ffe1-440e-86c2-cc001cb867f2",
+      "comment": "",
+      "command": "type",
+      "target": "id=question",
+      "targets": [
+        ["id=question", "id"],
+        ["name=question", "name"],
+        ["css=#question", "css:finder"],
+        ["xpath=//input[@id='question']", "xpath:attributes"],
+        ["xpath=//form[@id='qquestion-form']/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "kérdés?"
+    }, {
+      "id": "90698cca-c86f-498b-a152-42aa1dac1f29",
+      "comment": "",
+      "command": "click",
+      "target": "name=submit",
+      "targets": [
+        ["name=submit", "name"],
+        ["css=.flex-form-item:nth-child(7) > input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='qquestion-form']/div/div[7]/input", "xpath:idRelative"],
+        ["xpath=//div[7]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "35ed281e-6a42-4a78-9870-e3e0c9a02c94",
+      "comment": "",
+      "command": "click",
+      "target": "name=button",
+      "targets": [
+        ["name=button", "name"],
+        ["css=input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='button']", "xpath:attributes"],
+        ["xpath=//form[@id='qquestion-form']/div/div[7]/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "cc1e7822-57aa-4906-bb50-9ff30140ae38",
+    "name": "7. login into student user + quiz fill",
+    "commands": [{
+      "id": "c74bbfe6-98b6-4b39-bb1b-d5b900f772a5",
+      "comment": "",
+      "command": "open",
+      "target": "http://127.0.0.1:8080/api/log",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d290f62f-3bbe-412c-8935-116ea899d8bf",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "diakelek"
+    }, {
+      "id": "5ee85675-6ef0-4424-ad81-9509247fdf77",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/div[4]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "3e4fd7af-6894-4305-873e-1e6fef0203fb",
+      "comment": "",
+      "command": "click",
+      "target": "name=submit",
+      "targets": [
+        ["name=submit", "name"],
+        ["css=.flex-form-item:nth-child(5) > input", "css:finder"],
+        ["xpath=//input[@name='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/div[5]/input", "xpath:idRelative"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "64ae13ea-b51d-4d3b-a332-0e0e3613bad9",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Kvízek",
+      "targets": [
+        ["linkText=Kvízek", "linkText"],
+        ["css=.menu:nth-child(3)", "css:finder"],
+        ["xpath=//a[contains(text(),'Kvízek')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/api/quiz')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Kvízek')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9e5e149d-7ed2-4341-935f-e549669b92c2",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Kvíz kiválasztás",
+      "targets": [
+        ["linkText=Kvíz kiválasztás", "linkText"],
+        ["css=.menu:nth-child(1)", "css:finder"],
+        ["xpath=//a[contains(text(),'Kvíz kiválasztás')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/api/qpick')]", "xpath:href"],
+        ["xpath=//nav[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Kvíz kiválasztás')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "99d7868b-abb5-4715-b284-ce6bff8b6185",
+      "comment": "",
+      "command": "click",
+      "target": "css=td:nth-child(2)",
+      "targets": [
+        ["css=td:nth-child(2)", "css:finder"],
+        ["xpath=//tbody[@id='quiz-list-body']/tr/td[2]", "xpath:idRelative"],
+        ["xpath=//td[2]", "xpath:position"],
+        ["xpath=//td[contains(.,'Szuper kvíz')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "840cef66-6a62-4b45-a20b-aa0db617d60a",
+      "comment": "",
+      "command": "click",
+      "target": "name=submit",
+      "targets": [
+        ["name=submit", "name"],
+        ["css=input", "css:finder"],
+        ["xpath=//input[@name='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='qpick-form']/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "71cbd64f-d567-4678-aaca-0aa1b2dd3c5e",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) label:nth-child(1)",
+      "targets": [
+        ["css=tr:nth-child(1) label:nth-child(1)", "css:finder"],
+        ["xpath=//tbody[@id='list-body']/tr/td[2]/label", "xpath:idRelative"],
+        ["xpath=//label", "xpath:position"],
+        ["xpath=//label[contains(.,'Igaz ')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3e8db30a-3942-4e6a-ad1e-c24901af8ad0",
+      "comment": "",
+      "command": "click",
+      "target": "css=.flex-form-item",
+      "targets": [
+        ["css=.flex-form-item", "css:finder"],
+        ["xpath=//form[@id='qquiz-form']/div", "xpath:idRelative"],
+        ["xpath=//div", "xpath:position"],
+        ["xpath=//div[contains(.,' ')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d6588b67-cc5b-4a8d-bed1-437c0b8fe3be",
+      "comment": "",
+      "command": "click",
+      "target": "name=submit",
+      "targets": [
+        ["name=submit", "name"],
+        ["css=.flex-form-item > input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='qquiz-form']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "037aa648-ea76-4191-812b-d202b2c895ee",
+      "comment": "",
+      "command": "click",
+      "target": "id=button",
+      "targets": [
+        ["id=button", "id"],
+        ["name=button", "name"],
+        ["css=#button", "css:finder"],
+        ["xpath=//input[@id='button']", "xpath:attributes"],
+        ["xpath=//form[@id='qquiz-form']/div/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "b256792e-4f13-4e27-b287-d1bf064e4868",
+    "name": "5. login into student user + check profile",
+    "commands": [{
+      "id": "a06a0fe8-be9c-44a2-8b36-d27943e1ae26",
+      "comment": "",
+      "command": "open",
+      "target": "http://127.0.0.1:8080/api/log",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "61e550a9-287c-4ebb-9f6c-b71590406756",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "diakelek"
+    }, {
+      "id": "eae0c189-e21c-4555-be18-41c4fdcecca6",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/div[4]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "db87488a-a500-4a56-b288-8783676a7a7d",
+      "comment": "",
+      "command": "click",
+      "target": "name=submit",
+      "targets": [
+        ["name=submit", "name"],
+        ["css=.flex-form-item:nth-child(5) > input", "css:finder"],
+        ["xpath=//input[@name='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/div[5]/input", "xpath:idRelative"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "63ffdc22-050e-4e5c-8bdc-bc4412efcfb7",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Profil",
+      "targets": [
+        ["linkText=Profil", "linkText"],
+        ["css=.menu:nth-child(4)", "css:finder"],
+        ["xpath=//a[contains(text(),'Profil')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/api/profile')]", "xpath:href"],
+        ["xpath=//a[3]", "xpath:position"],
+        ["xpath=//a[contains(.,'Profil')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "d1cf7676-57f6-4242-aba3-6e5ca22a3328",
+    "name": "3. Login as teacher user + invite user to quiz",
+    "commands": [{
+      "id": "0ee64514-0153-4f86-a49a-5e53c3a1d299",
+      "comment": "",
+      "command": "open",
+      "target": "http://127.0.0.1:8080/api/log",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4b13c42d-f89a-478b-b171-6637ad1236f1",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1410x679",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c6cc5051-2cd2-4d87-9ef2-4e497adaff14",
+      "comment": "",
+      "command": "click",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0afc78da-5dfc-4238-b7aa-95566d1cb752",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "tanarelek"
+    }, {
+      "id": "c726e3f1-3220-4b24-a44d-9ee5f6d5a313",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/div[4]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "331be29d-43b5-4445-927c-e568d4e69577",
+      "comment": "",
+      "command": "click",
+      "target": "name=submit",
+      "targets": [
+        ["name=submit", "name"],
+        ["css=.flex-form-item:nth-child(5) > input", "css:finder"],
+        ["xpath=//input[@name='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/div[5]/input", "xpath:idRelative"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a12bcb15-c24b-4401-b979-627c7fa95371",
+      "comment": "",
+      "command": "click",
+      "target": "id=users",
+      "targets": [
+        ["id=users", "id"],
+        ["linkText=Felhasználók", "linkText"],
+        ["css=#users", "css:finder"],
+        ["xpath=//a[contains(text(),'Felhasználók')]", "xpath:link"],
+        ["xpath=//a[@id='users']", "xpath:attributes"],
+        ["xpath=//a[contains(@href, '/api/users')]", "xpath:href"],
+        ["xpath=//a[4]", "xpath:position"],
+        ["xpath=//a[contains(.,'Felhasználók')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "51551cf2-68e9-4a48-a26d-e06c96dd5700",
+      "comment": "",
+      "command": "click",
+      "target": "id=uinvite",
+      "targets": [
+        ["id=uinvite", "id"],
+        ["linkText=Kvíz meghívó", "linkText"],
+        ["css=#uinvite", "css:finder"],
+        ["xpath=//a[contains(text(),'Kvíz meghívó')]", "xpath:link"],
+        ["xpath=//a[@id='uinvite']", "xpath:attributes"],
+        ["xpath=//a[contains(@href, '/api/uinvite')]", "xpath:href"],
+        ["xpath=//nav[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Kvíz meghívó')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9c9cfcc5-219e-475a-b8ae-bae5ab62c6de",
+      "comment": "",
+      "command": "click",
+      "target": "css=#quiz-list-body > tr:nth-child(1) > td:nth-child(2)",
+      "targets": [
+        ["css=#quiz-list-body > tr:nth-child(1) > td:nth-child(2)", "css:finder"],
+        ["xpath=//tbody[@id='quiz-list-body']/tr/td[2]", "xpath:idRelative"],
+        ["xpath=//td[2]", "xpath:position"],
+        ["xpath=//td[contains(.,'Szuper kvíz')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0b9a8a4b-4fdb-4d36-8b5e-a720a74bda9d",
+      "comment": "",
+      "command": "click",
+      "target": "css=#user-list-body > tr:nth-child(1) > td:nth-child(2)",
+      "targets": [
+        ["css=#user-list-body > tr:nth-child(1) > td:nth-child(2)", "css:finder"],
+        ["xpath=//tbody[@id='user-list-body']/tr/td[2]", "xpath:idRelative"],
+        ["xpath=//table[2]/tbody/tr/td[2]", "xpath:position"],
+        ["xpath=//td[contains(.,'diakelek')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d2c58db9-e37b-41a0-bd2b-dba1fd073423",
+      "comment": "",
+      "command": "click",
+      "target": "name=submit",
+      "targets": [
+        ["name=submit", "name"],
+        ["css=.flex-form-item > input", "css:finder"],
+        ["xpath=//input[@name='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='uinvite-form']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "a07c686b-c792-4588-bec5-94ce5060dfa1",
+    "name": "8. login into admin user + delete quiz",
+    "commands": [{
+      "id": "5fdeeca0-1546-4d4c-8dbf-b443aa09a14c",
+      "comment": "",
+      "command": "open",
+      "target": "http://127.0.0.1:8080/api/log",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "67522bec-0bf8-4aab-ba8e-77066b1318d7",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1410x679",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "26610e1f-f823-4816-8644-0746eaa130e6",
+      "comment": "",
+      "command": "click",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ee577cf2-9564-40f4-9b87-a57cf0b9a2f0",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "adminelek"
+    }, {
+      "id": "f4fc1e39-51a7-49ac-aa8d-66a53f2bb584",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/div[4]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "8ee9e1b0-ad8e-44d5-bf38-b726f4312c5c",
+      "comment": "",
+      "command": "click",
+      "target": "name=submit",
+      "targets": [
+        ["name=submit", "name"],
+        ["css=.flex-form-item:nth-child(5) > input", "css:finder"],
+        ["xpath=//input[@name='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/div[5]/input", "xpath:idRelative"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "505443f3-6a27-46fe-b02e-677bcd171321",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Kvízek",
+      "targets": [
+        ["linkText=Kvízek", "linkText"],
+        ["css=.menu:nth-child(3)", "css:finder"],
+        ["xpath=//a[contains(text(),'Kvízek')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/api/quiz')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Kvízek')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6a6a6e40-e11b-4691-8cb0-b1760c32e1d5",
+      "comment": "",
+      "command": "click",
+      "target": "id=qdelete",
+      "targets": [
+        ["id=qdelete", "id"],
+        ["linkText=Kvíz törlés", "linkText"],
+        ["css=#qdelete", "css:finder"],
+        ["xpath=//a[contains(text(),'Kvíz törlés')]", "xpath:link"],
+        ["xpath=//a[@id='qdelete']", "xpath:attributes"],
+        ["xpath=//a[contains(@href, '/api/qdelete')]", "xpath:href"],
+        ["xpath=//nav[2]/a[3]", "xpath:position"],
+        ["xpath=//a[contains(.,'Kvíz törlés')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f5cbad06-3dda-4758-9b39-b7018a917f8c",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) > td:nth-child(3)",
+      "targets": [
+        ["css=tr:nth-child(5) > td:nth-child(3)", "css:finder"],
+        ["xpath=//tbody[@id='quiz-list-body']/tr[5]/td[3]", "xpath:idRelative"],
+        ["xpath=//tr[5]/td[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4cd88ddd-e878-434d-bf0b-360a942a562b",
+      "comment": "",
+      "command": "click",
+      "target": "name=submit",
+      "targets": [
+        ["name=submit", "name"],
+        ["css=.flex-form-item > input", "css:finder"],
+        ["xpath=//input[@name='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='qdelete-form']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "05fb92e6-402d-465d-83f4-d9522426b81f",
+    "name": "9. login into admin user + recover quiz",
+    "commands": [{
+      "id": "627f7f5b-0fbc-4d7e-a8fc-5af43695637c",
+      "comment": "",
+      "command": "open",
+      "target": "http://127.0.0.1:8080/api/log",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "986b74c4-745f-4292-94a9-8d9026aff7cd",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1410x679",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f7897bda-432e-4ee7-a788-4359c7fa86ae",
+      "comment": "",
+      "command": "click",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "aadd2221-91a2-4419-b7b7-b4ba8f1c21dc",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "adminelek"
+    }, {
+      "id": "09a9562b-8dcf-42b8-82f4-5fc0fb2c4b3f",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/div[4]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "25a94f61-6805-461c-821b-947730b5b455",
+      "comment": "",
+      "command": "click",
+      "target": "name=submit",
+      "targets": [
+        ["name=submit", "name"],
+        ["css=.flex-form-item:nth-child(5) > input", "css:finder"],
+        ["xpath=//input[@name='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/div[5]/input", "xpath:idRelative"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "94231131-6673-4d4d-94b4-b76cbbf6d103",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Kvízek",
+      "targets": [
+        ["linkText=Kvízek", "linkText"],
+        ["css=.menu:nth-child(3)", "css:finder"],
+        ["xpath=//a[contains(text(),'Kvízek')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/api/quiz')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Kvízek')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6f99e832-39d0-4bfd-a2f7-ee512b692851",
+      "comment": "",
+      "command": "click",
+      "target": "id=qdelete",
+      "targets": [
+        ["id=qdelete", "id"],
+        ["linkText=Kvíz törlés", "linkText"],
+        ["css=#qdelete", "css:finder"],
+        ["xpath=//a[contains(text(),'Kvíz törlés')]", "xpath:link"],
+        ["xpath=//a[@id='qdelete']", "xpath:attributes"],
+        ["xpath=//a[contains(@href, '/api/qdelete')]", "xpath:href"],
+        ["xpath=//nav[2]/a[3]", "xpath:position"],
+        ["xpath=//a[contains(.,'Kvíz törlés')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5e1e3c6d-5d28-479e-8379-b62dc68d95ba",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Archivált kvízek",
+      "targets": [
+        ["linkText=Archivált kvízek", "linkText"],
+        ["css=.menu:nth-child(1)", "css:finder"],
+        ["xpath=//a[contains(text(),'Archivált kvízek')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/api/qundelete')]", "xpath:href"],
+        ["xpath=//nav[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Archivált kvízek')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "359d740c-be40-4e79-a6bf-8d0293beca88",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) > td:nth-child(4)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(4)", "css:finder"],
+        ["xpath=//tbody[@id='quiz-list-body']/tr/td[4]", "xpath:idRelative"],
+        ["xpath=//td[4]", "xpath:position"],
+        ["xpath=//td[contains(.,'2023-05-26')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8249f191-8341-4771-9657-ccd3c0009202",
+      "comment": "",
+      "command": "click",
+      "target": "name=submit",
+      "targets": [
+        ["name=submit", "name"],
+        ["css=.flex-form-item > input", "css:finder"],
+        ["xpath=//input[@name='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='qdelete-form']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "fc9adc26-01cd-4b63-be17-8d7b6a412c65",
+    "name": "10. login into admin user + new user",
+    "commands": [{
+      "id": "065a7f30-8b85-4aa6-b7a2-61bfdee28d8a",
+      "comment": "",
+      "command": "open",
+      "target": "http://127.0.0.1:8080/api/log",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4c449f78-ee86-4e99-a6c0-92f8116fe4fe",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1410x679",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c9b92bfa-0f4d-4361-957a-0eddd3024641",
+      "comment": "",
+      "command": "click",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a9ffa309-5ef6-43e0-979d-2030df85468e",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "adminelek"
+    }, {
+      "id": "5322e8c5-f055-45b2-936e-bfba1fb53420",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/div[4]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "9cb83d09-bc25-4224-87bb-0220511a035e",
+      "comment": "",
+      "command": "click",
+      "target": "name=submit",
+      "targets": [
+        ["name=submit", "name"],
+        ["css=.flex-form-item:nth-child(5) > input", "css:finder"],
+        ["xpath=//input[@name='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/div[5]/input", "xpath:idRelative"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2deaa1d6-6b24-4859-adcc-8acabe4123a5",
+      "comment": "",
+      "command": "click",
+      "target": "id=users",
+      "targets": [
+        ["id=users", "id"],
+        ["linkText=Felhasználók", "linkText"],
+        ["css=#users", "css:finder"],
+        ["xpath=//a[contains(text(),'Felhasználók')]", "xpath:link"],
+        ["xpath=//a[@id='users']", "xpath:attributes"],
+        ["xpath=//a[contains(@href, '/api/users')]", "xpath:href"],
+        ["xpath=//a[4]", "xpath:position"],
+        ["xpath=//a[contains(.,'Felhasználók')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "308ebe2e-a5b7-4960-853f-84f0fe200ef4",
+      "comment": "",
+      "command": "click",
+      "target": "id=unew",
+      "targets": [
+        ["id=unew", "id"],
+        ["linkText=Új felhasználó", "linkText"],
+        ["css=#unew", "css:finder"],
+        ["xpath=//a[contains(text(),'Új felhasználó')]", "xpath:link"],
+        ["xpath=//a[@id='unew']", "xpath:attributes"],
+        ["xpath=//a[contains(@href, '/api/unew')]", "xpath:href"],
+        ["xpath=//nav[2]/a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Új felhasználó')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "959bfb74-de72-49de-b63c-b292e745e125",
+      "comment": "",
+      "command": "click",
+      "target": "id=fullname",
+      "targets": [
+        ["id=fullname", "id"],
+        ["css=#fullname", "css:finder"],
+        ["xpath=//input[@id='fullname']", "xpath:attributes"],
+        ["xpath=//form[@id='createUser-form']/div/div[4]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0bae46ca-7e7f-459a-8fa6-cb83dcde6645",
+      "comment": "",
+      "command": "type",
+      "target": "id=fullname",
+      "targets": [
+        ["id=fullname", "id"],
+        ["css=#fullname", "css:finder"],
+        ["xpath=//input[@id='fullname']", "xpath:attributes"],
+        ["xpath=//form[@id='createUser-form']/div/div[4]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "Teszt Elek"
+    }, {
+      "id": "bb265aaf-556f-41c3-8775-c9f2df4e0bd8",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//form[@id='createUser-form']/div/div[6]/input", "xpath:idRelative"],
+        ["xpath=//div[6]/input", "xpath:position"]
+      ],
+      "value": "tesztuser"
+    }, {
+      "id": "0299c12f-67d4-4d20-9727-083b61fb8fee",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//form[@id='createUser-form']/div/div[8]/input", "xpath:idRelative"],
+        ["xpath=//div[8]/input", "xpath:position"]
+      ],
+      "value": "teszt@gmail.com"
+    }, {
+      "id": "3e9bb3cb-a65e-4868-b1f4-571de1b370c9",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//form[@id='createUser-form']/div/div[10]/input", "xpath:idRelative"],
+        ["xpath=//div[10]/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "cf0df8df-9421-4a9e-9d02-cb9d8c9fd5d8",
+      "comment": "",
+      "command": "type",
+      "target": "id=confirm-password",
+      "targets": [
+        ["id=confirm-password", "id"],
+        ["name=confirm-password", "name"],
+        ["css=#confirm-password", "css:finder"],
+        ["xpath=//input[@id='confirm-password']", "xpath:attributes"],
+        ["xpath=//form[@id='createUser-form']/div/div[12]/input", "xpath:idRelative"],
+        ["xpath=//div[12]/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "492fd28b-26ed-4b8b-a97e-3a17e81bf400",
+      "comment": "",
+      "command": "type",
+      "target": "id=dateOfBirth",
+      "targets": [
+        ["id=dateOfBirth", "id"],
+        ["name=dateOfBirth", "name"],
+        ["css=#dateOfBirth", "css:finder"],
+        ["xpath=//input[@id='dateOfBirth']", "xpath:attributes"],
+        ["xpath=//form[@id='createUser-form']/div/div[14]/input", "xpath:idRelative"],
+        ["xpath=//div[14]/input", "xpath:position"]
+      ],
+      "value": "1998-11-08"
+    }, {
+      "id": "5e38f13d-4c1a-4ef4-a659-8abb2bda5d9c",
+      "comment": "",
+      "command": "click",
+      "target": "name=submit",
+      "targets": [
+        ["name=submit", "name"],
+        ["css=.flex-form-item:nth-child(17) > input", "css:finder"],
+        ["xpath=//input[@name='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='createUser-form']/div/div[17]/input", "xpath:idRelative"],
+        ["xpath=//div[17]/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "21965584-f314-4d0e-8ffd-898b90a8ff12",
+    "name": "11. login into admin user + change role for user",
+    "commands": [{
+      "id": "e76b80a2-d476-46b1-ae20-f7575662d123",
+      "comment": "",
+      "command": "open",
+      "target": "http://127.0.0.1:8080/api/log",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1f575824-d0e6-400a-a85c-51e68c911d9f",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "adminelek"
+    }, {
+      "id": "0c7790fd-1fce-4550-bf31-b6edd3cbbbeb",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/div[4]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "957ce5db-74c4-4a4e-b11a-90d8c72855b7",
+      "comment": "",
+      "command": "click",
+      "target": "name=submit",
+      "targets": [
+        ["name=submit", "name"],
+        ["css=.flex-form-item:nth-child(5) > input", "css:finder"],
+        ["xpath=//input[@name='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/div[5]/input", "xpath:idRelative"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "036d4f5d-81e9-4c12-892c-5a983f42bf93",
+      "comment": "",
+      "command": "click",
+      "target": "id=users",
+      "targets": [
+        ["id=users", "id"],
+        ["linkText=Felhasználók", "linkText"],
+        ["css=#users", "css:finder"],
+        ["xpath=//a[contains(text(),'Felhasználók')]", "xpath:link"],
+        ["xpath=//a[@id='users']", "xpath:attributes"],
+        ["xpath=//a[contains(@href, '/api/users')]", "xpath:href"],
+        ["xpath=//a[4]", "xpath:position"],
+        ["xpath=//a[contains(.,'Felhasználók')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3229533c-8fd8-4caf-8ce9-648e901f918b",
+      "comment": "",
+      "command": "click",
+      "target": "id=urole",
+      "targets": [
+        ["id=urole", "id"],
+        ["linkText=Szerepkör módosítás", "linkText"],
+        ["css=#urole", "css:finder"],
+        ["xpath=//a[contains(text(),'Szerepkör módosítás')]", "xpath:link"],
+        ["xpath=//a[@id='urole']", "xpath:attributes"],
+        ["xpath=//a[contains(@href, '/api/urole')]", "xpath:href"],
+        ["xpath=//nav[2]/a[3]", "xpath:position"],
+        ["xpath=//a[contains(.,'Szerepkör módosítás')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e758789c-ae0b-42dc-9120-fb497dc52581",
+      "comment": "",
+      "command": "click",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//form[@id='connect_user_role-form']/div/div[4]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7d5f3339-e189-41b4-9a06-7ed90dd0ac36",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//form[@id='connect_user_role-form']/div/div[4]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "tesztuser"
+    }, {
+      "id": "e5980738-95fa-4550-8c05-c59fdbed34f8",
+      "comment": "",
+      "command": "click",
+      "target": "id=role",
+      "targets": [
+        ["id=role", "id"],
+        ["name=role", "name"],
+        ["css=#role", "css:finder"],
+        ["xpath=//select[@id='role']", "xpath:attributes"],
+        ["xpath=//form[@id='connect_user_role-form']/div/div[6]/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "34d7ec21-1c46-48ad-a7b1-3eea31762ccd",
+      "comment": "",
+      "command": "select",
+      "target": "id=role",
+      "targets": [],
+      "value": "label=Tanár"
+    }, {
+      "id": "2321d01c-aa70-4425-a778-cf51004de8d8",
+      "comment": "",
+      "command": "click",
+      "target": "css=option:nth-child(2)",
+      "targets": [
+        ["css=option:nth-child(2)", "css:finder"],
+        ["xpath=//option[@value='2']", "xpath:attributes"],
+        ["xpath=//select[@id='role']/option[2]", "xpath:idRelative"],
+        ["xpath=//option[2]", "xpath:position"],
+        ["xpath=//option[contains(.,'Tanár')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6dc1bf15-bc8a-4f5c-a38d-d536d3777c30",
+      "comment": "",
+      "command": "click",
+      "target": "name=submit",
+      "targets": [
+        ["name=submit", "name"],
+        ["css=.flex-form-item:nth-child(7) > input", "css:finder"],
+        ["xpath=//input[@name='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='connect_user_role-form']/div/div[7]/input", "xpath:idRelative"],
+        ["xpath=//div[7]/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "c7e3a892-6cf7-4b13-a1cd-5a5f71433161",
+    "name": "12. login into admin user + password reset for user",
+    "commands": [{
+      "id": "c8294121-c3ed-4a99-92d4-7231af26674c",
+      "comment": "",
+      "command": "open",
+      "target": "http://127.0.0.1:8080/api/log",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6ec628d6-f07f-40fc-844e-fb19c41a9b7a",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1410x679",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d5db0eee-fb00-4988-88b0-0db62abffa91",
+      "comment": "",
+      "command": "click",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "83c98d76-0efd-41fa-ac61-8a57d5d82df3",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/div[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "adminelek"
+    }, {
+      "id": "d46c3aa7-121d-448e-b8b1-80f56b491fb0",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/div[4]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "69746974-fac1-4ff8-9f07-39691fd065ed",
+      "comment": "",
+      "command": "click",
+      "target": "name=submit",
+      "targets": [
+        ["name=submit", "name"],
+        ["css=.flex-form-item:nth-child(5) > input", "css:finder"],
+        ["xpath=//input[@name='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='login-form']/div/div[5]/input", "xpath:idRelative"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "78a6d355-301a-483b-b459-0c72be259092",
+      "comment": "",
+      "command": "click",
+      "target": "id=users",
+      "targets": [
+        ["id=users", "id"],
+        ["linkText=Felhasználók", "linkText"],
+        ["css=#users", "css:finder"],
+        ["xpath=//a[contains(text(),'Felhasználók')]", "xpath:link"],
+        ["xpath=//a[@id='users']", "xpath:attributes"],
+        ["xpath=//a[contains(@href, '/api/users')]", "xpath:href"],
+        ["xpath=//a[4]", "xpath:position"],
+        ["xpath=//a[contains(.,'Felhasználók')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "708f4ed5-fc4a-483c-8270-0df7904a6a83",
+      "comment": "",
+      "command": "click",
+      "target": "id=upassword",
+      "targets": [
+        ["id=upassword", "id"],
+        ["linkText=Jelszó helyreállítás", "linkText"],
+        ["css=#upassword", "css:finder"],
+        ["xpath=//a[contains(text(),'Jelszó helyreállítás')]", "xpath:link"],
+        ["xpath=//a[@id='upassword']", "xpath:attributes"],
+        ["xpath=//a[contains(@href, '/api/upassword')]", "xpath:href"],
+        ["xpath=//nav[2]/a[4]", "xpath:position"],
+        ["xpath=//a[contains(.,'Jelszó helyreállítás')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ebc96f19-a756-428c-874a-afe9d0567b59",
+      "comment": "",
+      "command": "click",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//form[@id='modifyUserPassword-form']/div/div[4]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "71299b43-5f66-4cb6-9da7-8e30a2878e47",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//form[@id='modifyUserPassword-form']/div/div[4]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": "tesztuser"
+    }, {
+      "id": "2515c1aa-9420-4997-9bd8-69710b45b2ef",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//form[@id='modifyUserPassword-form']/div/div[6]/input", "xpath:idRelative"],
+        ["xpath=//div[6]/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "39c730ae-7f4d-4cc9-a06b-b49f11ecc82d",
+      "comment": "",
+      "command": "type",
+      "target": "id=confirm-password",
+      "targets": [
+        ["id=confirm-password", "id"],
+        ["name=confirm-password", "name"],
+        ["css=#confirm-password", "css:finder"],
+        ["xpath=//input[@id='confirm-password']", "xpath:attributes"],
+        ["xpath=//form[@id='modifyUserPassword-form']/div/div[8]/input", "xpath:idRelative"],
+        ["xpath=//div[8]/input", "xpath:position"]
+      ],
+      "value": "asd"
+    }, {
+      "id": "6433f911-3ee2-4bbe-9ccb-e65f75073422",
+      "comment": "",
+      "command": "click",
+      "target": "name=submit",
+      "targets": [
+        ["name=submit", "name"],
+        ["css=.flex-form-item:nth-child(9) > input", "css:finder"],
+        ["xpath=//input[@name='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='modifyUserPassword-form']/div/div[9]/input", "xpath:idRelative"],
+        ["xpath=//div[9]/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "1e2b48ba-37fd-4aba-b9cc-ab255337c7a3",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["bc5752ad-45af-4a76-a1c4-47ae21d30456"]
+  }],
+  "urls": ["http://127.0.0.1:8080/api/index", "http://127.0.0.1:8080/api/menu", "http://127.0.0.1:8080/api/registration", "http://127.0.0.1:8080/api/log"],
+  "plugins": []
+}
